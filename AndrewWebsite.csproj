@@ -43,6 +43,19 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="about.html" />
+    <Content Include="contact.html" />
+    <Content Include="images\imgStoryIcon.png" />
+    <Content Include="images\imgStoryScreenshots\500x500bb %281%29.jpg" />
+    <Content Include="images\imgStoryScreenshots\500x500bb %282%29.jpg" />
+    <Content Include="images\imgStoryScreenshots\500x500bb %283%29.jpg" />
+    <Content Include="images\imgStoryScreenshots\500x500bb %284%29.jpg" />
+    <Content Include="images\imgStoryScreenshots\500x500bb.jpg" />
+    <Content Include="images\MathologicaIcon.png" />
+    <Content Include="images\WumpusEngine.png" />
+    <Content Include="imgstory\about.html" />
+    <Content Include="imgstory\privacy.html" />
+    <Content Include="imgstory\terms.html" />
     <Content Include="index.html" />
     <Content Include="jquery-2.2.0.min.js" />
     <Content Include="styles\main.css" />

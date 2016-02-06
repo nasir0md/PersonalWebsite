@@ -4,9 +4,35 @@
 
 body {
   padding-bottom: 40px;
-  color: #5a5a5a;
+  color: white;
+  font-size: 20px;
+  background-color: #3498DB;
 }
 
+.navbar-inverse {
+    background-color: #ecf0f1;
+}
+
+    .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {
+        background-color: #919191;
+    }
+
+
+
+a {
+    color: #D8D8D8;
+    text-decoration: none;
+}
+
+.imp-link {
+    font-size: 24px;
+}
+
+.centered-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
@@ -46,7 +72,7 @@ body {
         width: 100%;
         text-align: center;
         margin-top: 120px;
-        font-size: 50px;
+        font-size: 60px;
     }
 
     .carousel div {
