@@ -34,6 +34,22 @@ a {
     margin-right: auto;
 }
 
+.in-progress {
+    background-color: #F1C40F;
+}
+
+.maintained {
+    background-color: #1ABC9C;
+}
+
+.un-maintained {
+    background-color: #E74C3C;
+}
+
+.proj-level {
+    background-color: #95A5A6;
+}
+
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
 

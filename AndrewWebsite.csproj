@@ -53,12 +53,21 @@
     <Content Include="images\imgStoryScreenshots\500x500bb.jpg" />
     <Content Include="images\MathologicaIcon.png" />
     <Content Include="images\WumpusEngine.png" />
+    <Content Include="images\wumpus\pic0.png" />
+    <Content Include="images\wumpus\pic2.png" />
+    <Content Include="images\wumpus\pic3.png" />
+    <Content Include="images\wumpus\pic4.png" />
+    <Content Include="images\wumpus\pic5.png" />
+    <Content Include="images\wumpus\pic6.png" />
     <Content Include="imgstory\about.html" />
     <Content Include="imgstory\privacy.html" />
     <Content Include="imgstory\terms.html" />
     <Content Include="index.html" />
     <Content Include="jquery-2.2.0.min.js" />
+    <Content Include="mathologica\about.html" />
     <Content Include="styles\main.css" />
+    <Content Include="vibratingvest\about.html" />
+    <Content Include="wumpus\about.html" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".git\config" />
