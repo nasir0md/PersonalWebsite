@@ -45,6 +45,7 @@
   <ItemGroup>
     <Content Include="about.html" />
     <Content Include="contact.html" />
+    <Content Include="images\favicon.ico" />
     <Content Include="images\imgStoryIcon.png" />
     <Content Include="images\imgStoryScreenshots\500x500bb %281%29.jpg" />
     <Content Include="images\imgStoryScreenshots\500x500bb %282%29.jpg" />
