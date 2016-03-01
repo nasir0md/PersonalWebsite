@@ -66,6 +66,7 @@
     <Content Include="index.html" />
     <Content Include="jquery-2.2.0.min.js" />
     <Content Include="mathologica\about.html" />
+    <Content Include="requestfunding.html" />
     <Content Include="styles\main.css" />
     <Content Include="vibratingvest\about.html" />
     <Content Include="wumpus\about.html" />
