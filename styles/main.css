@@ -17,7 +17,18 @@ body {
         background-color: #919191;
     }
 
+.feature-img {
+    width: 100%;
+}
 
+.disp-img {
+    width: 100%;
+}
+
+.feature-header {
+    font-size: 30px;
+    color: #D2D2D2;
+}
 
 a {
     color: #D8D8D8;
@@ -43,7 +54,7 @@ a {
 }
 
 .un-maintained {
-    background-color: #E74C3C;
+    background-color: #D35400;
 }
 
 .proj-level {

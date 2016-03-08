@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Usage of the wumpus game engine.">
+        <meta name="author" content="Andrew Szot">
+        <link rel="icon" href="/images/favicon.ico">
+        <title>Usage</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        
+        <script src="/jquery-2.2.0.min.js" type="text/javascript">
+        </script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous">
+        </script>
+
+
+        <link href="/styles/main.css" rel="Stylesheet" />
+    </head>
+    <body>
+        <div class="navbar-wrapper">
+          <div class="container">
+
+            <nav class="navbar navbar-inverse navbar-static-top">
+              <div class="container">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="/">Andrew Szot</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+
+          </div>
+        </div>
+
+        <div id="myCarousel" class="carousel">
+            <p>Usage</p>
+            <div><a href="/wumpus/about.html" class="imp-link">Wumpus Engine</a></div>
+        </div>
+
+        <div class="container marketing">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>
+                            To use this project you must have <a href="http://www.visualstudio.com">Visual Studio 2012</a>
+                            installed and the XNA 4.0 redistributable installed. The project does NOT come with the 
+                            required XNA libraries. Once you have all of this installed <a href="Download.aspx">download</a> the project and you can open it
+                            with Visual Studio.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <span>Controls</span>
+
+                        <p>Movement Controls: (all modes)</p>
+                        <ul>
+                            <li>W -> Move forward</li>
+                            <li>A -> Move left</li>
+                            <li>S -> Move backward</li>
+                            <li>D -> Move right</li>
+                            <li>R-Click -> Change look orientation by dragging around mouse</li>
+                            <li>L-Click -> Fire</li>
+                        </ul>
+
+                        <p>Player Controls: (play mode only)</p>
+                        <ul>
+                            <li>X -> Interact with map</li>
+                            <li>Space -> Jump</li>
+                            <li>E -> Toggle weapon raised</li>
+                            <li>R -> Reload</li>
+                            <li>B -> Drop holding</li>
+                            <li>N -> Interact with object</li>
+                            <li>H -> Call orblet (Orblets are apart of the Hunt the Wumpus game itself, you can only call them when the Hunt the Wumpus Game is set up)</li>
+                            <li>F -> Flashlight</li>
+                            <li>L-ALT+F -> To edit mode</li>
+                        </ul>
+
+                        <p>Form Creation: (edit mode only)</p>
+                        <ul>
+                            <li>L-CTRL+Shift+S -> Save as scene</li>
+                            <li>L-CTRL+S -> Save scene</li>
+                            <li>L-CTRL+L -> Load scene</li>
+                            <li>L-CTRL+W -> Light editor</li>
+                            <li>L-CTRL+O -> Game object editor</li>
+                            <li>L-CTRL+A -> Ambient occlusion settings</li>
+                            <li>L-CTRL+T -> Shadow settings</li>
+                            <li>L-CTRL+P -> Particle settings</li>
+                            <li>L-CTRL+G -> Renderer settings</li>
+                            <li>L-CTRL+N -> AI editor</li>
+                            <li>L-CTRL+E -> Scene settings</li>
+                            <li>L-CTRL+U -> Event editor</li>
+                        </ul>
+
+                        <p>Misc Commands: (edit mode only)</p>
+                        <ul>
+                            <li>L-ALT+1 -> Display final render target</li>
+                            <li>L-ALT+2 -> Display depth render target</li>
+                            <li>L-ALT+3 -> Display normal render target</li>
+                            <li>L-ALT+4 -> Display light render target</li>
+                            <li>L-ALT+5 -> Display specular light render target</li>
+                            <li>L-ALT+6 -> Display ambient occlusion render target</li>
+                            <li>L-ALT+F -> To edit mode</li>
+                            <li>L-ALT+G -> To play mode</li>
+                            <li>L-ALT+R -> Kill all of the AI in the scene</li>
+                            <li>L-ALT+Q -> Move faster</li>
+                            <li>L-ALT+E -> Move slower</li>
+                            <li>M-CLICK -> Select object</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+          <hr />
+
+          <!-- FOOTER -->
+          <footer>
+            <p class="pull-right"><a href="#">Back to top</a></p>
+            <p>© 2016 Andrew Szot · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a></p>
+          </footer>
+
+        </div>
+    </body>
+</html>
