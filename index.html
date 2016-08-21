@@ -1,115 +1,1047 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Information regarding the projects of Andrew Szot.">
-        <meta name="author" content="Andrew Szot">
-        <link rel="icon" href="/images/favicon.ico">
-        <title>Andrew Szot</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        
-        <script src="/jquery-2.2.0.min.js" type="text/javascript">
-        </script>
+<head>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous">
-        </script>
+    <title>Andrew Szot</title>
+
+    <!-- Bootstrap Core CSS -->
+    <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+
+    <!-- Theme CSS -->
+    <link href="css/main.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        var portfolioEles = [
+            ['Mathologica', 'mathologicaModal'],
+            ['Wumpus Engine', 'wumpusModal'],
+            ['BlueSub', 'bluesubModal'],
+            ['IDAX', 'idaxModal'],
+            ['imgStory', 'imgStoryModal'],
+            ['Data Mining', 'dataMiningModal'],
+        ];
+
+        var skillEles = {
+            'Backend Web': [
+                ['PHP', 'img/skills/php.png', 'Very Experienced',
+                    'Worked in PHP at an internship with IDAX and MightyCall. Also using it with BlueSub. Typical choice of backend language in projects.',
+                ],
+                ['Laravel', 'img/platforms/laravel.png', 'Experienced',
+                    'Created the BlueSub backend using Laravel. Experienced with using Middleware, Eloquent, and MVC in Laravel.'
+                ],
+                ['C#', 'img/skills/csharp.png', 'Very Experienced',
+                    'Created the Mathologica backend in C#. Very familiar with the .NET libraries and C# 5.0.'
+                ],
+                ['ASP.NET', 'img/platforms/aspnet.png', 'Experienced',
+                    'Used ASP.NET as the backend framework for Mathologica. Experience in creating MVC orientated applications under this framework.'
+                ],
+                ['Apache', 'img/platforms/apache.jpg', 'Experienced',
+                    'Set up multiple web servers using apache and PHP.'
+                ],
+                ['MySQL', 'img/platforms/mysql.png', 'Experienced',
+                    'Experience mainting and interfacing with MySQL databases. Have used MySQL APIs for Java, Python, and PHP.'
+                ],
+                ['EC2', 'img/platforms/ec2.jpg', 'Experienced',
+                    'Comfortable with running and configuring EC2 instances. Have configured security groups for machines' +
+                    ' and have used the Amazon variant of Linux and Ubuntu on EC2 virtual machines. '
+                ],
+                ['S3', 'img/platforms/s3.png', 'Experienced',
+                    'Comfortable with configuring containers and uploading and downloading data to the containers using the S3 APIs for Python and PHP. ' +
+                    'Have configured IAM user roles to access S3 buckets.'
+                ],
+                ['Beanstalk', 'img/platforms/bean.png', 'Experienced',
+                    'Uploaded PHP applications to beanstalk also have configured autoscaling for beanstalk environments.'
+                ]
+            ],
+            "Frontend Web": [
+                ["HTML", "img/skills/html.png", 'Very Experienced',
+                    'Created a number of websites. Have extensive knowledge of how to use page templates like blade or Vue and dynamic loading with HTML for modern webpages.'
+                ],
+                ['JavaScript', 'img/skills/javascript.png', 'Very experienced',
+                    'Regularly use jQuery to provide a well built user experience on websites. When working with IDAX also used the Google Maps JavaScript API'
+                ],
+                ['CSS', 'img/skills/css.png', 'Very Experienced',
+                    "Normally don't use default CSS and instead prefer using a CSS preprocessor. However, have used for older projects"
+                ],
+                ['Vue', 'img/platforms/vue.jpg', 'Some Experience',
+                    'Worked with the BlueSub front end code created with Vue. Experience at creating dynamically loaded pages.'
+                ],
+                ['Less', 'img/skills/less.png', 'Some Experience',
+                    'Typical choice for CSS preprocessor worked with on a number of projects. Worked with on BlueSub.'
+                ],
+                ['Sass', 'img/skills/sass.png', 'Some Experience',
+                    'Have experimented with before. Never before been used on a big project that went live.'
+                ],
+            ],
+            'Data Applications': [
+                ['Python', 'img/skills/python.png', 'Very Experienced',
+                    'Have created multiple data mining applications using python.'
+                ],
+                ['Selenium', 'img/platforms/selenium.png', 'Very Experienced',
+                    'Have used the python Selenium API for data mining from websites.'
+                ]
+            ],
+            'Mobile Development': [
+                ['Android', 'img/platforms/android.ico', 'Experienced',
+                    'Created the Mathologica app for the Google Play store using Java.'
+                ],
+                ['iOS', 'img/platforms/ios_logo.png', 'Experienced',
+                    'Created imgStory for the Apple app store using Objective-C. Also have familiarity using the Apple Maps API.'
+                ],
+                ['Windows Phone', 'img/platforms/windows.png', 'Experienced',
+                    'Created the Mathologica app for the Windows store using C#.'
+                ],
+                ['Objective-C', 'img/skills/objective_c.png', 'Very Experienced',
+                    'Experienced with code development for iOS using objective-c.'
+                ],
+                ['Java', 'img/platforms/java.png', 'Very Experienced',
+                    'Experienced with code development for Android using Java.'
+                ],
+                ['C#', 'img/skills/csharp.png', 'Very Experienced',
+                    'Experienced with code development for Windows Phone using C#.'
+                ],
+                ['Parse', 'img/skills/parse.png', 'Experienced',
+                    'Used the parse objective-c API to create imgStory.'
+                ]
+            ],
+            'Desktop Development': [
+                ['C#', 'img/skills/csharp.png', 'Very Experienced',
+                    'Wrote the Mathologica algorithm in C#. Also worked with XNA, ASP.NET, and Windows Forms in C#. Strongest Language. Deep knowledge of .NET framework and C# 5.0.'
+                ],
+                ['C++', 'img/skills/cplus.png', 'Very Experienced',
+                    'Worked extensively with DirectX. Also used for a variety of small side projects. Have experience with metaprogramming and asynchronous programming.'
+                ],
+                ['Electron', 'img/platforms/electron.png', 'Experienced',
+                    'Created an electron application to collect raw data from the MindWave mobile EKG to train a machine learning algorithm.'
+                ],
+                ['DirectX', 'img/platforms/directx.png', 'Very Experienced',
+                    'Familiar with the DirectX 11 API and advanced 3D rendering and shading techniques. Have used HLSL shaders extensively at all stages of the rendering pipeline. ' +
+                    'In 2012 used DirectX to build a game engine which can be found <a href="https://github.com/ASzot/Andrew-Engine-3">here</a>'
+                ],
+                ['Windows 8 Store', 'img/platforms/windows.png', 'Experienced',
+                    'Created a Sudoku game for the Windows 8 store. Can be found <a href="https://github.com/ASzot/Sudoku-Complete">here</a>'
+                ],
+                ['XNA', 'img/platforms/xna.jpg', 'Very Experienced',
+                    'Same experience as DirectX. In 2013 used XNA to build a game engine which can be found ' +
+                    '<a href="https://github.com/ASzot/Wumpus-XNA-Game-Engine/tree/master/HTW%20Game%20Engine/RenderingSystem/RendererImpl">here</a>'
+                ],
+                ['Java', 'img/platforms/java.jpeg', 'Very Experienced',
+                    'Built a number of desktop applications for with Java using jFrame. However, primarily use Java for mobile development.'
+                ],
+                ['x86 Assembly', 'img/skills/x86.png', 'Some Experience',
+                    'Have created some practice applications using x86 assembly.'
+                ],
+            ],
+            'Embedded Systems': [
+                ['Arduino', 'img/platforms/arduino.png', 'Very Experienced',
+                    'Experience programming complex control systems with C++ for Arduino. Created a self stabalizing quadcopter using a PID controller.'
+                ],
+                ['Raspberry Pi', 'img/platforms/raspberry.png', 'Experienced',
+                    'Experience using Rasbian and creating persisting applications to monitor internet data services. Examples include data mining from social media websites and a data analyzer for Mathologica input.'
+                ]
+            ],
+            'Development Tools': [
+                ['Git', 'img/skills/git.png', 'Experienced',
+                    'Familiar with the basic and typical actions of git such as pulling, pushing, fetching, merging, and resolving conflicts. Always use as my source control.'
+                ],
+                ['Visual Studio', 'img/skills/visualstudio.png', 'Experienced',
+                    'Familiar with the basic and typical usage. How to create and run projects along with building libraries and how to include libraries in the search path.'
+                ],
+                ['Linux', 'img/skills/linux.png', 'Experienced',
+                    'Familiar with executing basic and typical Unix commands.'
+                ]
+            ]
+        };
+        $(document).ready(function () {
+            // Load all of the components into the UI.
+
+            var html = "";
+            for (var i = 0; i < portfolioEles.length; ++i) {
+                // Iterate in counts of 4.
+                var j;
+                // Start a new row.
+                html += '<div class="row">';
+
+                for (j = i; (j < i + 4) && (j < portfolioEles.length); ++j) {
+                    html +=
+                        '<div class="col-sm-3 portfolio-item">' +
+                            '<a href="#' + portfolioEles[j][1] + '" class="portfolio-link" data-toggle="modal">' +
+                                '<div class="caption">' +
+                                    '<div class="caption-content">' +
+                                        '<i class="fa fa-2x">' +
+                                        portfolioEles[j][0] +
+                                        '</i>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</a>' +
+                        '</div>';
+                }
+                html += '</div>';
+                i = j - 1;
+            }
+
+            $('#portfolioContainer').append(html);
 
 
-        <link href="/styles/main.css" rel="Stylesheet" />
-    </head>
-    <body>
-        <div class="navbar-wrapper">
-          <div class="container">
+            html = "";
+            for (key in skillEles) {
+                html +=
+                    '<div class="row header-row">' +
+                        '<div class="col-lg-8 col-lg-offset-2 text-center">' +
+                            '<h4>' + key + '</h4>' +
+                        '</div>' +
+                    '</div>';
+                skills = skillEles[key];
+                for (var i = 0; i < skills.length; ++i) {
+                    var j;
+                    // Start a new row.
+                    html += '<div class="row logo-row ">';
+                    for (j = i; (j < i + 6) && (j < skills.length); ++j) {
+                        html +=
+                            '<div class="col-sm-2 caption-container dropper">' +
+                                '<img src="' + skills[j][1] + '">' +
+                                '<div>' +
+                                    '<div>' + skills[j][0] + '</div>' +
+                                    '<strong>' + skills[j][2] + '</strong>' +
+                                    '<div class="dropdown">' +
+                                      '<ul class="dropdown-menu">' +
+                                        '<li>' + skills[j][3    ] + '</li>' +
+                                      '</ul>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>';
+                    }
+                    html += '</div>';
+                    i = j - 1;
+                }
+            }
 
-            <nav class="navbar navbar-inverse navbar-static-top">
-              <div class="container">
-                <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                  </button>
-                  <a class="navbar-brand" href="/">Andrew Szot</a>
+            $('#skillsContainer').append(html);
+            $('.dropper').click(function () {
+                var elem = $(this).find('ul');
+                var isVisible = elem.is(":visible");
+                // Close all other drop downs.
+                $('.dropdown-menu').hide();
+
+                // Show the next dropdown menu.
+
+                if (isVisible)
+                    elem.hide();
+                else
+                    elem.show();
+
+            });
+        });
+    </script>
+
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#page-top">Andrew Szot's Portfolio</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about">About</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">Skills</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-text">
+                        <span class="name">Andrew Szot</span>
+                        <hr class="star-light">
+                        <span class="skills">Full Stack Developer</span>
+                    </div>
                 </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                  <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">Home</a></li>
-                    <li><a href="/about.html">About</a></li>
-                    <li><a href="/contact.html">Contact</a></li>
-                    <li><a href="/requestfunding.html">Request Funding</a></li>
-                  </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+        <div class="container" id='portfolioContainer'>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Portfolio</h2>
+                    <hr class="star-primary">
                 </div>
-              </div>
-            </nav>
-
-          </div>
+            </div>
         </div>
+    </section>
 
-
-        <div id="myCarousel" class="carousel">
-            <p>Andrew Szot</p>
+    <!-- About Section -->
+    <section class="success" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>About</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <p>
+                        Hello my name is Andrew Szot. I am a passionate developer with deep experience in a many aspects of programming whether it be
+                        creating a front end experience in a web application or creating desktop graphics programs.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <p>
+                        I am currently at USC studying Computer Science, however, pursue the majority of my passion for programming outside of class.
+                        I have created a number of projects throughout the years both for clients and for myself to solidify my knowledge of
+                        concepts and technologies in computer science.
+                    </p>
+                </div>
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <a href="https://github.com/ASzot" class="btn btn-lg btn-outline">
+                        <i class="fa fa-truck">
+                        </i> My GitHub
+                    </a>
+                </div>
+                <div class="col-lg-4">
+                    <p style='text-align: center'>
+                        I can be reached at <strong><a style='color: #e6e6e6' href='mailto:me@andrewszot.com'>me@andrewszot.com</a></strong>
+                    </p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="container marketing">
-
-          <div class="row" style="margin-top: -100px; margin-bottom: 50px;">
-              <div class="col-sm-12">
-                  Here are an assortment of various projects I have made. More information can be found on each project under its page. This website is intended to be a project homepage for the projects that do not have website. Support information can be found for each project on the respective project's page. The current status of each project is also listed. This includes in what stage of development the project is in and the complexity of the project (simple, medium, high).
-              </div>
-          </div>
-          <!-- Three columns of text below the carousel -->
-          <div class="row">
-            <div class="col-lg-4">
-              <img class="img-circle" src="/images/MathologicaIcon.png" alt="Generic placeholder image" width="140" height="140">
-              <h2>Mathologica</h2>
-              <div class="maintained">Maintained</div>
-              <div class="proj-level">High</div>
-              <p>A symbolic math solving engine. Mathologica is capable of solving problems in basic algebra to advanced calculus. Not only does it show the answer but it also shows step by step work. </p>
-              <p><a class="btn btn-default" href="/mathologica/about.html" role="button">View details »</a></p>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-              <img class="img-circle" src="/images/imgStoryIcon.png" alt="Generic placeholder image" width="140" height="140">
-              <h2>imgStory</h2>
-              <div class="maintained">Maintained</div>
-              <div class="proj-level">Medium</div>
-              <p>A social media platform that focuses on user image sharing rather than like and follower statistics. The app is much like other popular photo sharing apps but imgStory removes the pressures of social popularity.</p>
-              <p><a class="btn btn-default" href="/imgstory/about.html" role="button">View details »</a></p>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-              <img class="img-circle" src="/images/WumpusEngine.png" alt="Generic placeholder image" width="140" height="140">
-              <h2>Wumpus Engine</h2>
-              <div class="un-maintained">Finished</div>
-              <div class="proj-level">High</div>
-              <p>A fully functioning 3D game engine. Written in C# using XNA the entire project is open source. The game engine includes a depth deferred 3D rendering systems, an AI implementation, a physics engine, and a in game editor.</p>
-              <p><a class="btn btn-default" href="/wumpus/about.html" role="button">View details »</a></p>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-              <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-              <h2>Vibrating Vest</h2>
-              <div class="in-progress">In Progress</div>
-              <div class="proj-level">Medium</div>
-              <p>A vest that extends senses. Experience reading information through an entirely new outlet. This vest contains nine seperate vibrating motors that encode text into hexidecimal character vibrations onto the vest. The wearer of the vest can then effectively read through a sense of touch.</p>
-              <p><a class="btn btn-default" href="/vibratingvest/about.html" role="button">View details »</a></p>
-            </div><!-- /.col-lg-4 -->
-          </div><!-- /.row -->
-            
-          <hr />
-
-          <!-- FOOTER -->
-          <footer>
-            <p class="pull-right"><a href="#">Back to top</a></p>
-            <p>© 2016 Andrew Szot · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a></p>
-          </footer>
-
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="row" id='skillsContainer'>
+                <div class="col-lg-12 text-center">
+                    <h2>Skills</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
         </div>
-    </body>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3>Study</h3>
+                        <p>USC CSCI</p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Around the Web</h3>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="https://github.com/ASzot" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/andrew_szot/" class="btn-social btn-outline"><i class="fa fa-fw fa-instagram"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Contact</h3>
+                        <p><a href="mailto:me@andrewszot.com">me@andrewszot.com</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; Andrew Szot 2016
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="mathologicaModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Mathologica</h2>
+                            <hr class="star-primary">
+                            <p>
+                                Mathologica is a symbolic math evaluation engine. The Mathologica evaluation engine can understand the math users type.
+                                Therefore, it can solve problems flawlessly and provide step by step work in its solve method.
+                                Furthermore, it is able to determine the type of problem the user has typed in and the potential ways to solve the problem.
+                                In math, there are often multiple methods to solving a problem or multiple ways to manipulate an equation.
+                                Mathologica allows the user to account for all of these possibilities with the evaluation drop down selection.
+                                Mathologica supports math from basic algebra to advanced calculus.
+                            </p>
+                            <p>
+                                Created the alorithm behind Mathologica entirely in C#. No external libraries were used. I created the entire math evaluation and parsing algorithm
+                                to enforce computer science skills. Used C# and ASP.NET for the web version. Used Java for the Android app. Used C# for the Windows Phone app.
+                            </p>
+                            <a class='btn btn-info' href='https://www.mathologica.com'>Go to mathologica.com</a>
+                            <ul class="list-inline item-details">
+                                <li>Date:
+                                    <strong>
+                                        Early 2014 to Mid 2015
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong>
+                                        Web Development / Large Scale Systems
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="wumpusModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Wumpus Engine</h2>
+                            <hr class="star-primary">
+                            <p>
+                                The wumpus engine is a full fledged open source 3D game engine.
+                                It was originally designed for a 3D game programming competition but can be extended for any form of 3D game.
+                                More details on the project can be found on the projects website.
+                            </p>
+                            <p>
+                                Created using C# and XNA.
+                            </p>
+                            <a class='btn btn-info' href='https://github.com/ASzot/Wumpus-XNA-Game-Engine'>On Github</a>
+                            <h4>Rendering</h4>
+                            <p>
+                                The Hunt the Wumpus Game Engine contains a fully equipped rendering system capable of delivering
+                                visually stunning scenes. Additionally every stage of the rendering process is easy to control with in game
+                                rendering editors allowing the fine tuning of settings.
+                            </p>
+                            <div class='reg-modal-content'>
+                                <p>
+                                    Complete list of supported rendering techniques:
+                                </p>
+                                <ul>
+                                    <li>Deferred rendering system (<a href="http://gamedevelopment.tutsplus.com/articles/forward-rendering-vs-deferred-rendering--gamedev-12342">what is this?</a>)</li>
+                                    <li>Screen space ambient occlusion</li>
+                                    <li>Shading with specular, diffuse, and ambient lighting model</li>
+                                    <li>Custom mesh rendering</li>
+                                    <li>
+                                        Can support thousands of lights at once with the deferred rendering system
+                                        <ul>
+                                            <li>Point lights</li>
+                                            <li>Spot lights</li>
+                                            <li>Directional lights</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Custom texture rendering
+                                        <ul>
+                                            <li>Diffuse maps</li>
+                                            <li>Normal maps</li>
+                                            <li>Specular maps</li>
+                                        </ul>
+                                    </li>
+                                    <li>Customizable GPU particle systems</li>
+                                    <li>
+                                        Post Processing Effects
+                                        <ul>
+                                            <li>Tone mapping</li>
+                                            <li>Bloom</li>
+                                            <li>Fast approximate anti-aliasing (FXAA)</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Shadow Mapping with the cascade shadow mapping technique. Supported for...
+                                        <ul>
+                                            <li>Spot lights</li>
+                                            <li>Directional lights</li>
+                                        </ul>
+                                    </li>
+                                    <li>Lens flares</li>
+                                    <li>Water plane effects</li>
+                                    <li>Mesh and light culling</li>
+                                </ul>
+                                <div class='container' style='width: 100%;'>
+                                    <div class='row'>
+                                        <p class="subtitleText">Below: Beautiful scenes with complex shading which are completely customizable through the in game editor.</p>
+                                        <img src="img/wumpus/pic0.png" class="disp-img" />
+
+                                        <p class="subtitleText">
+                                            Below: A heavy bloom is applied as a post processing effect. Use post processing effects to change the mood of the scene.
+                                            Make these changes in a few simple steps. No programming required.
+                                        </p>
+                                        <img src="img/wumpus/pic1.png" class="disp-img" />
+
+                                        <p class="subtitleText">
+                                            Below: Tone mapping applied to the scene to create a more gloomy atmosphere.
+                                        </p>
+                                        <img src="img/wumpus/pic2.png" class="disp-img" />
+
+                                        <p class="subtitleText">
+                                            Below: A spot light is illuminating the scene.
+                                        </p>
+                                        <img src="img/wumpus/pic3.png" class="disp-img" />
+
+                                        <p class="subtitleText">
+                                            Below: A sun flare can be seen shining down on the scene.
+                                        </p>
+                                        <img src="img/wumpus/pic4.png" class="disp-img" />
+
+                                        <p class="subtitleText">Below: Water in a scene.</p>
+                                        <img src="img/wumpus/pic6.png" class="disp-img" />
+
+                                        <p class="subtitleText">
+                                            Below: Natural sunlight beating down on the scene.
+                                        </p>
+                                        <img src="img/wumpus/pic9.png" class="disp-img" />
+
+                                        <p class="subtitleText">Below: Fire particle system in a scene.</p>
+                                        <img src="img/wumpus/pic15.png" class="disp-img" />
+
+                                        <p class="subtitleText">Below: Transparent object materials are fully supported.</p>
+                                        <img src="img/wumpus/pic14.png" class="disp-img" />
+
+                                        <p class="subtitleText">Below: Thousands of lights are supported at once.</p>
+                                        <img src="img/wumpus/pic18.png" class="disp-img" />
+
+                                        <p class="subtitleText">Below: Dynamic show casting at work</p>
+                                        <img src="img/wumpus/pic20.png" class="disp-img" />
+
+                                        <p class="subtitleText">Below: Further demonstration of a shadows for a complex object.</p>
+                                        <img src="img/wumpus/pic11.png" class="disp-img" />
+
+                                        <p class="subtitleText">Below: Spot light illuminating a part of a scene.</p>
+                                        <img src="img/wumpus/pic12.png" class="disp-img" />
+
+                                        <p class="subtitleText">Below: Even in a dark lighting environment the scene looks great.</p>
+                                        <img src="img/wumpus/pic13.png" class="disp-img" />
+
+                                        <p class="subtitleText">Below: Import your own custom game models.</p>
+                                        <img src="img/wumpus/pic19.png" class="disp-img" />
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h4>Physics</h4>
+                                            <p>
+                                                The Wumpus Game Engine comes fully equipped with a full fledged physics system. Collisions, constraints,
+                                                and movement are all a reality using this physics system.
+                                            </p>
+
+                                            <p class="subtitleText">Blocks resting on top of each other</p>
+                                            <img src="img/wumpus/pic10.png" class="disp-img" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h4>Customization</h4>
+                                            <p>
+                                                Customizing the Wumpus Game Engine is simple. Due to the flexible framework the engine could easily be used to make any sort of game, not just Hunt the Wumpus.
+                                                No programming is even required to edit scenes. The in game map editor allows you to place objects, lights, particle systems, or anything that might be in a scene.
+                                                Make the game feel like yours by changing the render settings and make the game look the way you want it. The customization possibilities are endless.
+                                            </p>
+
+                                            <p>Complete list of editor features:</p>
+                                            <ul>
+                                                <li>
+                                                    Particle system editor form
+                                                    <ul>
+                                                        <li>Create from existing set of particle systems</li>
+                                                        <li>
+                                                            Any particle system is possible through changing the following editable properties of particle systems in the map editor
+                                                            <ul>
+                                                                <li>Particle image texture file name</li>
+                                                                <li>Maximum number of particles</li>
+                                                                <li>Particle life duration</li>
+                                                                <li>Particle life duration variance</li>
+                                                                <li>Emit particle variance</li>
+                                                                <li>Emit particle min and max horizontal and vertical velocity</li>
+                                                                <li>Particle end speed</li>
+                                                                <li>Min and max particle rotate speed</li>
+                                                                <li>Min and max starting and ending size</li>
+                                                                <li>Particle emit rate</li>
+                                                                <li>Particle gravity</li>
+                                                                <li>Particle system position</li>
+                                                                <li>Starting color particle hue</li>
+                                                                <li>Ending color particle hue</li>
+                                                                <li>Blending technique of particles</li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    Object management editor form
+                                                    <ul>
+                                                        <li>View all the objects in the scene by their unique ID</li>
+                                                        <li>Delete add objects from dynamic list of all objects in the scene</li>
+                                                        <li>Translate, rotate, or scale objects along any of the three axes either individually or by a group</li>
+                                                        <li>Clone objects to allow for fast simple object placement</li>
+                                                        <li>Modify any of the materials of the object via the material editor form</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    Animated object editor form
+                                                    <ul>
+                                                        <li>Define what animation clips to use in the form editor</li>
+                                                        <li>However, in depth animation functionality must be accessed through programming with the Wumpus Game Engine.</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    Material editor form
+                                                    <ul>
+                                                        <li>Change diffuse, normal, specular map</li>
+                                                        <li>Change opacity</li>
+                                                        <li>Modify Texture translation, rotation, and scale</li>
+                                                        <li>Define rgba diffuse materials and rgb specular materials for use</li>
+                                                        <li>Can copy and past materials for quick and easy material applying</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    Physics editor form
+                                                    <ul>
+                                                        <li>Change object's mass</li>
+                                                        <li>Load physics data from external file containing bounding box information</li>
+                                                        <li>Add joints between objects</li>
+                                                        <li>Add constraints</li>
+                                                        <li>Edit object's inertia</li>
+                                                        <li>Change gravity for the system</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    Events editor form
+                                                    <ul>
+                                                        <li>Timed events</li>
+                                                        <li>
+                                                            Triggered events
+                                                            <ul>
+                                                                <li>Timed</li>
+                                                                <li>Trigger volumes</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>Trigger sound effects</li>
+                                                        <li>Toggle object states (like a flashing light or an opening and closing door)</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    Light editor form
+                                                    <ul>
+                                                        <li>View all lights in the scene by ID</li>
+                                                        <li>Add or delete lights from selecting from the dynamic list of all the lights in the scene.</li>
+                                                        <li>
+                                                            Settings for all lights that can be changed
+                                                            <ul>
+                                                                <li>Diffuse light</li>
+                                                                <li>Specular light</li>
+                                                                <li>Color</li>
+                                                                <li>Diffuse intensity</li>
+                                                                <li>Specular intensity</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            Settings just for point lights that can be changed
+                                                            <ul>
+                                                                <li>Light radius</li>
+                                                                <li>Position light</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            Settings just for spot lights that can be changed
+                                                            <ul>
+                                                                <li>Range of spot light</li>
+                                                                <li>Spot light cone angle</li>
+                                                                <li>Spot exponent</li>
+                                                                <li>Whether the light casts shadows</li>
+                                                                <li>The depth bias used in the shadow mapping algorithm</li>
+                                                                <li>Whether a lens flare should be enabled for the light</li>
+                                                                <li>Lens flare screen query and glow size (controls how the lens flare looks)</li>
+                                                                <li>Light rotation</li>
+                                                                <li>Light position</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            Settings just for directional lights that can be changed
+                                                            <ul>
+                                                                <li>Light rotation</li>
+                                                                <li>Whether shadows should be used</li>
+                                                                <li>The depth bias used in the shadow mapping algorithm</li>
+                                                                <li>Whether a lens flare should be used for this light source</li>
+                                                                <li>The flare query and glow size</li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    Post processing effect editor form
+                                                    <ul>
+                                                        <li>System is very extensible and easy to work with allowing for programming new post processing effects</li>
+                                                        <li>Create post processing effects</li>
+                                                        <li>Change the order of post processing effects</li>
+                                                        <li>Change anti aliasing settings</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    Artificial intelligence editor form
+                                                    <ul>
+                                                        <li>Edit sparse graphs for AI path navigation</li>
+                                                        <li>Create sparse graphs either manually or automatically generate them</li>
+                                                        <li>View the AI path navigation system in real time in the scene</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    Scene settings editor form
+                                                    <ul>
+                                                        <li>Change shadow map render quality</li>
+                                                        <li>Change the sky map</li>
+                                                        <li>Modify ambient light source</li>
+                                                        <li>Change ambient occlusion settings</li>
+                                                    </ul>
+                                                </li>
+                                                <li>Save and load map files</li>
+                                            </ul>
+
+                                            <p class="subtitleText">Below: A fully customized scene</p>
+                                            <img src="img/wumpus/pic5.png" class="disp-img" />
+
+
+                                            <p class="subtitleText">Below: Debug settings of a scene with light position and type being displayed in the 3D environment.</p>
+                                            <img src="img/wumpus/pic18.png" class="disp-img" />
+
+                                            <p class="subtitleText">Below: Debug settings showing the render culling bounding boxes for meshes and lights.</p>
+                                            <img src="img/wumpus/pic19.png" class="disp-img" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h4>Game Play</h4>
+                                            <p>
+                                                The Wumpus Game Engine comes with the core Hunt the Wumpus game play functionality. However, it is very easy to extend this or simply start from scratch. The Hunt the Wumpus
+                                                specific code is completely abstracted from the rest of the game engine. For the game overlaying UI an existing framework exists to easily render custom UIs. Furthermore, there
+                                                is already UI functionality in the Wumpus Game Engine that can be extended upon.
+                                            </p>
+
+                                            <p class="subtitleText">Below: An intractable flare object in a scene.</p>
+                                            <img src="img/wumpus/pic20.png" class="disp-img" />
+
+                                            <p class="subtitleText">Below: The first person view with the overlaying UI in the Hunt the Wumpus game.</p>
+                                            <img src="img/wumpus/pic21.png" class="disp-img" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="list-inline item-details">
+                                <li>
+                                    Date:
+                                    <strong>
+                                        Early 2013 to Late 2014
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong>
+                                        Graphics Programming
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="bluesubModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>BlueSub</h2>
+                            <hr class="star-primary">
+                            <p>
+                                And innovative community machine learning platform. Once the service enters production the link will be posted here.
+                            </p>
+                            <p>
+                                Working on a team with five others. I was in charge of the backend website programming and interfacing with the frontend.
+                            </p>
+                            <p>
+                                Created using PHP and the Laravel framework.
+                            </p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    Team Project
+                                </li>
+                                <li>Date:
+                                    Summer of 2016
+                                </li>
+                                <li>Service:
+                                    <strong>
+                                        Summer of 2016
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="idaxModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>IDAX GIS Platform</h2>
+                            <hr class="star-primary">
+                            <p>
+                                Created a GIS inventory and workflow web application for the traffic analysis company IDAX.
+                            </p>
+                            <p>
+                                Used PHP, HTML, CSS, JavaScript, and the Google Maps JavaScript API to create this application.
+                            </p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong>
+                                        IDAX
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong>
+                                        Summer of 2015
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong>
+                                        Frontend / Backend Web Development
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="dataMiningModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Data Mining</h2>
+                            <hr class="star-primary">
+                            <p>
+                                Over the past several years I have created numerous data mining applications. The first was work for the CEO of a startup company in Seattle
+                                where I made a data mining application that mined company stock market valuations and statistics concerning a company's online prescense in an
+                                attempt to find a correlation between the two. This application was written in Java using the MySQL connector API. It interfaced with an AWS
+                                RDS instance running MySQL and ran on an EC2 instance.
+                            </p>
+                            <p>
+                                I also created a data mining application for BlueSub. This application mined image and image attribute data on Instagram. In the end it mined over
+                                one million images. I created this program in Python and using the Selenium Python API.
+                            </p>
+                            <ul class="list-inline item-details">
+                                <li>Date:
+                                    <strong>
+                                        Summer of 2015 / Summer of 2016
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong>
+                                        Data Applications
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="imgStoryModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>imgStory</h2>
+                            <hr class="star-primary">
+                            <p>
+                                Had enough of worrying about the number of likes and followers on other social media sites?
+                                imgStory is a hassle free social media app that focuses on simply sharing photos.
+                                With imgStory there are no like or follower counts.
+                                Simply follow the users you want to and only you will know who you are following.
+                                Sharing your moments in life with imgStory is easy by posting images onto your story.
+                                And viewing the moments of others is even easier.
+                                Engage with other users through reposting the content that you like from other users onto your own story.
+                                Overall, imgStory is a social media app free of the pressures of popularity. This makes sharing moments with others fun, engaging, yet stress free.
+                            </p>
+                            <p>
+                                This application served as a learning experience for me with iOS development. I created this application using objective-c and the Parse framework.
+                            </p>
+                            <div class='container'>
+                                <div class="row" style="margin-bottom: 20px;">
+                                    <div class="col-sm-6">
+                                        <img class="centered-image" src="img/imgstory/500x500bb.jpg" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <img class="centered-image" src="img/imgstory/500x500bb (1).jpg" />
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-bottom: 20px;">
+                                    <div class="col-sm-6">
+                                        <img class="centered-image" src="img/imgstory/500x500bb (2).jpg" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <img class="centered-image" src="img/imgstory/500x500bb (3).jpg " />
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-bottom: 20px;">
+                                    <div class="col-sm-6">
+                                        <img class="centered-image" src="img/imgstory/500x500bb (4).jpg" />
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong>
+                                        IDAX
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong>
+                                        Late 2015 to Early 2016
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong>
+                                        Mobile Development
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/freelancer.min.js"></script>
+
+</body>
+
 </html>
-
