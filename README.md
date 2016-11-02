@@ -1,0 +1,6 @@
+- Create ec2 instance.
+- `sudo yum update -y`
+- `sudo yum install -y httpd24`
+- `sudo service httpd start`
+- `sudo yum install -y git`
+- `git clone https://Mathologica@bitbucket.org/Mathologica/andrew-website.git`

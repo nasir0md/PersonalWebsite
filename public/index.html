@@ -34,20 +34,39 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
         var portfolioEles = [
+            ['MCL Research', 'mclModal'],
+            ['IDAX', 'idaxModal'],
             ['Mathologica', 'mathologicaModal'],
+            ['MightyCall', 'mightyCallModal'],
             ['Wumpus Engine', 'wumpusModal'],
             ['BlueSub', 'bluesubModal'],
-            ['IDAX', 'idaxModal'],
             ['imgStory', 'imgStoryModal'],
             ['Data Mining', 'dataMiningModal'],
         ];
 
         var skillEles = {
+            'Machine Learning / Data Science': [
+                ['Python', 'img/skills/python.png', 'Very Experienced',
+                    'Have created multiple data mining applications using python.'
+                ],
+                ['Theano', 'img/skills/theano.jpeg', 'Experienced',
+                    'Used to create neural networks. Implemented RNN, CNN, and MLP networks.'
+                ],
+                ['Keras', 'img/skills/keras.jpg', 'Experienced',
+                    'Used on top of Theano to simplify model building process.'
+                ],
+                ['Matlab', 'img/skills/matlab.jpeg', 'Experienced',
+                    'Built CNN in Matlab and perform data analysis and clustering in Matlab.'
+                ],
+                ['Selenium', 'img/platforms/selenium.png', 'Very Experienced',
+                    'Have used the python Selenium API for data mining from websites.'
+                ]
+            ],
             'Backend Web': [
                 ['PHP', 'img/skills/php.png', 'Very Experienced',
                     'Worked in PHP at an internship with IDAX and MightyCall. Also using it with BlueSub. Typical choice of backend language in projects.',
                 ],
-                ['Laravel', 'img/platforms/laravel.png', 'Experienced',
+                ['Laravel', 'img/platforms/laravel.png', 'Very Experienced',
                     'Created the BlueSub backend using Laravel. Experienced with using Middleware, Eloquent, and MVC in Laravel.'
                 ],
                 ['C#', 'img/skills/csharp.png', 'Very Experienced',
@@ -84,8 +103,8 @@
                 ['CSS', 'img/skills/css.png', 'Very Experienced',
                     "Normally don't use default CSS and instead prefer using a CSS preprocessor. However, have used for older projects"
                 ],
-                ['Vue', 'img/platforms/vue.jpg', 'Some Experience',
-                    'Worked with the BlueSub front end code created with Vue. Experience at creating dynamically loaded pages.'
+                ['Vue', 'img/platforms/vue.jpg', 'Experienced',
+                    'Worked with the BlueSub front end code created with Vue.'
                 ],
                 ['Less', 'img/skills/less.png', 'Some Experience',
                     'Typical choice for CSS preprocessor worked with on a number of projects. Worked with on BlueSub.'
@@ -93,14 +112,6 @@
                 ['Sass', 'img/skills/sass.png', 'Some Experience',
                     'Have experimented with before. Never before been used on a big project that went live.'
                 ],
-            ],
-            'Data Applications': [
-                ['Python', 'img/skills/python.png', 'Very Experienced',
-                    'Have created multiple data mining applications using python.'
-                ],
-                ['Selenium', 'img/platforms/selenium.png', 'Very Experienced',
-                    'Have used the python Selenium API for data mining from websites.'
-                ]
             ],
             'Mobile Development': [
                 ['Android', 'img/platforms/android.ico', 'Experienced',
@@ -148,9 +159,6 @@
                 ],
                 ['Java', 'img/platforms/java.jpeg', 'Very Experienced',
                     'Built a number of desktop applications for with Java using jFrame. However, primarily use Java for mobile development.'
-                ],
-                ['x86 Assembly', 'img/skills/x86.png', 'Some Experience',
-                    'Have created some practice applications using x86 assembly.'
                 ],
             ],
             'Embedded Systems': [
@@ -331,8 +339,7 @@
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2">
                     <p>
-                        Hello my name is Andrew Szot. I am a passionate developer with deep experience in a many aspects of programming whether it be
-                        creating a front end experience in a web application or creating desktop graphics programs.
+                        Hello my name is Andrew Szot, I am a versatile and motivated software engineer well versed with full stack solutions and applications of machine learning. I have extensive experience developing backend web platforms using modern frameworks and building frontend applications for web and mobile. I also have a passion for applications of machine learning and data science and continue to further learn in the field through implementation and study.
                     </p>
                 </div>
                 <div class="col-lg-4">
@@ -342,9 +349,11 @@
                         concepts and technologies in computer science.
                     </p>
                 </div>
-                <div class="col-lg-8 col-lg-offset-2 text-center">
+            </div>
+            <div class='row'>
+                <div class="col-lg-4  text-center">
                     <a href="https://github.com/ASzot" class="btn btn-lg btn-outline">
-                        <i class="fa fa-truck">
+                        <i class="fa fa-github">
                         </i> My GitHub
                     </a>
                 </div>
@@ -352,6 +361,12 @@
                     <p style='text-align: center'>
                         I can be reached at <strong><a style='color: #e6e6e6' href='mailto:me@andrewszot.com'>me@andrewszot.com</a></strong>
                     </p>
+                </div>
+                <div>
+                    <a href='https://www.linkedin.com/in/andrew-szot-89451a126' class='btn btn-lg btn-outline'>
+                        <i class='fa fa-linkedin-square'>
+                        </i> My Linkedin
+                    </a>
                 </div>
             </div>
         </div>
@@ -383,6 +398,9 @@
                         <ul class="list-inline">
                             <li>
                                 <a href="https://github.com/ASzot" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                            </li>
+                            <li>
+                                <a href='https://www.linkedin.com/in/andrew-szot-89451a126' class='btn-social btn-outline'><i class='fa fa-fw fa-linkedin-square'></i></a>
                             </li>
                             <li>
                                 <a href="https://www.instagram.com/andrew_szot/" class="btn-social btn-outline"><i class="fa fa-fw fa-instagram"></i></a>
@@ -839,11 +857,16 @@
                                 And innovative community machine learning platform. Once the service enters production the link will be posted here.
                             </p>
                             <p>
-                                Working on a team with five others. I was in charge of the backend website programming and interfacing with the frontend.
+                                Working on a team with five others.
                             </p>
-                            <p>
-                                Created using PHP and the Laravel framework.
-                            </p>
+                            <ul style='text-align: left'>
+                                <li>BlueSub is a community driven, user-friendly machine learning platform.</li>
+                                <li>Developing backend using PHP and Laravel interfacing with MySQL database and S3 storage. Also created separate Django backend to run machine learning code.</li>
+                                <li>Working on convolutional neural networks for image analysis with Python using Keras on top of Theano and NumPy and Pandas for data processing.</li>
+                                <li>Assisting in the creation of the frontend using Vue.js, JavaScript, and Sass.</li>
+                                <li>Integrating training data from social media websites through data mining with Python and Selenium running on Raspberry Pi cluster.</li>
+                                <li>Built EEG data collection tool with Node.js and Electron to collect training data.</li>
+                            </ul>
                             <ul class="list-inline item-details">
                                 <li>Client:
                                     Team Project
@@ -854,6 +877,88 @@
                                 <li>Service:
                                     <strong>
                                         Summer of 2016
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="mclModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>MCL Research Assistant</h2>
+                            <hr class="star-primary">
+                            <p>
+                                I am assisting in the research of Dr. Kuo Professor of Electrical Engineering and Computer Science in the Media Communications Lab (MCL). Research is dealing with the underlying mathematical models of convolutional neural networks. I create and run experiments to test and further progress devised theories. I perform the tests using Python with Keras running on top of Theano.
+                            </p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong>
+                                        USC MCL
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong>
+                                        August of 2016 - Present
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong>
+                                        Machine Learning Research
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="mightyCallModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>MightyCall Data Analyst</h2>
+                            <hr class="star-primary">
+                            <p>
+                                Completed a special research project for the boss of the company. I created a data mining application using Java to collect various company data ranging from stock market valuations to a company's online marketing statistics. The goal of the application was to investigate the relationship of a company's digital marketing strategy and the success of the company. I also created a web portal to visual the data using PHP.
+                            </p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong>
+                                        MightyCall
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong>
+                                        June of 2015 - July 2016
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong>
+                                        Data Analyst
                                     </strong>
                                 </li>
                             </ul>
@@ -879,10 +984,10 @@
                             <h2>IDAX GIS Platform</h2>
                             <hr class="star-primary">
                             <p>
-                                Created a GIS inventory and workflow web application for the traffic analysis company IDAX.
+                                Deployed a GIS driven workflow and inventory platform to facilitate workers collecting data in the field. Worked in creating the backend in PHP with a MySQL database and a front end interface using JavaScript, HTML5, and CSS. Worked heavily with the Google Maps JavaScript API for location services. I was also in charge of managing AWS resources for the application. When working on the front end, I collaborated with developers working on the backend to deliver the application.
                             </p>
                             <p>
-                                Used PHP, HTML, CSS, JavaScript, and the Google Maps JavaScript API to create this application.
+                                The application was utilized in traffic studies around the world and aided in IDAX securing new business.
                             </p>
                             <ul class="list-inline item-details">
                                 <li>Client:
@@ -892,7 +997,7 @@
                                 </li>
                                 <li>Date:
                                     <strong>
-                                        Summer of 2015
+                                        July of 2015 - May 2016
                                     </strong>
                                 </li>
                                 <li>Service:
