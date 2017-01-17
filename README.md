@@ -1,18 +1,18 @@
-##Installing
-- Create ec2 instance.
-- `sudo yum update -y`
-- `sudo yum install -y httpd24`
-- `sudo service httpd start`
-- `sudo yum install -y git`
-- `git clone https://Mathologica@bitbucket.org/Mathologica/andrew-website.git`
-- `sudo groupadd www`
-- `sudo usermod -a -G www ec2-user`
-- `exit`
-- SSH back into the server.
-- `sudo chown -R root:www /var/www`
-- `sudo chmod 2775 /var/www`
-- `find /var/www -type d -exec sudo chmod 2775 {} \;`
-- `find /var/www -type f -exec sudo chmod 0664 {} \;`
+# new-andrew-website
 
-##Deploying
-- `sh deploy.sh`
+> A Vue.js project
+
+## Build Setup
+
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+```
+
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
