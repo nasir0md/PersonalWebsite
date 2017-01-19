@@ -76,7 +76,7 @@
                         <h2>My Blog</h2>
                         <p>A technical blog on primarily machine learning and web development. Learning how to be a software engineer is a lot. I hope to document my progress and what I have learned here.</p>
                         <p>I hope others find the information and tutorials I post to be helpful.</p>
-                        <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Visit Blog</a>
+                        <router-link to='blog' class="btn btn-default btn-lg">Visit Blog</router-link>
                     </div>
                 </div>
             </div>
@@ -115,8 +115,195 @@
 </template>
 
 <style lang='scss'>
-    @import '../../static/sass/landing.scss';
-    .landing-view {
+    @import '../../static/sass/_variables.scss';
+
+    #page-top {
+        width: 100%;
+        height: 100%;
+
+        .light {
+            font-weight: 400;
+        }
+
+        .navbar-custom {
+            margin-bottom: 0;
+            border-bottom: 1px solid rgba(white, 0.3);
+            text-transform: uppercase;
+            font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
+            background-color: black;
+            .navbar-toggle {
+                padding: 4px 6px;
+                font-size: 16px;
+                color: white;
+                &:focus,
+                &:active {
+                    outline: none;
+                }
+            }
+            .navbar-brand {
+                font-weight: 700;
+                &:focus {
+                    outline: none;
+                }
+            }
+            a {
+                color: white;
+            }
+            .nav {
+                li {
+                    a {
+                        -webkit-transition: background .3s ease-in-out;
+                        -moz-transition: background .3s ease-in-out;
+                        transition: background .3s ease-in-out;
+                        &:hover {
+                            color: rgba(white, 0.8);
+                            outline: none;
+                            background-color: transparent;
+                        }
+                        &:focus,
+                        &:active {
+                            outline: none;
+                            background-color: transparent;
+                        }
+                    }
+                    &.active {
+                        outline: none;
+                        a {
+                            background-color: rgba(white, 0.3);
+                            &:hover {
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+            @media(min-width:768px) {
+                padding: 20px 0;
+                border-bottom: none;
+                letter-spacing: 1px;
+                background: transparent;
+                -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+                -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+                transition: background .5s ease-in-out,padding .5s ease-in-out;
+                &.top-nav-collapse {
+                    padding: 0;
+                    background: black;
+                    border-bottom: 1px solid rgba(white, 0.3);
+                }
+            }
+        }
+
+        .intro {
+            display: table;
+            width: 100%;
+            height: auto;
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.5) 59%, rgba(0, 0, 0, 1.0) 100%), url(/static/img/intro-bg.jpg) no-repeat bottom center scroll;
+            background-color: black;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+            -o-background-size: cover;
+            .intro-body {
+                display: table-cell;
+                vertical-align: middle;
+                .brand-heading {
+                    font-size: 40px;
+                }
+                .intro-text {
+                    font-size: 18px;
+                }
+            }
+            @media(min-width:768px) {
+                height: 100%;
+                padding: 0;
+                .intro-body {
+                    .brand-heading {
+                        font-size: 100px;
+                    }
+                    .intro-text {
+                        font-size: 26px;
+                    }
+                }
+            }
+        }
+
+        .btn-circle {
+            width: 70px;
+            height: 70px;
+            margin-top: 15px;
+            padding: 7px 16px;
+            border: 2px solid white;
+            border-radius: 100% !important;
+            font-size: 40px;
+            color: white;
+            background: transparent;
+            -webkit-transition: background .3s ease-in-out;
+            -moz-transition: background .3s ease-in-out;
+            transition: background .3s ease-in-out;
+            &:hover,
+            &:focus {
+                outline: none;
+                color: white;
+                background: rgba(white, 0.1);
+            }
+            i.animated {
+                -webkit-transition-property: -webkit-transform;
+                -webkit-transition-duration: 1s;
+                -moz-transition-property: -moz-transform;
+                -moz-transition-duration: 1s;
+            }
+            &:hover {
+                i.animated {
+                    -webkit-animation-name: pulse;
+                    -moz-animation-name: pulse;
+                    -webkit-animation-duration: 1.5s;
+                    -moz-animation-duration: 1.5s;
+                    -webkit-animation-iteration-count: infinite;
+                    -moz-animation-iteration-count: infinite;
+                    -webkit-animation-timing-function: linear;
+                    -moz-animation-timing-function: linear;
+                }
+            }
+        }
+
+        .content-section {
+            padding-top: 100px;
+        }
+
+        .download-section {
+            width: 100%;
+            padding: 50px 0;
+            color: white;
+            background-color: $secondary-background;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+            -o-background-size: cover;
+        }
+
+        #map {
+            width: 100%;
+            height: 200px;
+            margin-top: 100px;
+        }
+
+        @media(min-width:767px) {
+            .content-section {
+                padding-top: 250px;
+            }
+
+            .download-section {
+                padding: 100px 0;
+            }
+
+            #map {
+                height: 400px;
+                margin-top: 250px;
+            }
+        }
     }
 </style>
 
@@ -126,6 +313,14 @@
     export default {
         components: {
            ProjectsView 
+        },
+        head: {
+            title: {
+                inner: 'Home'
+            },
+            meta: [
+                { name: 'description', content: "Andrew Szot's portfolio page", id: 'desc' }
+            ]
         }
     }
 </script>

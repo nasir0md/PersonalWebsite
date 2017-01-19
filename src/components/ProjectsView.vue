@@ -56,11 +56,9 @@
                     var textData = response.data;
 
                     var sections = textData.split('|');
-                    console.log(sections);
                     var appendList = [];
                     for (var i = 0; i < sections.length; ++i) {
                         var section = sections[i];
-                        console.log(section);
 
                         if (section == '') {
                             continue;
