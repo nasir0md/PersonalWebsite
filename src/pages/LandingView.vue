@@ -2,8 +2,6 @@
     <div id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
         <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
             <div class="container">
-                
-
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
                     <ul class="nav navbar-nav">
@@ -115,7 +113,8 @@
 </template>
 
 <style lang='scss'>
-    @import '../../static/sass/_variables.scss';
+    @import '../../static/sass/_variables';
+    @import '../../static/sass/main';
 
     #page-top {
         width: 100%;
