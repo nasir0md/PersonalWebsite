@@ -173,8 +173,6 @@
             var a = document.createElement('a');
             a.href = curURL;
 
-            console.log('about to create');
-
             // There will be a leading '/' character
             var pathname = a.pathname.substr(1);
 
