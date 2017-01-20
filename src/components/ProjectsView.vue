@@ -10,6 +10,8 @@
                     <h3>{{ project.title }}</h3>
                     <hr />
                     <span>{{ project.subtitle }}</span>
+                    <br />
+                    <i class='date-spn'>{{ project.datetxt }}</i>
                     <ul>
                         <li v-for='point in project.points'>
                             {{ point }}
@@ -40,6 +42,10 @@
         h3, h4 {
             margin-bottom: 5px;
         }
+        .date-spn {
+            color: #cacaca;
+        }
+
         hr {
             margin-top: 5px;
             margin-bottom: 10px;
@@ -65,14 +71,15 @@
                         }
 
                         var sectionParts = section.split('\n');
-                        if (sectionParts.length < 3) {
+                        if (sectionParts.length < 4) {
                             continue;
                         }
 
                         var title = sectionParts[0];
                         var subtitle = sectionParts[1];
+                        var datetxt = sectionParts[2];
                         var points = [];
-                        for (var j = 2; j < sectionParts.length; ++j) {
+                        for (var j = 3; j < sectionParts.length; ++j) {
                             var subsection = sectionParts[j];
                             subsection = subsection.substr(1);
                             if (subsection != "") {
@@ -83,6 +90,7 @@
                         appendList.push({
                             'title': title,
                             'subtitle': subtitle,
+                            'datetxt': datetxt,
                             'points': points
                         });
                     }
@@ -106,8 +114,9 @@
         data() {
             return {
                 loadDataTargets: [
+                    {'title': 'Work', 'loc': 'work.txt'},
+                    {'title': 'Big Projects', 'loc': 'projects.txt'},
                     {'title': 'Education', 'loc': 'education.txt'},
-                    {'title': 'Projects', 'loc': 'projects.txt'},
                 ],
                 allListData: [],
             }

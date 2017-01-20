@@ -76,7 +76,7 @@
                         <h2>My Blog</h2>
                         <p>A technical blog on primarily machine learning and web development. Learning how to be a software engineer is a lot. I hope to document my progress and what I have learned here.</p>
                         <p>I hope others find the information and tutorials I post to be helpful.</p>
-                        <router-link to='blog' class="btn btn-default btn-lg">Visit Blog</router-link>
+                        <a href='/blog' class="btn btn-default btn-lg">Visit Blog</a>
                     </div>
                 </div>
             </div>

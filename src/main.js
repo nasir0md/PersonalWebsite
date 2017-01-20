@@ -9,22 +9,29 @@ import App from './App'
 
 import LandingView from './pages/LandingView.vue'
 import BlogView from './pages/BlogView.vue'
+import NotFoundView from './pages/404.vue'
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(VueHead);
 Vue.use(VueMaterial);
 
+Vue.prototype.convertLocToStr = function (loc) {
+    return loc.replace(/_/g, ' ');
+}
+
 var router = new VueRouter({
     hashbang: false,
     mode: 'history',
     root: '/',
     saveScrollPosition: true,
+    canReuse: false,
     transitionOnLoad: true,
     routes: [
         { path: '/', component: LandingView },
         { path: '/blog', component: BlogView },
         { path: '/blog/*', component: BlogView },
+        { path: '/404', component: NotFoundView },
         { path: '*', redirect: '/' }
     ]
 })

@@ -1,10 +1,23 @@
 <template>
-    <div>
+    <div class='not-found-view'>
         <h1>404: Page Not Found</h2>
-        <router-link to='blog' class="btn btn-default btn-lg">To Blog Home</router-link>
+        <div class='nav-back-area'>
+            <router-link to='blog' class="btn btn-default btn-norm btn-lg">To Blog Home</router-link>
+        </div>
     </div>
 </template>
-<style>
+<style lang='scss'>
+    .not-found-view {
+        text-align: center;
+
+        h1 {
+            padding-top: 200px;
+        }
+
+        .nav-back-area {
+            margin-top: 300px;
+        }
+    }
 </style>
 <script>
 </script>

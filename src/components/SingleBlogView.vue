@@ -1,33 +1,70 @@
 <template>
     <div class='full-div single-blog-view'>
-        <h1>{{ dispPost.title }}</h1>
-        <span>{{ dispPost.postDate }}</span>
-        <div>
-            {{ dispPost.content }}</span>
+        <div class='header-section'>
+            <h1>{{ dispPost.title }}</h1>
+            <span class='date-span'>{{ dispPost.postDate }}, Andrew Szot</span>
         </div>
-        <div>
-            <router-link v-if="dispPost.next != ''" tag="md-button" :to="dispPost.parentPath + '/' + dispPost.next + '.txt'" class="md-raised md-primary">{{ dispPost.next }}</router-link>
-            <router-link v-if="dispPost.prev != ''" tag="md-button" :to="dispPost.parentPath + '/' + dispPost.prev + '.txt'" class="md-raised md-primary">{{ dispPost.prev}}</router-link>
+        <div class='post-content' v-html='dispPost.content'>
+        </div>
+        <hr />
+        <div class='link-holder-nav'>
+            <div class='link-holder' style='text-align: left'>
+                <a v-if="dispPost.prev != ''" class='btn btn-default btn-norm btn-lg' :href="'/' + dispPost.parentPath + '/' + dispPost.prev ">&lt; {{ convertLocToStr(dispPost.prev) }}</a>
+            </div>
+            <div class='link-holder' style='text-align: right'>
+                <a v-if="dispPost.next != ''" class='btn btn-default btn-norm btn-lg' tag="md-button" :href="'/' + dispPost.parentPath + '/' + dispPost.next ">{{ convertLocToStr(dispPost.next) }} &gt;</a>
+            </div>
         </div>
     </div>
 </template>
 <style lang='scss'>
     .single-blog-view {
         text-align: center;
+        
+        code {
+            background-color: #f5f2f0 !important;
+            color: black !important;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+        }
+
+        .header-section {
+            margin-bottom: 35px;
+        }
+
+        .date-span {
+            color: #777777;
+        }
+
+        .post-content {
+            font-size: 1.3em;
+            margin-bottom: 60px;
+            text-align: left;
+
+            p {
+            }
+        }
+
+        .link-holder-nav {
+            display: inline-flex;
+            width: 100%;
+            .link-holder {
+                width: 50%;
+            }
+        }
     }
 </style>
 <script>
     export default {
         created: function created() {
-            if (this.dispPost.prev == '') {
-                console.log('ot');
-            }
-            else {
-                console.log(this.dispPost.prev.length);
-                console.log(this.dispPost.prev);
-                console.log('not');
-            }
         },
+        
+        updated() {
+            Prism.highlightAll();
+        },
+
         props: [
            'dispPost' 
         ]
