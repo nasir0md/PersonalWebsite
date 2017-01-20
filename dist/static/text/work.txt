@@ -1,0 +1,17 @@
+MCL Research Lab
+Theano, TensorFlow, Python, Keras
+Fall 2016 - Present
+-Researching directly under the advisement of Dr. Kou  
+-Exploring a generalized mathematical model behind convolutional neural networks
+-Run experiments with Python and Theano
+|IDAX: Full Stack Developer
+PHP, JavaScript, MySQL, HTML5, CSS, AWS EC2, AWS RDS
+Spring 2015-Spring 2016
+-Deployed a GIS driven workflow and inventory web platform for workers collecting data in the field
+-Worked with a team of other backend developers
+-Created using PHP and Laravel, MySQL database, JavaScript, HTML5, and CSS all running on AWS
+|MightCall: Data Analyst
+Java, PHP, JavaScript
+-Programmed data mining application in Java
+-Created web portal to view the collected data using PHP,
+HTML5, and JavaScript

@@ -1,0 +1,21 @@
+TITLE:Setting Up Vue
+|
+NEXT:using_vue
+|
+PREV:
+|
+DATE:Feb 2, 2017
+|
+META: A detailed walk through of using VueJS in modern web applications. 
+|
+<pre>
+<code class="language-python">
+class DefObj(object):
+    def __init__(self):
+        self.data = []
+        pass
+    def do_something(self):
+        xyz = 4
+        return xyz
+</code>
+</pre>

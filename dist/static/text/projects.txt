@@ -1,0 +1,25 @@
+BlueSub: Founder and Full Stack Developer
+Keras, Theano, Selenium, Python, Laravel, PHP, VueJS, Sass, AWS EC2, AWS S3, AWS RDS, AWS SQS
+Spring 2016-Present
+-Community driven, user friendly machine learning platform. Collaborating with team on deploying platform
+-Working on convolutional neural networks for image analysis with Python using Keras on top of Theano and NumPy and Pandas for data processing
+-Developing backend using PHP and Laravel interfacing with MySQL database and S3 storage
+-Assisting in creation of the frontend using Vue.js, JavaScript and Sass
+-Integrating training data from social media websites through data mining with Python and Selenium
+-Built EEG data collection tool with Node.js and Electron
+|Mathologica: Founder
+C#, ASP.NET, Java, Android, Windows Phone, Azure
+Summer 2014 - Summer 2015
+-Created symbolic math solving service from scratch to help students with math ranging from pre-algebra toadvanced multivariable calculus
+-Built web service using C# and ASP.NET running on Azure, Android application using Java, and a Windows store application using C#
+-Member of the Microsoft BizSpark program
+|imgStory: Creator
+Objective-C, iOS Development, Parse Framework, MongoDB, AWS EC2
+Winter 2015
+-Published photo sharing based social media platform as an iOS application
+- Created using Objective-C, Parse framework, and MongoDB
+|Graphics Engines
+C++, DirectX, C#, XNA
+Fall 2013 - Spring 2014
+-Created fully featured FPS game engine using XNA and C# complete with 3D rendering system, AI system and physics engine
+-Built rendering system using C++ and DirectX that was capable of advanced 3D rendering techniques
