@@ -119,6 +119,7 @@
     #page-top {
         width: 100%;
         height: 100%;
+        color: white;
 
         .light {
             font-weight: 400;
