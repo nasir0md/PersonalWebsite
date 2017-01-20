@@ -215,6 +215,7 @@
                 pageTitle: 'Blog Home',
                 postPaths: [
                     'modern_web/modern_web_introduction', 
+                    'machine_learning/configuring_theano_on_ubuntu_with_gpu'
                 ]
             }
         }

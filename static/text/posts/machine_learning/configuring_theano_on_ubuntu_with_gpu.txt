@@ -1,0 +1,148 @@
+TITLE:Configuring Theano on Ubuntu with the GPU
+|
+NEXT:
+|
+PREV:
+|
+Date:Feb 3, 2017
+|
+META: How to correctly configure Theano on Ubuntu using an NIVIDA GPU.
+|
+<p>
+	Installing GPU support with Theano on the Ubuntu is a real pain. It took me days to
+Finally get a configuration that correctly used the GPU. The documentation on Theano's website
+does not do much to help as it only describes how to configure Theano on a machine already 
+setup with CUDA.
+</p>
+System Requirements:
+<ul>
+	<li><b>Preferably fresh</b> install of Ubuntu 16.04</li>
+	<li>NVIDIA GPU</li>
+</ul>
+<p>
+	Begin by downloading the CUDA installer from NVIDIA's website which can
+be found <a
+href='https://developer.nvidia.com/cuda-75-downloads-archive'>here</a>. Be sure
+to select x86_64, Ubuntu, and local installer for the options. Do not run the installer quiet
+yet. 
+</p>
+Next run the following commands.
+<pre>
+<code class="language-bash">
+sudo apt-get install python-numpy python-scipy python-dev python-pip python-nose g++ libopenblas-dev git
+
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 20
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 10
+
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 20
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 10
+
+sudo update-alternatives --install /usr/bin/cc cc /usr/bin/gcc 30
+sudo update-alternatives --set cc /usr/bin/gcc
+
+sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++ 30
+sudo update-alternatives --set c++ /usr/bin/g++
+</code>
+</pre>
+<p class="language-bash">
+	Don't be worried if some of the update-alternatives commands spit out
+error messages. Next we will install the proper NVIDIA drivers.
+</p>
+Run
+<pre>
+<code class="language-bash">
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt update
+</code>
+</pre>
+<p>
+	Next go the application Software & Updates from the dashboard. Go to
+the additional drivers tab. I am not entirely sure what driver version should
+be selected. I choose the driver version at the top which was not the most
+recent driver version and everything worked fine. 
+</p>
+<p>
+	Restart your computer. If when you boot back up the desktop scaling
+looks all weird the driver did not install correctly, try a different driver.
+Now we are ready to install CUDA
+</p>
+Navigate to the downloaded CUDA installer file and run the installer.
+<pre>
+<code class="language-bash">
+sh [name of installer].sh
+</code>
+</pre>
+<p>
+	<b>Important:</b> say no to installing the NVIDIA drivers as this step
+was already performed. Say yes to installing the CUDA toolkit, the default
+location is fine, say yes to the symbolic link, and the options for the samples
+do not matter. The toolkit should install fine. Installing the samples might
+display a warning message saying that the proper libraries are not installed
+this can be ignored. As a sanity check run <code class="language-bash">nvidia-smi</code> and check that the GPU
+model is registering. Now we are finally ready to install Theano. 
+</p>
+<p>
+	Install virtualenv through <code class="language-bash">pip install
+virtualenv</code>. 
+</p>
+Create a virtualenv with the proper configuration with the following commands.
+<pre>
+<code class="language-bash">
+	virtualenv --system-site-packages -p python2.7 theano-env
+	source theano-env/bin/activate
+</code> 
+</pre>
+Finally go ahead and install Theano in the virtualenv.
+<pre>
+<code class="language-bash">
+	pip install Theano
+</code>
+</pre>
+Make some Theano configurations. 
+<pre>
+<code class="language-bash">
+echo -e "\n[nvcc]\nflags=-D_FORCE_INLINES\n" >> ~/.theanorc
+</code>
+</pre>
+Then edit the file ~/.theanorc and add the following lines.
+<pre>
+<code class="language-bash">
+[cuda]
+root=/usr/local/cuda
+
+[global]
+floatX=float32
+device=gpu
+</code>
+</pre>
+To make sure the GPU code worked run the following python script. 
+<pre>
+<code class="language-python">
+from theano import function, config, shared, sandbox
+import theano.tensor as T
+import numpy
+import time
+
+vlen = 10 * 30 * 768  # 10 x #cores x # threads per core
+iters = 1000
+
+rng = numpy.random.RandomState(22)
+x = shared(numpy.asarray(rng.rand(vlen), config.floatX))
+f = function([], T.exp(x))
+print(f.maker.fgraph.toposort())
+t0 = time.time()
+for i in range(iters):
+    r = f()
+t1 = time.time()
+print("Looping %d times took %f seconds" % (iters, t1 - t0))
+print("Result is %s" % (r,))
+if numpy.any([isinstance(x.op, T.Elemwise) for x in
+f.maker.fgraph.toposort()]):
+    print('Used the cpu')
+else:
+    print('Used the gpu')
+</code>
+</pre>
+<p>
+	The script should display that the GPU was used and you're good to go!
+</p>
