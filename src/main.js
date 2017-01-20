@@ -20,9 +20,9 @@ Vue.prototype.convertLocToStr = function (loc) {
     return loc.replace(/_/g, ' ');
 }
 
-// hashbang: false,
+// mode: 'history'
 var router = new VueRouter({
-    mode: 'history',
+    hashbang: false,
     root: '/',
     saveScrollPosition: true,
     canReuse: false,
