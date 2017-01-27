@@ -15,6 +15,13 @@
                 <a v-if="dispPost.next != ''" class='btn btn-default btn-norm btn-lg' tag="md-button" :href="'/' + dispPost.parentPath + '/' + dispPost.next ">{{ convertLocToStr(dispPost.next) }} &gt;</a>
             </div>
         </div>
+        <div class='subscribe-section'>
+            <p>Be notified when I post a new blog entry.</p>
+            <a class='btn btn-default btn-norm btn-lg' href='http://eepurl.com/czkQGf'>Subscribe</a>
+        </div>
+        <footer>
+            © Copyright Andrew Szot 2017
+        </footer>
     </div>
 </template>
 <style lang='scss'>
@@ -24,6 +31,14 @@
         code {
             background-color: #f5f2f0 !important;
             color: black !important;
+        }
+
+        footer {
+            padding-bottom: 0px;
+        }
+
+        .subscribe-section a {
+            font-size: 2em;
         }
 
         h1 {
@@ -60,11 +75,11 @@
     export default {
         created: function created() {
         },
-        
-        updated() {
-            Prism.highlightAll();
-        },
 
+        data() {
+            return {
+            }
+        },
         props: [
            'dispPost' 
         ]

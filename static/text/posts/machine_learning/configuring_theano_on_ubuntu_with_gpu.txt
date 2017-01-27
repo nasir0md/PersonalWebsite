@@ -10,7 +10,7 @@ META: How to correctly configure Theano on Ubuntu using an NIVIDA GPU.
 |
 <p>
 	Installing GPU support with Theano on the Ubuntu is a real pain. It took me days to
-Finally get a configuration that correctly used the GPU. The documentation on Theano's website
+finally get a configuration that correctly used the GPU. The documentation on Theano's website
 does not do much to help as it only describes how to configure Theano on a machine already 
 setup with CUDA.
 </p>
@@ -86,25 +86,32 @@ model is registering. Now we are finally ready to install Theano.
 virtualenv</code>. 
 </p>
 Create a virtualenv with the proper configuration with the following commands.
+
 <pre>
 <code class="language-bash">
-	virtualenv --system-site-packages -p python2.7 theano-env
-	source theano-env/bin/activate
+virtualenv --system-site-packages -p python2.7 theano-env
+source theano-env/bin/activate
 </code> 
 </pre>
+
 Finally go ahead and install Theano in the virtualenv.
+
 <pre>
 <code class="language-bash">
-	pip install Theano
+pip install Theano
 </code>
 </pre>
+
 Make some Theano configurations. 
+
 <pre>
 <code class="language-bash">
 echo -e "\n[nvcc]\nflags=-D_FORCE_INLINES\n" >> ~/.theanorc
 </code>
 </pre>
+
 Then edit the file ~/.theanorc and add the following lines.
+
 <pre>
 <code class="language-bash">
 [cuda]
@@ -115,7 +122,9 @@ floatX=float32
 device=gpu
 </code>
 </pre>
+
 To make sure the GPU code worked run the following python script. 
+
 <pre>
 <code class="language-python">
 from theano import function, config, shared, sandbox
@@ -144,5 +153,5 @@ else:
 </code>
 </pre>
 <p>
-	The script should display that the GPU was used and you're good to go!
+The script should display that the GPU was used and you're good to go!
 </p>

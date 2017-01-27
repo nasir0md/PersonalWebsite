@@ -1,8 +1,8 @@
 <template>
     <md-list>
-        <md-list-item class='md-primary flashy'  v-for='postNode in postsTree' :style="{ paddingLeft: computedDepth + 'px' }">
-            <a v-if='makeLink' :href="'/' + prependPath + '/' + postNode.name">{{ convertLocToStr(postNode.name) }}</a>
-            <span v-else>
+        <md-list-item :href="makeLink ? '/' + prependPath + '/' + postNode.name
+            : null" class='md-primary flashy'  v-for='postNode in postsTree' :style="{ paddingLeft: computedDepth + 'px' }">
+            <span :class="makeLink ? 'leaf' : null">
                 {{ convertLocToStr(postNode.name) }}
             </span>
             <md-list-expand v-if='postNode.content.length != 0'>
@@ -13,6 +13,9 @@
 </template>
 <style lang='scss'>
     .flashy {
+        .leaf {
+            color: #e74c3c;
+        }
         a { 
             width: 100%;
             text-transform: uppercase;

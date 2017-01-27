@@ -5,13 +5,13 @@
                 <md-icon>menu</md-icon>
             </md-button>
             <h2 class="md-title">{{ pageTitle }}</h2>
-            <a class='back-home-nav' href='/blog'>Home</a>
+            <a class='back-home-nav' href='/'>Home</a>
         </md-toolbar>
 
         <md-sidenav class="md-left" ref="leftSidenav">
             <md-toolbar class="md-large">
                 <div class="md-toolbar-container">
-                    <h3 class="md-title">Blog Content</h3>
+                    <a href='/blog' class="back-home-nav blog-home-nav md-title">Blog Content</a>
                 </div>
             </md-toolbar>
 
@@ -45,6 +45,10 @@
         </div>
 </template>
 <style lang='scss'>
+    .blog-home-nav {
+        font-size: 2.2em !important;
+        margin-top: 20px !important;
+    }
     .full-div {
         width: 100%;
         height: 100%;
@@ -213,6 +217,7 @@
                 pageTitle: 'Blog Home',
                 postPaths: [
                     'modern_web/modern_web_introduction', 
+                    'modern_web/first_steps',
                     'machine_learning/configuring_theano_on_ubuntu_with_gpu'
                 ]
             }
