@@ -76,9 +76,8 @@
         created: function created() {
         },
 
-        data() {
-            return {
-            }
+        updated() {
+            Prism.highlightAll();
         },
         props: [
            'dispPost' 

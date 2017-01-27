@@ -1,9 +1,8 @@
-# new-andrew-website
+# My Personal Website
 
-> A Vue.js project
+My personal portfolio website and primarily my blog. 
 
 ## Build Setup
-
 ``` bash
 # install dependencies
 npm install
@@ -15,4 +14,8 @@ npm run dev
 npm run build
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Production Setup
+Be sure to run `npm run build` to compile source files. 
+Then commit files to the GitHub repository. 
+Finally run the deployment script `sh deploy.sh`
+
