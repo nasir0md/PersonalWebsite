@@ -98,15 +98,28 @@
                 this.pageTitle = title;
 
                 var content = textParts[5].replace('\n', '');
+
+                var showSubscribe = true;
+                for (var i = 0; i < this.subBlacklist.length; ++i) {
+                    if (filename.includes(this.subBlacklist[i])) {
+                        showSubscribe = false;
+                        break;
+                    }
+                }
+
                 this.dispPost = {
                     title: title,
                     postDate: dateTxt,
                     content: content,
                     next: next,
+                    showSubscribe: showSubscribe,
                     prev: prev,
                     metaDesc: meta,
                     parentPath: parentPath
                 }
+                setTimeout(function () {
+                    Prism.highlightAll();
+                }, 2000);
             },
             createMainView: function createMainView() {
                 this.showMainContent = true; 
@@ -205,10 +218,14 @@
             return {
                 showMainContent: true,
                 postsTree: [],
+                subBlacklist: [
+                    'workshop_1'
+                ],
                 dispPost: {
                     title: '',
                     postDate: '',
                     content: '',
+                    showSubscribe: true,
                     next: '',
                     prev: '',
                     metaDesc: '',
@@ -217,8 +234,8 @@
                 pageTitle: 'Blog Home',
                 postPaths: [
                     'modern_web/modern_web_introduction', 
-                    'modern_web/first_steps',
-                    'machine_learning/configuring_theano_on_ubuntu_with_gpu'
+                    'machine_learning/configuring_theano_on_ubuntu_with_gpu',
+                    'machine_learning/workshop_1/getting_setup'
                 ]
             }
         }

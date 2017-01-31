@@ -15,7 +15,7 @@
                 <a v-if="dispPost.next != ''" class='btn btn-default btn-norm btn-lg' tag="md-button" :href="'/' + dispPost.parentPath + '/' + dispPost.next ">{{ convertLocToStr(dispPost.next) }} &gt;</a>
             </div>
         </div>
-        <div class='subscribe-section'>
+        <div v-if='dispPost.showSubscribe' class='subscribe-section'>
             <p>Be notified when I post a new blog entry.</p>
             <a class='btn btn-default btn-norm btn-lg' href='http://eepurl.com/czkQGf'>Subscribe</a>
         </div>
@@ -43,6 +43,10 @@
 
         h1 {
             margin-bottom: 5px;
+        }
+
+        h5, h4, h3 {
+            margin-top: 30px;
         }
 
         .header-section {

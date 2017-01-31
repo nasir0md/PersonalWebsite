@@ -1,0 +1,397 @@
+TITLE:Getting Setup For Machine Learning
+|
+NEXT:
+|
+PREV:
+|
+Date:Jan 30, 2017
+|
+META: How to setup a machine learning environment. 
+|
+<p>
+These steps describe the necessary software to install for the first
+machine learning workshop. Please even if you are certain you have the software
+already configured for a certain step still read through <b>all</b> of the
+steps.
+</p>
+<p>
+    For whatever reason setting up a ML development environment is a total
+pain. <b>Especially</b> if you are using Windows.
+</p>
+<p>
+    A quick note about system specifications. I am assuming that you are
+    running a 64 bit operating system. If not download the 32 bit versions of
+    programs accordingly. Furthermore, having a decently fast computer will be
+    vital when doing large amounts of data processing. Another big aspect of
+    working with large datasets is RAM. I would recommend at least 8GB of RAM. 
+</p>
+<p>
+    A general note for throughout these tutorials is that <code>$ command
+    here</code> designates a command to be entered in the terminal or command
+    prompt. 
+</p>
+
+<h3>Install Anaconda</h3>
+<p>
+Anaconda is a data science platform for python that will install a large
+majority of the software needed for ML.
+</p>
+
+<h4>Everything But Windows</h4>
+<p>
+    Go to the Anaconda installation site at <a
+    href='https://www.continuum.io/downloads'>https://www.continuum.io/downloads</a>
+    and download the <b>Python 2.7 version with the command line installer</b>.
+    Be sure to download the installer for the appropriate operating system (OSX
+    or Linux). 
+</p>
+<p>
+    The installation instructions for Anaconda should just be on the downloads
+    page. For OSX and Linux <code>cd</code> into the directory containing the installer
+    program and run the following for OSX.
+<pre>
+<code class='language-bash'>
+$ bash Anaconda2-4.2.0-MacOSX-x86_64.sh 
+</code>
+</pre>
+<p>
+    Or the following for Linux.
+</p>
+<pre>
+<code class='language-bash'>
+$ bash Anaconda2-4.2.0-Linux-x86_64.sh 
+</code>
+</pre>
+
+
+<h4>Windows</h4>
+<p>
+    Before installing Anaconda you must install TDM GCC x64. Go to the
+    downloads page <a href='http://tdm-gcc.tdragon.net/download'>here</a>.
+    <b>Download and install the 64 bit version of TDM the installer name is
+    tdm64-gcc-5.1.0-2.exe</b>
+</p>
+<p>
+    Run the following commands in the command prompt. 
+</p>
+<pre>
+<code class='language-bash'>
+$ conda update conda
+$ conda update --all
+$ conda install mingw libpython
+</code>
+</pre>
+
+<h4>Check that everything is working</h4>
+<p>
+To check that all the proper commands are configured run the following commands
+in the command prompt or terminal. We are using the <code>python</code> command
+to run our programs and the <code>pip</code> command to install further python
+packages.
+</p>
+
+<pre>
+<code>
+$ python -V
+$ pip -V
+</code>
+</pre>
+
+<p>
+If your python version has a 2.7 somewhere in there and the pip version
+displays then you are all set!
+</p>
+<p>
+    If it says command not found for python go to the <a
+    href='#tspython'>section on trouble shooting the python installation</a>.
+    If the output for the python version does not have 2.7 you have the wrong
+    version installed. This will require uninstalling python and reinstalling
+    it. See the <a href='#tspythonv'>section on trouble shooting the wrong
+    python installation</a> for more information. If it outputs the command for
+    pip is not found then your computer is missing the pip command see <a
+    href='#tspip'>the trouble shooting section for pip</a> for more
+    information.
+</p>
+
+<h3>Installing Theano</h3>
+<p>
+Configured with the proper data science tools that Anaconda provides we are
+ready to install Theano. Theano is a python package designed to evaluate and
+manipulate complex mathematical expressions involving  high dimensional arrays.
+</p>
+<p>
+What does this have to do with ML? Artificial Neural networks (ANN) are a large part of ML
+and the core concept of ANNs are manipulating high dimensional data. Using
+Theano we are able to easily create ANNs that perform much more efficiently
+than manually writing any mathematical logic ourselves.
+</p>
+<p>
+    You might have heard of Google's TensorFlow before. TensorFlow is a python
+    package much like Theano. At this point you may see why TensorFlow is
+    called TensorFlow, because it handles the <i>flow</i> (through mathematical
+    expressions) of <i>tensors</i> (high dimensional data). While TensorFlow is
+    certainly a more popular python library used for Neural Networks and in my
+    opinion a lot better and more supported by the community we are using
+    Theano because of ease of install for Windows users.
+</p>
+<p>
+    However, as you will see shortly we will use Keras on top of Theano which
+    abstracts having to create ANNs. Keras also works with using TensorFlow. So
+    if you really wanted to you could install TensorFlow here instead of
+    Theano.
+</p>
+<p>
+    If we are so concerned why are we doing ML in Python a high level
+    programming language? Wouldn't C++ be faster? 
+</p>
+<p>
+    Well certainly for some operations C++ will be faster but Theano and
+    similar packages don't actually evaluate the code in Python. Instead the
+    tensor operations are converted to super effecient BLAS or CUDA code. BLAS
+    is for effecient numerical processing on the CPU. This should have been
+    installed with Anaconda. CUDA code is for efficient numerical processing on
+    the GPU. ML is highly parallel so for many tasks <b>massive
+    performance</b> boosts can result from using a GPU. Unfortunately
+    configuring CUDA with the GPU can be very difficult and as many of our
+    laptops will not have dedicated GPUs we will not bother with this.
+    (However, for those of you that are interested you can see <a
+    href='/blog/machine_learning/configuring_theano_on_ubuntu_with_gpu'>this
+    post I made</a> for instructions on how to do so). Some ML models can take
+    <b>days</b> to train on a GPU. Running the same on a CPU would be
+    infeasible.
+</p>
+<p>
+    To install the Theano python package simply run the following command.
+</p>
+<pre>
+<code>
+$ sudo pip install Theano
+</code>
+</pre>
+
+<h3>Before we continue a quick note...</h3>
+<p>
+    A quick note about text editors and running python scripts. Regardless of
+    what text editor you use you should run the python script from the terminal
+    or command prompt. For instance if you are using PyCharm do not run python
+    in the PyCharm IDE. To run a python program simply enter <code>python
+    test.py</code> where <code>test.py</code> would the name of the script you
+    are trying to run.
+</p>
+
+<h3>Give it a try!</h3>
+<p>
+    We are now going to test our Thenao installation and the installation of
+    numpy, another <b>vital</b> python library. numpy was installed by
+    Anaconda. Let's create the function z=x+y and evalute it at the point
+    (2,3). Open up a new python file a enter the following. Do not worry if you
+    don't understand it. This is just to show generally what Theano does. 
+</p>
+<pre>
+<code class='language-python'>
+import numpy
+import theano.tensor as T
+from theano import function
+x = T.dscalar('x')
+y = T.dscalar('y')
+z = x + y
+f = function([x, y], z)
+
+print f(2,3)
+</code>
+</pre>
+<p>
+    This script should output 5. If the script fails giving you an import error
+    something was not installed correctly. 
+</p>
+
+<h3>Installing Keras</h3>
+<p>
+    We want something easier to use than Theano for creating ANNs. A lot of
+    duplicate code is used when creating ANNs with Theano. Keras abstracts all
+    of the math that goes into ANNs to make them easy and intuitive to use.
+</p>
+<p>
+    Run the following command to install Keras.
+</p>
+<pre>
+<code>
+$ sudo pip install keras
+</code>
+</pre>
+<p>
+    We aren't ready to start creating ANNs yet though. By default Keras uses
+    TensorFlow as its backend tensor manipulation library. We need to switch to
+    using Theano as the backend. 
+</p>
+<p>
+    You will be able to find your keras configuration file at your home
+    directory <code>~/.keras/keras.json</code> if it is not there create the
+    file. 
+</p>
+<p>
+    Enter <b>only</b> the following text in the file.
+</p>
+<pre>
+<code>
+{
+    "image_dim_ordering": "th",
+    "epsilon": 1e-07,
+    "floatx": "float32",
+    "backend": "theano"
+}
+</code>
+</pre>
+<p>
+    We are now finally ready to create a ANN using Keras. Create a new python
+    script and enter the following. 
+</p>
+<pre>
+<code class='language-python'>
+from keras.layers import Dense, Activation
+
+model.add(Dense(output_dim=64, input_dim=100))
+model.add(Activation("relu"))
+model.add(Dense(output_dim=10))
+model.add(Activation("softmax"))
+</code>
+</pre>
+
+<p>
+    After running this hopefully you don't get any errors. Note that nothing
+    should be output from this script. If everything ran successfully congrats,
+    you just created your first ANN. In the workshop we will actually do
+    something with this ANN and train it to make predictions. 
+</p>
+
+<h3>Install Misc</h3>
+<p>
+    We aren't quite done yet. While we have everything that we need for the
+    core ML operations we need a couple more python packages for data
+    retrieval and visualization. 
+</p>
+<p>
+    Install Pillow an easy to use image loading library. 
+</p>
+<pre>
+<code>
+$ pip install Pillow
+</code>
+</pre>
+<p>
+    Or if that does not work try the following.
+</p>
+<pre>
+<code>
+$ easy_install Pillow
+</code>
+</pre>
+<p>
+    Next we are going to install the Natural Language Tool Kit (NLTK) for
+    python. This will help us deep learning in text applications.
+</p>
+<p>
+    To install NLTK run the following.
+</p>
+
+<pre>
+<code>
+$ sudo pip install -U nltk
+</code>
+</pre>
+
+<p>
+    NLTK also has a bunch of text data associated with it that we will be using
+    in samples. Download this text data by running the following python script.
+</p>
+<pre>
+<code class='language-python'>
+import nltk
+nltk.download()
+</code>
+</pre>
+<p>
+    You should be presented with a download dialog be sure to download
+    everything.
+</p>
+
+<h3>Final Test</h3>
+<p>
+    Great at this point you have installed everything that you need to install!
+    As a final step verify that everything was installed by running the
+    following python commands either in a script or in the python interpreter. 
+</p>
+<pre>
+<code class='language-python'>
+from nltk.corpus import brown
+import numpy as np
+from PIL import Image
+from sklearn.cluster import KMeans
+from keras import backend as K
+
+
+print 'Here are a bunch of words'
+print brown.words()
+</code>
+</pre>
+<p>
+    A bunch of words should print out to the console. This confirms that the
+    corpus data of NLTK was installed correctly. If you can run that without
+    error you are set for the workshop this Thursday!
+</p>
+
+<br />
+<hr />
+<hr />
+<br />
+
+<p>
+If you are having any problems in general feel free to message me on Facebook
+or email me at <a href='mailto:me@andrewszot.com'>me@andrewszot.com</a>.
+</p>
+<div id='tspython'>
+    <h3>Trouble Shooting Python Not Found</h3>
+    <p>
+        It appears as though your system is not properly recognizing the python
+        command. This could be because python was not installed correctly or
+        that the environment path is not set correctly. If this happens I would
+        recommend honestly just recommend googling your operating system and
+        command python not found. If you continue to have problems please email
+        me at <a href='mailto:me@andrewszot.com'>me@andrewszot.com</a>.
+    </p>
+</div>
+
+<div id='ythonv'>
+    <h3>Trouble Shooting Python Version</h3>
+    <p>
+        You must have had python preinstalled on your computer. Once again I
+        would recommend looking on the internet for how to switch to Python 2.7
+        on your OS. 
+    </p>
+</div>
+
+<div id='tspip'>
+    <h3>Trouble Shooting Pip</h3>
+    <p>
+        The pip command not being found would imply that the software is not
+        installed.
+    </p>
+    <h5>All But Windows</h5>
+<pre>
+<code>
+sudo easy_install pip
+</code>
+</pre>
+    <h5>Windows</h5>
+
+    <p>
+        Download and install the Setuptools for package management in python by
+        downloading the following script and running it <a
+        href='https://bootstrap.pypa.io/ez_setup.py'>ez_setup.py</a>
+    </p>
+    <p>
+        Setup tools installed the easy_install command but we want to upgrade
+        to using the pip command. Download and run the following script to do
+        so <a
+        href='https://raw.github.com/pypa/pip/master/contrib/get-pip.py'>get-pip.py</a>
+</div>
