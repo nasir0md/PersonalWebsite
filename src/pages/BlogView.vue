@@ -214,6 +214,14 @@
                 this.createBlogView(splitPath);
             }
         },
+        head: {
+            title: {
+                inner: 'Dynamically generated.'
+            },
+            meta: [
+                { name: 'description', content:'Dynamically generated', id:'desc' }
+            ]
+        },
         data() {
             return {
                 showMainContent: true,

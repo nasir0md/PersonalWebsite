@@ -82,6 +82,19 @@
 
         updated() {
             Prism.highlightAll();
+            this.$emit('updateHead');
+        },
+        head: {
+            title: function () {
+                return {
+                    inner: this.dispPost.title,
+                    separator: '',
+                    complement: ''
+                }
+            },
+            meta: [
+                { name: 'description', content: 'Dynamically generated', id: 'desc' }
+            ]
         },
         props: [
            'dispPost' 
