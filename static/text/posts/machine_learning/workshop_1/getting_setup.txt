@@ -39,7 +39,8 @@ pain. <b>Especially</b> if you are using Windows.
 <h3>Install Anaconda</h3>
 <p>
 Anaconda is a data science platform for python that will install a large
-majority of the software needed for ML.
+majority of the software needed for ML. Anaconda will also install Python so
+there is no need to worry about installing that as well.
 </p>
 
 <h4>Everything But Windows</h4>
@@ -67,6 +68,13 @@ $ bash Anaconda2-4.2.0-MacOSX-x86_64.sh
 $ bash Anaconda2-4.2.0-Linux-x86_64.sh 
 </code>
 </pre>
+
+<p>
+    To check that Anaconda is installed run the command <code>conda --v</code>.
+    If you are OSX and you get the error `command not found: conda` see <a
+    href='#tsconda'>the trouble shooting section on exporting the conda path on
+    OSX</a> for more info.
+</p>
 
 
 <h4>Windows</h4>
@@ -109,13 +117,62 @@ displays then you are all set!
 <p>
     If it says command not found for python go to the <a
     href='#tspython'>section on trouble shooting the python installation</a>.
+</p>
+<p>
     If the output for the python version does not have 2.7 you have the wrong
     version installed. This will require uninstalling python and reinstalling
     it. See the <a href='#tspythonv'>section on trouble shooting the wrong
-    python installation</a> for more information. If it outputs the command for
+    python installation</a> for more information. 
+</p>
+<p>
+    If it outputs the command for
     pip is not found then your computer is missing the pip command see <a
     href='#tspip'>the trouble shooting section for pip</a> for more
     information.
+</p>
+
+<h3>Setting up the conda Environment</h3>
+<p>
+    To keep all of the dependencies in one place we will create a conda
+    environment. A conda environment will keep all of the python packages for
+    our python projects seperate from the rest of our computer. 
+</p>
+<p>
+    Create a conda environment named 'mlworkshop' that uses python 2.7.
+</p>
+
+<pre>
+<code>
+conda create -n mlworkshop python-2.7
+</code>
+</pre>
+
+<p>
+    If you get something like the error `PackageNotFoundError: Package not
+    found` -python-2.7` then run the following.
+</p>
+
+<pre>
+<code>
+conda create -n mlworkshop python
+</code>
+</pre>
+
+<p>
+    Now the environment is creating but it is not activated yet. To activate
+    the environment on Linux/OSX run <code>source activate mlworkshop</code>.
+    To activate the environment on Windows run <code>activate
+    mlworkshop</code>.
+</p>
+<p>
+    To leave the environment run <code>source deactivate</code> for Linux/OSX
+    and <code>deactivate</code> for Windows.
+</p>
+<p>
+    <b>
+    Be sure to be in your mlworkshop conda environment for anything you do
+    for this workshop. That includes installing the rest of the software.
+    </b>
 </p>
 
 <h3>Installing Theano</h3>
@@ -170,6 +227,14 @@ than manually writing any mathematical logic ourselves.
 </p>
 <pre>
 <code>
+$ pip install Theano
+</code>
+</pre>
+<p>
+    If this does not work give it a try with <code>sudo</code>.
+</p>
+<pre>
+<code>
 $ sudo pip install Theano
 </code>
 </pre>
@@ -221,9 +286,19 @@ print f(2,3)
 </p>
 <pre>
 <code>
+$ pip install keras
+</code>
+</pre>
+<p>
+    If this does not work give it a try with <code>sudo</code>
+</p>
+
+<pre>
+<code>
 $ sudo pip install keras
 </code>
 </pre>
+
 <p>
     We aren't ready to start creating ANNs yet though. By default Keras uses
     TensorFlow as its backend tensor manipulation library. We need to switch to
@@ -231,8 +306,14 @@ $ sudo pip install keras
 </p>
 <p>
     You will be able to find your keras configuration file at your home
-    directory <code>~/.keras/keras.json</code> if it is not there create the
-    file. 
+    directory <code>~/.keras/keras.json</code> <code>cd</code> to the file
+    location. If the <code>.keras</code> directory is not there create it
+    <code>mkdir .keras</code> <b>notice the '.' character!</b> If the file
+    keras.json is not there create it. Open the file in the editor if your
+    choice note that can be done through <code>vim keras.json</code> but
+    instead of vim the text editor you want to use. <b>Do not use notepad or
+    TextEdit</b> these will incorrectly format the qoutations and give you a
+    complicated and hard to solve error when you try to run keras.
 </p>
 <p>
     Enter <b>only</b> the following text in the file.
@@ -253,8 +334,10 @@ $ sudo pip install keras
 </p>
 <pre>
 <code class='language-python'>
+from keras.models import Sequential
 from keras.layers import Dense, Activation
 
+model = Sequential()
 model.add(Dense(output_dim=64, input_dim=100))
 model.add(Activation("relu"))
 model.add(Dense(output_dim=10))
@@ -273,7 +356,8 @@ model.add(Activation("softmax"))
 <p>
     We aren't quite done yet. While we have everything that we need for the
     core ML operations we need a couple more python packages for data
-    retrieval and visualization. 
+    retrieval and visualization. As always if any of these commands fails try
+    <code>sudo</code> and then the command. 
 </p>
 <p>
     Install Pillow an easy to use image loading library. 
@@ -301,7 +385,7 @@ $ easy_install Pillow
 
 <pre>
 <code>
-$ sudo pip install -U nltk
+$ pip install nltk
 </code>
 </pre>
 
@@ -325,7 +409,17 @@ nltk.download()
 
 <pre>
 <code>
-sudo pip install matplotlib
+pip install matplotlib
+</code>
+</pre>
+
+<p>
+    Install scikit-learn for further ML functionality.
+</p>
+
+<pre>
+<code>
+pip install scikit-learn
 </code>
 </pre>
 
@@ -363,6 +457,25 @@ print brown.words()
 If you are having any problems in general feel free to message me on Facebook
 or email me at <a href='mailto:me@andrewszot.com'>me@andrewszot.com</a>.
 </p>
+
+<div id='tsconda'>
+    <h3>Trouble Shooting `command not found: conda` OSX</h3>
+    <p>
+        The <code>conda</code> command is not properly linked. Link it by
+        running the following. 
+    </p>
+
+<pre>
+<code>
+export PATH=~/anaconda2/bin:$PATH
+</code>
+</pre>
+    <p>
+        Check that <code>conda</code> can now be run by entering <code>conda
+        --v</code>.
+    </p>
+</div>
+
 <div id='tspython'>
     <h3>Trouble Shooting Python Not Found</h3>
     <p>
