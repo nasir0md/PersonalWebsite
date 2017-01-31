@@ -141,13 +141,13 @@ than manually writing any mathematical logic ourselves.
     Theano.
 </p>
 <p>
-    If we are so concerned why are we doing ML in Python a high level
+    If we are so concerned with efficiency why are we doing ML in Python, a high level
     programming language? Wouldn't C++ be faster? 
 </p>
 <p>
     Well certainly for some operations C++ will be faster but Theano and
     similar packages don't actually evaluate the code in Python. Instead the
-    tensor operations are converted to super effecient BLAS or CUDA code. BLAS
+    tensor operations are converted to super efficient BLAS or CUDA code. BLAS
     is for effecient numerical processing on the CPU. This should have been
     installed with Anaconda. CUDA code is for efficient numerical processing on
     the GPU. ML is highly parallel so for many tasks <b>massive
@@ -314,6 +314,15 @@ nltk.download()
     You should be presented with a download dialog be sure to download
     everything.
 </p>
+<p>
+    Install matplotlib for data visualizations. 
+</p>
+
+<pre>
+<code>
+sudo pip install matplotlib
+</code>
+</pre>
 
 <h3>Final Test</h3>
 <p>
