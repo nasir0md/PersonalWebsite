@@ -26,6 +26,11 @@ pain. <b>Especially</b> if you are using Windows.
     working with large datasets is RAM. I would recommend at least 8GB of RAM. 
 </p>
 <p>
+    I would also recommend <b>not</b> installing all this software in the VM used by the CS
+    classes. This may change C++ compiler options and I would not want for that
+    to mess up system settings on the VM. 
+</p>
+<p>
     A general note for throughout these tutorials is that <code>$ command
     here</code> designates a command to be entered in the terminal or command
     prompt. 
@@ -391,6 +396,17 @@ or email me at <a href='mailto:me@andrewszot.com'>me@andrewszot.com</a>.
 sudo easy_install pip
 </code>
 </pre>
+<p>
+    If on Ubuntu it says that easy_install is not found try the
+    following.
+</p>
+<pre>
+<code>
+curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+sudo python get-pip.py
+</code>
+</pre>
+
     <h5>Windows</h5>
 
     <p>
