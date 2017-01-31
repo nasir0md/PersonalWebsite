@@ -143,13 +143,13 @@ displays then you are all set!
 
 <pre>
 <code>
-conda create -n mlworkshop python-2.7
+conda create -n mlworkshop python=2.7
 </code>
 </pre>
 
 <p>
     If you get something like the error `PackageNotFoundError: Package not
-    found` -python-2.7` then run the following.
+    found` -python=2.7` then run the following.
 </p>
 
 <pre>
@@ -454,8 +454,9 @@ print brown.words()
 <br />
 
 <p>
-If you are having any problems in general feel free to message me on Facebook
-or email me at <a href='mailto:me@andrewszot.com'>me@andrewszot.com</a>.
+If you are having any problems not described in this trouble shooting section
+post them on the Facebook event page and someone will try to get back to you as soon as
+possible. I will update this page as frequent problems arise.
 </p>
 
 <div id='tsconda'>
@@ -483,8 +484,8 @@ export PATH=~/anaconda2/bin:$PATH
         command. This could be because python was not installed correctly or
         that the environment path is not set correctly. If this happens I would
         recommend honestly just recommend googling your operating system and
-        command python not found. If you continue to have problems please email
-        me at <a href='mailto:me@andrewszot.com'>me@andrewszot.com</a>.
+        command python not found. If you continue to have problems post a
+        message in the Facebook event.
     </p>
 </div>
 
