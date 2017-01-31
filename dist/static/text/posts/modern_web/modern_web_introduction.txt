@@ -1,6 +1,6 @@
 TITLE:Modern Web Introduction
 |
-NEXT:first_steps
+NEXT:
 |
 PREV:
 |
