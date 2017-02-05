@@ -1,8 +1,8 @@
 <template>
     <md-list>
         <md-list-item :href="makeLink ? '/' + prependPath + '/' + postNode.name
-            : null" class='md-primary flashy'  v-for='postNode in postsTree' :style="{ paddingLeft: computedDepth + 'px' }">
-            <span :class="getNextMadeLink() ? 'leaf' : null">
+            : null" class='md-primary flashy'  v-for='(postNode, index) in postsTree' :style="{ paddingLeft: computedDepth + 'px' }">
+            <span :class="makeLink[index] ? 'leaf' : null">
                 {{ convertLocToStr(postNode.name) }}
             </span>
             <md-list-expand v-if='postNode.content.length != 0'>
@@ -31,11 +31,6 @@
         name: 'blog-list-view',
         components: {
             BlogListView
-        },
-        methods: {
-            getNextMadeLink: function() {
-                return this.makeLink[this.currentMakeLinkIndex++];
-            }
         },
         created: function created() {
             this.itemPad = this.depth * 15;
