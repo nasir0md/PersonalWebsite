@@ -246,7 +246,9 @@
         },
         head: {
             title: function() {
+                console.log('fetching title');
                 var curTitle = this.getURLInfo().title;
+                console.log('title Fetched');
                 
                 return {
                     inner: curTitle,
@@ -255,7 +257,9 @@
                 }
             },
             meta: function () {
+                console.log('fetching meta');
                 var curDesc = this.getURLInfo().desc;
+                console.log('meta fetched');
                 return [
                     { name: 'description', content: curDesc }
                 ];
