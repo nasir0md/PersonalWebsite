@@ -183,15 +183,22 @@
                 }
 
                 return found;
+            },
+            getPathURL: function getPathURL() {
+                var curURL = window.location.href;
+                var a = document.createElement('a');
+                a.href = curURL;
+
+                // There will be a leading '/' character
+                var pathname = a.pathname.substr(1);
+                return pathname;
+            },
+            toCapital: function toCapital(str) {
+                return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
             }
         },
         created: function created() {
-            var curURL = window.location.href;
-            var a = document.createElement('a');
-            a.href = curURL;
-
-            // There will be a leading '/' character
-            var pathname = a.pathname.substr(1);
+            var pathname = this.getPathURL();
 
             var splitPath = pathname.split('/');
             if (splitPath.length == 0 || splitPath[0] != 'blog') {
@@ -215,8 +222,25 @@
             }
         },
         head: {
-            title: {
-                inner: 'Dynamically generated.'
+            title: function() {
+                var pathname = this.getPathURL(); 
+                var splitPath = pathname.split('/');
+
+                var innerContent = '';
+                if (splitPath.length == 1 && splitPath[0] == 'blog') {
+                    innerContent = 'Blog Home';
+                }
+                else {
+                    var endVal = splitPath[splitPath.length - 1];
+                    innerContent = this.convertLocToStr(endVal);
+                    innerContent = this.toCapital(innerContent);
+                }
+                
+                return {
+                    inner: innerContent,
+                    separator: ' ',
+                    complement: ' '
+                }
             },
             meta: [
                 { name: 'description', content:'Dynamically generated', id:'desc' }
@@ -240,6 +264,11 @@
                     parentPath: ''
                 },
                 pageTitle: 'Blog Home',
+                postPathMetaDescs: {
+                    'modern_web/modern_web_introduction': { desc: 'A introduction to setting up a development environment to work with the modern web.' },
+                    'machine_learning/configuring_theano_on_ubuntu_with_gpu': { desc: 'How to correctly configure Theano on Ubuntu using an NIVIDA GPU.' },
+                    'machine_learning/workshop_1/getting_setup': { desc: 'How to setup a machine learning environment.'},
+                },
                 postPaths: [
                     'modern_web/modern_web_introduction', 
                     'machine_learning/configuring_theano_on_ubuntu_with_gpu',
