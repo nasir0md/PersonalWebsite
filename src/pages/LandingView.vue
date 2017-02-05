@@ -316,7 +316,9 @@
         },
         head: {
             title: {
-                inner: 'Home'
+                inner: "Andrew Szot's Portfolio",
+                separator: ' ',
+                complement: ''
             },
             meta: [
                 { name: 'description', content: "Andrew Szot's portfolio page", id: 'desc' }

@@ -193,8 +193,31 @@
                 var pathname = a.pathname.substr(1);
                 return pathname;
             },
-            toCapital: function toCapital(str) {
-                return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+            getURLInfo: function getURLInfo() {
+                var pathname = this.getPathURL(); 
+                var splitPath = pathname.split('/');
+
+                if (splitPath.length == 1 && splitPath[0] == 'blog') {
+                    return {
+                        'title': 'Blog Home',
+                        'desc': "The home of Andrew Szot's blog. Full of useful resources on machine learning, web development and more"
+                    };
+                }
+                else {
+                    splitPath.shift();
+                    var joinedPath = splitPath.join('/');
+                    console.log('searching for ' + joinedPath);
+                    for (var pathKey in this.postPathMetaDescs) {
+                        if (pathKey == joinedPath) {
+                            return this.postPathMetaDescs[pathKey];
+                        }
+                    }
+                    
+                    return {
+                        'title': 'Invalid',
+                        'desc': 'Invalid'
+                    };
+                }
             }
         },
         created: function created() {
@@ -223,28 +246,20 @@
         },
         head: {
             title: function() {
-                var pathname = this.getPathURL(); 
-                var splitPath = pathname.split('/');
-
-                var innerContent = '';
-                if (splitPath.length == 1 && splitPath[0] == 'blog') {
-                    innerContent = 'Blog Home';
-                }
-                else {
-                    var endVal = splitPath[splitPath.length - 1];
-                    innerContent = this.convertLocToStr(endVal);
-                    innerContent = this.toCapital(innerContent);
-                }
+                var curTitle = this.getURLInfo().title;
                 
                 return {
-                    inner: innerContent,
+                    inner: curTitle,
                     separator: ' ',
-                    complement: ' '
+                    complement: ''
                 }
             },
-            meta: [
-                { name: 'description', content:'Dynamically generated', id:'desc' }
-            ]
+            meta: function () {
+                var curDesc = this.getURLInfo().desc;
+                return [
+                    { name: 'description', content: curDesc }
+                ];
+            }
         },
         data() {
             return {
@@ -265,9 +280,18 @@
                 },
                 pageTitle: 'Blog Home',
                 postPathMetaDescs: {
-                    'modern_web/modern_web_introduction': { desc: 'A introduction to setting up a development environment to work with the modern web.' },
-                    'machine_learning/configuring_theano_on_ubuntu_with_gpu': { desc: 'How to correctly configure Theano on Ubuntu using an NIVIDA GPU.' },
-                    'machine_learning/workshop_1/getting_setup': { desc: 'How to setup a machine learning environment.'},
+                    'modern_web/modern_web_introduction': { 
+                        title: 'Modern Web Introduction', 
+                        desc: 'A introduction to setting up a development environment to work with the modern web.' 
+                    },
+                    'machine_learning/configuring_theano_on_ubuntu_with_gpu': { 
+                        title: 'Configuring Theano on Ubuntu with GPU',
+                        desc: 'How to correctly configure Theano on Ubuntu using an NIVIDA GPU.' 
+                    },
+                    'machine_learning/workshop_1/getting_setup': { 
+                        title: 'Workshop 1 | Getting Setup',
+                        desc: 'How to setup a machine learning environment.'
+                    },
                 },
                 postPaths: [
                     'modern_web/modern_web_introduction', 

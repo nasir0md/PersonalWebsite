@@ -82,12 +82,6 @@
 
         updated() {
             Prism.highlightAll();
-            this.$emit('updateHead');
-        },
-        head: {
-            meta: [
-                { name: 'description', content: 'Dynamically generated', id: 'desc' }
-            ]
         },
         props: [
            'dispPost' 

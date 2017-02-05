@@ -2,7 +2,7 @@
     <md-list>
         <md-list-item :href="makeLink ? '/' + prependPath + '/' + postNode.name
             : null" class='md-primary flashy'  v-for='postNode in postsTree' :style="{ paddingLeft: computedDepth + 'px' }">
-            <span :class="makeLink ? 'leaf' : null">
+            <span :class="getNextMadeLink() ? 'leaf' : null">
                 {{ convertLocToStr(postNode.name) }}
             </span>
             <md-list-expand v-if='postNode.content.length != 0'>
@@ -14,7 +14,7 @@
 <style lang='scss'>
     .flashy {
         .leaf {
-            color: #e74c3c;
+            color: #2980b9;
         }
         a { 
             width: 100%;
@@ -32,16 +32,24 @@
         components: {
             BlogListView
         },
+        methods: {
+            getNextMadeLink: function() {
+                return this.makeLink[this.currentMakeLinkIndex++];
+            }
+        },
         created: function created() {
             this.itemPad = this.depth * 15;
             this.computedDepth = Number(this.depth) + 1;
-            this.makeLink = this.postsTree.length > 0 && this.postsTree[0].content.length == 0;
+            for (var i = 0; i < this.postsTree.length; ++i) {
+                this.makeLink.push(this.postsTree.length > 0 && this.postsTree[i].content.length == 0);
+            }
         },
         data() {
             return {
                 itemPad: 0,
                 computedDepth: 0,
-                makeLink: false
+                makeLink: [],
+                currentMakeLinkIndex: 0
             }
         },
         props: [
