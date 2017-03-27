@@ -119,6 +119,7 @@
                 }
                 setTimeout(function () {
                     Prism.highlightAll();
+                    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
                 }, 2000);
             },
             createMainView: function createMainView() {
@@ -293,11 +294,22 @@
                         title: 'Workshop 1 | Getting Setup',
                         desc: 'How to setup a machine learning environment.'
                     },
+                    'machine_learning/crash_course/introduction': {
+                        title: 'Workshop 1 | Introduction',
+                        desc: 'Introduction to a machine learning crash course.'
+                    },
+                    'machine_learning/crash_course/neural_network_theory': {
+                        title: 'Workshop 1 | Neural Network Theory',
+                        desc: 'A high level overview of the theory behind neural networks from a largely mathematical perspective'
+                    }
                 },
                 postPaths: [
                     'modern_web/modern_web_introduction', 
                     'machine_learning/configuring_theano_on_ubuntu_with_gpu',
-                    'machine_learning/workshop_1/getting_setup'
+                    'machine_learning/workshop_1/getting_setup',
+                    'machine_learning/crash_course/introduction',
+                    'machine_learning/crash_course/1_neuron_theory',
+                    'machine_learning/crash_course/neural_network_theory'
                 ]
             }
         }

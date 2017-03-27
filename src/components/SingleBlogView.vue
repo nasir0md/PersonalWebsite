@@ -82,6 +82,7 @@
 
         updated() {
             Prism.highlightAll();
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
         },
         props: [
            'dispPost' 
