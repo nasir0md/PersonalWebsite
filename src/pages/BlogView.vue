@@ -307,9 +307,10 @@
                     'modern_web/modern_web_introduction', 
                     'machine_learning/configuring_theano_on_ubuntu_with_gpu',
                     'machine_learning/workshop_1/getting_setup',
+
                     'machine_learning/crash_course/introduction',
                     'machine_learning/crash_course/1_neuron_theory',
-                    'machine_learning/crash_course/neural_network_theory'
+                    'machine_learning/crash_course/2_training_neural_networks'
                 ]
             }
         }

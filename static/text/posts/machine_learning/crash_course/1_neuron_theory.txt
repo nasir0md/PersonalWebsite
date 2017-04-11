@@ -1,6 +1,6 @@
 TITLE:Building Blocks of a Neural Network. The Neuron
 |
-NEXT:
+NEXT:2_training_neural_networks
 |
 PREV:introduction
 |
@@ -38,14 +38,14 @@ META: tmp
 <p>
     The input of the incoming edge is notated as \( p \). This edge has 
     weight \( w \). The weight is multiplied by the input to form the value 
-    \( wp \). This is then sent into the the summer block which sums the 
+    \( wp \). This is then sent into the the summation block which sums the 
     input \( wp \) and the bias \( b \). Notice that the bias has no 
     dependence on external input. Summing these two terms together then 
     gives \( wp + b \) or in the above image \( n \).
 </p>
 
 <p>
-    The output of the summer \( n \) is then passed through the activation 
+    The output of the summation \( n \) is then passed through the activation 
     function \( f \). This then gives the final output of the neuron 
     \( f(n) = a \). The neuron output can then be calculated as 
     $$ a = f(wp + b) $$
@@ -126,7 +126,7 @@ META: tmp
 </p>
 
 <p>
-  The next step is to go through the summer. Summing up the components of this
+  The next step is to go through the summation. Summing up the components of this
   vector gives 
   $$ w_{1,1} p_1 + w_{1,2} p_2 + w_{1,3} p_3 + \dots + w_{1, R} p_R $$
   Then we add in the bias \(b\) which as before is just a single scalar.
@@ -138,7 +138,7 @@ META: tmp
   Note that \(n=\textbf{w}_1 \textbf{p}+b\) is still just a scalar. We then
   transform the input by the activation function to get the final output of the
   node. 
-  $$ a = f(\textbf{w}_1 \textbf{p} + b \)$$
+  $$ a = f(\textbf{w}_1 \textbf{p} + b )$$
 </p>
 
 <p>
@@ -225,4 +225,10 @@ META: tmp
   are all these transformations doing? The key is choosing the right values for
   the weights and the biases to make the network do interesting things. We can
   do this through having the network <b>learn</b> the weights and biases.
+</p>
+
+<p>
+  The neural network is a statistical learner. Given a set of input data \(X\)
+  and a set of output data \( Y \) a neural network can learn the mapping from
+  \( X \) to \( Y \). 
 </p>
