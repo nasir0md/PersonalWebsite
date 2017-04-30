@@ -26,7 +26,7 @@
                     for hours on end. Learning software development does not have to be this difficult. I hope that this blog will 
                     serve as a source of lessons that I wish were there for me. The overarching focus of this blog is implementation
                     and actually getting code working. I am by no means an expert but hope that others will find the lessons that 
-                    I have learned to be useful. 
+                    I have learned to be useful and hopefully avoid some of the pitfalls that I fell into. 
                 </p>
                 <p>
                     I am primarily interested in machine learning and hope to devote most of this blog to the topic. However, much of time 
@@ -298,7 +298,7 @@
                         title: 'Workshop 1 | Introduction',
                         desc: 'Introduction to a machine learning crash course.'
                     },
-                    'machine_learning/crash_course/neural_network_theory': {
+                    'machine_learning/crash_course/1_neuron_theory': {
                         title: 'Workshop 1 | Neural Network Theory',
                         desc: 'A high level overview of the theory behind neural networks from a largely mathematical perspective'
                     }
@@ -310,7 +310,8 @@
 
                     'machine_learning/crash_course/introduction',
                     'machine_learning/crash_course/1_neuron_theory',
-                    'machine_learning/crash_course/2_training_neural_networks'
+                    'machine_learning/crash_course/2_training_neural_networks',
+                    'machine_learning/crash_course/3_backpropagation'
                 ]
             }
         }

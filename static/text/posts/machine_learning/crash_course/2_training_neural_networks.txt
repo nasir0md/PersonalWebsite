@@ -1,6 +1,6 @@
-TITLE:Building Blocks of a Neural Network. The Neuron
+TITLE:Training Neural Networks
 |
-NEXT:
+NEXT:3_backpropagation
 |
 PREV:1_neuron_theory
 |
@@ -63,11 +63,11 @@ Adaptive Linear Neuron (ADALINE) network.
 <p>
   Let's simplify how we represent this equation by putting all of the
   parameters that are to be adjusted in one term. Note that \( p_1 \) and \(
-  p_2 \) cannot be adjusted but are given. Say that \( \textbf{x}^T =
+  p_2 \) cannot be adjusted but are given. Say that \( \textbf{z} =
   \begin{bmatrix}
     \textbf{w} \\
     b
-  \end{bmatrix} \) and \( \textbf{z} = 
+  \end{bmatrix} \) and \( \textbf{x} = 
   \begin{bmatrix}
     \textbf{p} \\
     1
@@ -168,7 +168,7 @@ Adaptive Linear Neuron (ADALINE) network.
   \(p_i(k)\) is \( i \)th element of the input at the \( k \)th iteration. 
 
   $$ \frac{\partial}{\partial w_j} \left( t(k) - \left( \sum_{i=1}^{R} w_i
-  p_i(k) \right) +b \right) $$
+  p_i(k) +b \right) \right) $$
 
   Many of the terms in this expression are not dependent on the network weights
   \( w_j \). \( \frac{\partial t(k) }{\partial w_j} = 0 \) and \(
@@ -183,7 +183,7 @@ Adaptive Linear Neuron (ADALINE) network.
   \), we can see the only term dependent on \( b \) is \( b \) itself. This
   just gives \( 1 \). 
 
-  $$ \frac{\partial e(k)}{\partial b} = 1 $$
+  $$ \frac{\partial e(k)}{\partial b} = -1 $$
 </p>
 
 <p>
@@ -198,3 +198,56 @@ Adaptive Linear Neuron (ADALINE) network.
   error. 
 
   $$ \nabla F(\textbf{x}) = \nabla e^2 (k) = -2e(k)\textbf{z}(k) $$
+
+  At iteration \( k \) all we have to do is multiply the input \( p_j \) by the
+  error.
+</p>
+
+<p>
+  Our next step is to "descend" this gradient to find the minimum points. We
+  know that our gradient is in direction \( \nabla F(\textbf{x}) \) therefore,
+  for a given point \( \textbf{x}_k \) the direction of the minimum point is \(
+  \textbf{x}_k - \alpha \nabla F( \textbf{x}_k) \) where \( \alpha \) is how
+  far we go down the gradient. So we can say that the next iteration should be
+  the previous iteration after taking this step in the direction of the
+  gradient. We can write this as follows.
+</p>
+
+<p>
+  $$ \textbf{x}_{k+1} = \textbf{x}_k + 2 \alpha e(k) \textbf{z}(k) $$
+
+  This can then be split up into the weight and bias update terms.
+
+  $$ \textbf{w}(k+1) = \textbf{w}(k) + 2\alpha e(k) \textbf{p}(k) $$
+  $$ b(k+1) = b(k) + 2\alpha e(k) $$
+</p>
+
+<p>
+  Let's now write that equation for the general case when there could be many
+  neurons in the layer such as with the image below. (NOTE FOR MYSELF PLEASE
+  CHANGE THE FUNCTION F TO LINEAR FUNCTION).
+</p>
+
+<img class='center-image' src='/static/img/ml/crash_course/neuron_layer.png'></img>
+
+<p>
+  Simply look at a given "row" \( i \).
+
+  $$ \textbf{w}_{i}(k+1) = \textbf{w}_{i}(k) + 2\alpha e_{i}(k) \textbf{p}(k) $$
+  $$ b_{i}(k+1) = b_{i}(k) + 2\alpha e_{i}(k) $$
+
+  Where \( e_{i} \) is the error of the \( i \)th row of the error in the
+  layer's output. And then we can just write it in matrix form to clean things
+  up. 
+
+  $$ \textbf{W}(k+1) = \textbf{W}(k) + 2\alpha \textbf{e}(k) \textbf{p}(k) $$
+  $$ \textbf{b}(k+1) = \textbf{b}(k) + 2\alpha \textbf{e}(k) $$
+</p>
+
+<p>
+  And that's all we need to train our network. Using this algorithm the network
+  would be able to converge to optimal network parameters. However, we are limited to
+  single layer networks and linear activation functions. In the next section we
+  will examine how to generalize this to any number of layers and any
+  activation function. 
+</p>

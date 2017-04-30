@@ -1,0 +1,156 @@
+TITLE:Backpropagation
+|
+NEXT:
+|
+PREV:2_training_neural_networks
+|
+Date:Feb 8, 2017
+|
+META: tmp
+|
+<p>
+  In this section we will generalize the results from last section to handle
+  any number of layers in our network and any activation functions. This will
+  form the backpropagation algorithm which is used to train the parameters of a
+  neural network.
+</p>
+
+<p>
+  With our last network we were able to show that a single neuron network
+  creates a linear decision boundry. This is certainly a powerful tool and
+  capable of solving many problems, but obviously is incapable of solving
+  non-linear functions. For instance, say we wanted to create a neural network
+  to learn the XOR function. Let's plot the results of the XOR function (\( x_1
+  \text{ XOR } x_2 \)) where the black dots are false and the gray are true.
+</p>
+
+<img class='center-image' src='/static/img/ml/crash_course/xor.png'></img>
+
+<p>
+  Clearly there is no linear decision function that can be drawn to
+  differentiate true from false. Even if the number of neurons in the layer was
+  increased no single layer network could ever model this relationship.
+</p>
+
+<p>
+  We need to use a two layer network for this task. In fact it can be proved
+  that a two layer network has the capability of approximating any function,
+  linear or non-linear. (However, this is not really practical as at a certain
+  point the number of neurons would have to be increased dramatically. Deeper
+  neural networks are far more advantageous and require less neurons).
+</p>
+
+<p>
+  By the same logic as with the single layer we have the following where \( m
+  \) is the layer index. Except this time calculating the derivatives is more
+  complex. 
+
+  $$ w_{i,j}^{m}(k+1) = w_{i,j}^{m}(k) - \alpha \frac{ \partial F}{\partial
+  w_{i,j}^{m}} $$
+
+  $$ b_{i}^{m}(k+1) = b_{i}^{m}(k) - \alpha \frac{ \partial F}{\partial
+  b_{i}^{m}} $$
+</p>
+
+<p>
+  Let's go ahead and employ the chain rule of calculus. We know that the result
+  of multiplying the input of the layer by the weights results in the value 
+  \( n_{i}^{m} \) which is a function of the weights of the layer.
+  Let's apply the chain rule knowing that \( n_{i}^{m} \) can be written as \(
+  n_{i}^{m} ( w_{i,j} ) \). 
+
+  $$ \frac{ \partial F}{\partial w_{i,j}^{m}} = \frac{\partial F}{\partial
+  n_{i}^{m}} * \frac{\partial n_{i}^{m}}{\partial w_{i,j}^{m}}$$
+
+  $$ \frac{ \partial F}{\partial b_{i}^{m}} = \frac{\partial F}{\partial n_{i}^{m}} *
+  \frac{\partial n_{i}^{m}}{\partial b_{i}^{m}} $$
+</p>
+
+<p>
+  Calculating the derivative of \( n_{i}^{m} \) is straightforward enough as we
+  can write an explicit expression for \( n_{i}^{m} \).
+  $$ n_{i}^{m} = \sum_{j=1}^{S^{m-1}} w_{i,j}^{m} a_{j}^{m-1} + b_{i}^{m} $$
+
+  $$ \frac{ \partial n_{i}^{m}}{\partial w_{i,j}^{m}}  = a_{j}^{m-1} $$
+  $$ \frac{ \partial n_{i}^{m}}{\partial b_{i}^{m}} = 1 $$
+</p>
+
+<p>
+  Now let's assign \( \frac{\partial F}{\partial n_{i}^{m}} \) to the arbitrary
+  value \( s_{i}^{m} \). 
+  $$ \frac{\partial F}{\partial n_{i}^{m}} = s_{i}^{m} $$
+</p>
+
+<p>
+  So now we are left with the following.
+  $$ w_{i,j}^{m}(k+1) = w_{i,j}^{m}(k) - \alpha s_{i}^{m} a_{j}^{m-1}$$
+
+  $$ b_{i}^{m}(k+1) = b_{i}^{m}(k) - \alpha s_{i}^{m} $$
+
+  Which in matrix form becomes: 
+  $$ \textbf{W}^{m}(k+1) = \textbf{W}^{m}(k) - \alpha \textbf{s}^{m}
+  (\textbf{a}^{m-1})^{T} $$
+
+  $$ \textbf{b}^{m}(k+1) = \textbf{b}^{m}(k) - \alpha \textbf{s}^{m} $$
+
+Where we have:
+  $$\textbf{s}^{m} = \frac{\partial F}{\partial n^{m}} = 
+  \begin{bmatrix}
+    \frac{\partial F}{\partial n_{1}^{m}} \\
+    \frac{\partial F}{\partial n_{2}^{m}} \\
+    \vdots \\
+    \frac{\partial F}{\partial n_{S^{m}}^{m}} \\
+  \end{bmatrix} $$
+</p>
+
+<p>
+  The key insight of this is that we have to write the term 
+  \(\textbf{s}^m\) in terms of the last layer \( m - 1 \).
+</p>
+
+<p>
+  Consider the following Jacobian matrix:
+  $$
+  \frac{\partial \textbf{n}^{m+1}}{\partial \textbf{n}^{m}} = 
+  \begin{bmatrix}
+    \frac{\partial n_{1}^{m+1}}{\partial n_{1}^{m}} &&
+    \frac{\partial n_{1}^{m+1}}{\partial n_{2}^{m}} &&
+    \dots &&
+    \frac{\partial n_{1}^{m+1}}{\partial n_{S^{m}}^{m}} \\
+
+    \frac{\partial n_{2}^{m+1}}{\partial n_{1}^{m}} &&
+    \frac{\partial n_{2}^{m+1}}{\partial n_{2}^{m}} &&
+    \dots &&
+    \frac{\partial n_{2}^{m+1}}{\partial n_{S^{m}}^{m}} \\
+
+    \vdots && 
+    \vdots && 
+    &&
+    \vdots \\
+
+    \frac{\partial n_{S^{m+1}}^{m+1}}{\partial n_{1}^{m}} &&
+    \frac{\partial n_{S^{m+1}}^{m+1}}{\partial n_{2}^{m}} &&
+    \dots &&
+    \frac{\partial n_{S^{m+1}}^{m+1}}{\partial n_{S^{m}}^{m}} \\
+  \end{bmatrix}
+  $$
+
+  Let's look at some arbitrary element in this matrix and see if we can simplify
+  it.
+  $$
+    \frac{\partial n_{i}^{m+1}}{\partial n_{j}^{m}} = \frac{ \partial \left( \sum_{l=1}^{S^{m}} 
+    w_{i,l}^{m + 1} a_{j}^{m} + b_{i}^{m + 1} \right) }{\partial n_{j}^{m}} =
+    \frac{\partial (w_{i,j}^{m} * a_{j}^{m}(n_{j}^{m}))}{\partial n_{j}^{m}} = w_{i,j}^{m} \frac{\partial
+    a_{j}^{m}(n_{j}^{m})}{\partial n_{j}^{m}}
+  $$ 
+
+  But we know the explicit formula for \( a_{j}^{m} \) ! 
+  $$ a_{j}^{m} (n_{j}^{m}) = f^{m}(n_{j}^{m})$$
+
+  Where \( f^{m} \) is the activation function for layer \( m \).
+
+  $$
+  \frac{\partial n_{i}^{m+1}}{\partial n_{j}^{m}} = w_{i,j}^{m} \frac{\partial
+    f^{m}(n_{j}^{m})}{\partial n_{j}^{m}} = w_{i,j}^{m}
+  $$
+</p>
