@@ -151,6 +151,121 @@ Where we have:
 
   $$
   \frac{\partial n_{i}^{m+1}}{\partial n_{j}^{m}} = w_{i,j}^{m} \frac{\partial
-    f^{m}(n_{j}^{m})}{\partial n_{j}^{m}} = w_{i,j}^{m}
+    f^{m}(n_{j}^{m})}{\partial n_{j}^{m}} = w_{i,j}^{m} f^{m}(n_{j}^{m})
   $$
+  
+  Where we have \( \frac{\partial f^{m}(n_{j}^{m})}{\partial n_{j}^{m}} =
+  f^{m}(n_{j}^{m}) \)
+</p>
+
+<p>
+  Now we have an explicit expression for \( \frac{\partial
+  n_{i}^{m+1}}{\partial n_{j}^{m}} \) 
+
+  $$ 
+  \frac{\partial \textbf{n}^{m+1}}{\partial \textbf{n}^{m}} = \textbf{W}^{m +
+  1} \textbf{F}^{m} (\textbf{n}^{m})
+  $$
+</p>
+
+<p>
+  Simplify the original sensitivity term.
+  $$ 
+  \textbf{s}^{m} = \frac{\partial F}{\partial \textbf{n}^{m}} = 
+  \left( \frac{\partial \textbf{n}^{m+1}}{\partial \textbf{n}^{m}} \right)^{T}
+  \frac{\partial F}{\partial \textbf{n}^{m + 1}}
+  $$
+  $$
+  \textbf{s}^{m} = 
+  \left( \textbf{W}^{m + 1} \textbf{F}^{m} (\textbf{n}^{m}) \right)^{T} 
+  \frac{\partial F}{\partial \textbf{n}^{m + 1}} 
+  $$
+  $$
+  \textbf{s}^{m} = 
+  \textbf{F}^{m} (\textbf{n}^{m}) \left( \textbf{W}^{m + 1} \right)^{T}
+  \frac{\partial F}{\partial \textbf{n}^{m + 1}} 
+  $$
+  $$
+  \textbf{s}^{m} = 
+  \textbf{F}^{m} (\textbf{n}^{m}) \left( \textbf{W}^{m + 1} \right)^{T}
+  \textbf{s}^{m+1}
+  $$
+
+  From this expression we can see that \( \textbf{s}^m \) depends on \(
+  \textbf{s}^{m+1} \) and so on. So we are sending the sensitivites backwards
+  in the network. This is why it is called <b>backpropogation</b>. 
+</p>
+
+<p>
+  What does the last layer depend on? ( \(\textbf{s}^{M} \)?)
+  We can just consider this to be the base case for our recursive relation
+  where the backpropogation starts.
+  $$
+  s_{i}^{M} = \frac{\partial F}{\partial n_{i}^{M}} = 
+  \frac{ \partial \left( \sum_{j=1}^{S^M} (t_j - a_j)^2 \right)}{\partial n_{i}^{M}} 
+  =
+  -2(t_j-a_j)\frac{\partial a_i}{\partial n_{i}^{M}}
+  $$
+  $$
+  s_{i}^{M} = -2(t_j-a_j)\frac{\partial f^{M}(n_i^M)}{\partial n_{i}^{M}} =
+  -2(t_j-a_j)f^{M}(n_i^M)
+  $$
+  Or expressed in matrix form.
+  $$
+  \textbf{s}^{M} = -2\textbf{F}^{M}(\textbf{n}^M)
+  (\textbf{t}-\textbf{a})  
+  $$
+</p>
+
+<h3>Bringing it all Together</h3>
+
+<p>
+  Given a neural network with \(\textbf{M}\) layers and input \(\textbf{p}\).
+  First forward propagate the input through the network.
+  $$
+  \textbf{a}^{0} = \textbf{p}
+  $$
+
+  $$
+  \textbf{a}^{m+1} = \textbf{f}^{m+1}(\textbf{W}^{m+1}\textbf{a}^{m} +
+  \textbf{b}^{m+1})
+  $$
+
+  $$
+  \textbf{a} = \textbf{a}^{M}
+  $$
+
+  Where \( \textbf{a} \) is the final output of the neural network. Given this
+  output let's backpropogate the sensitivities to adjust the parameters of the network based
+  on the expected output \( \textbf{t} \). Compute the final layer's
+  sensitivity.
+
+  $$
+  \textbf{s}^{M} = -2\textbf{F}^{M}(\textbf{n}^M)
+  (\textbf{t}-\textbf{a})  
+  $$
+
+  Then backpropogate this sensitivity to all the other layers.
+
+  $$
+  \textbf{s}^{m} = 
+  \textbf{F}^{m} (\textbf{n}^{m}) \left( \textbf{W}^{m + 1} \right)^{T}
+  \textbf{s}^{m+1}
+  $$
+  For \( m = M-1 \) to \( m = 0 \). Using the sensitivities we can now update
+  the parameters of the network.
+
+  $$ \textbf{W}^{m}(k+1) = \textbf{W}^{m}(k) - \alpha \textbf{s}^{m}
+  (\textbf{a}^{m-1})^{T} $$
+
+  $$ \textbf{b}^{m}(k+1) = \textbf{b}^{m}(k) - \alpha \textbf{s}^{m} $$
+</p>
+
+<p>
+  We can then train some arbitrary network to learn a function. This will
+  typically take several iterations over the entire input set to obtain
+  acceptable levels of accuracy. In theory this algorithm works, however, in
+  practice the algorithm is far too slow and impractical for a number of
+  reasons. Hopefully, these last couple sections  provided a solid mathematical basis for
+  neural networks.
 </p>

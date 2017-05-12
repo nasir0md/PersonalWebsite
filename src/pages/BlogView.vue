@@ -5,7 +5,7 @@
                 <md-icon>menu</md-icon>
             </md-button>
             <h2 class="md-title">{{ pageTitle }}</h2>
-            <a class='back-home-nav' href='/'>Home</a>
+            <a class='back-home-nav' href='/blog'>Home</a>
         </md-toolbar>
 
         <md-sidenav class="md-left" ref="leftSidenav">
@@ -59,6 +59,13 @@
         color: white !important;
         position: absolute;
         font-size: 1.5em;
+    }
+    .subscribe-section {
+      margin-top: 40px;
+    }
+    h3,
+    h4 {
+      text-align: center;
     }
 </style>
 <script>

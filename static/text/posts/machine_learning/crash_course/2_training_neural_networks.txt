@@ -189,10 +189,13 @@ Adaptive Linear Neuron (ADALINE) network.
 <p>
   To simplify writing the final formula let's go back to our previous notation
   of using \( \textbf{z} \) to represent the parameters of the network. 
-  $$ \textbf{z}(k) = \begin{bmatrix}
+  $$ 
+  \textbf{z}(k) = 
+  \begin{bmatrix}
     p_j(k) \\
     1
-  \end{bmatrix} $$
+  \end{bmatrix} 
+  $$
 
   We can now rewrite the original equation for the gradient of the squared
   error. 
