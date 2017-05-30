@@ -9,10 +9,10 @@ Date:Feb 8, 2017
 META: tmp
 |
 <p>
-    First let's define what a neural network is. A neural network is as the
-    name implies, obviously a network. A network is nothing more than a set of
-    vertices or <i>nodes</i> that are connected via edges. An example of a
-    network is shown below. 
+  What is a neural network? Let's begin by dissecting the name itself 
+  A network can be though of as a graph and is nothing more than a set of
+  vertices or <i>nodes</i> that are connected via edges. An example of a
+  network is shown below. 
 </p>
 
 <img class='center-image' src='/static/img/directed_acyclic_graph.png'></img>
@@ -21,23 +21,30 @@ META: tmp
     Each of the circles with a number in it corresponds to a node. Note that
     the edges connecting nodes have a one way relation. Say you wanted to get
     from node 7 to node 10. You would start at node 7, go to 11, then 10.
-    However, going from node 10 to 7 would be impossible. 
+    However, going from node 10 to 7 would be impossible. We will see that
+    neural networks are represented in much the same manner as a directed graph
+    where each node represents a neuron with edges connecting neurons together.
 </p>
 
 <p>
     The other important aspect of our neural network is the neural part. We
-    want our network to be able to understand and learn. While that is a
-    seemingly daunting task we can use inspirations of biology to get started. 
+    want our network to be able to understand and learn. While this might seem
+    far fetched we will see that neural networks use these graphs as a powerful
+    structure to define operations to learn desired responses. 
+    Similar to the real historical beginnings of
+    neural networks let's use inspirations of biology to get started. 
 </p>
 
 <p>
-    Let's start by looking at an individual node. Inspired by the brain we 
+    Examine an individual node in our graph. Inspired by the brain we 
     will call this a neuron. An illustration of a neuron is shown below. 
 </p>
-<img class='center-image' src='/static/img/single-neuron.png'></img
+
+<img class='center-image' src='/static/img/single-neuron.png'></img>
+
 <p>
-    The input of the incoming edge is notated as \( p \). This edge has 
-    weight \( w \). The weight is multiplied by the input to form the value 
+    The input of the incoming edge is notated as the scalar \( p \). This edge has 
+    a weight of the scalar \( w \). The weight is multiplied by the input to form the value 
     \( wp \). This is then sent into the the summation block which sums the 
     input \( wp \) and the bias \( b \). Notice that the bias has no 
     dependence on external input. Summing these two terms together then 
@@ -46,13 +53,14 @@ META: tmp
 
 <p>
     The output of the summation \( n \) is then passed through the activation 
-    function \( f \). This then gives the final output of the neuron 
+    function \( f \). The activation function is just some real valued scalar
+    function. This then gives the final output of the neuron 
     \( f(n) = a \). The neuron output can then be calculated as 
     $$ a = f(wp + b) $$
 </p>
 
 <p>
-    Let's consider the types of transfer functions that are avaliable. 
+    Let's consider the types of transfer functions that are commonly used. 
     One of the simplest is the pure linear activation function. This is just
     your standard \( y = mx + b \) function. In the case of our neuron the 
     linear function would look like the below. 
@@ -91,8 +99,7 @@ META: tmp
                     \vdots \\
                     p_R
                   \end{bmatrix}$$
-  As about all math and computer science literature notates we will use bold
-  face for vectors and matrices. 
+  Know that bold face represents a vector. 
 </p>
 <p>
   Likewise, we can also formulate the list of weights for each input value as a
@@ -179,7 +186,7 @@ META: tmp
   \end{bmatrix}
   $$
   We also no longer have a single bias but now a bias for each neuron and there
-  are $S$ neurons
+  are \(S\) neurons
   $$
   \textbf{b} = \begin{bmatrix}
   b_1,
@@ -225,6 +232,12 @@ META: tmp
   are all these transformations doing? The key is choosing the right values for
   the weights and the biases to make the network do interesting things. We can
   do this through having the network <b>learn</b> the weights and biases.
+</p>
+
+<p>
+  We simply tell the neural network to learn, for some datset \(X,
+  Y\), the mapping from \( X \) to \( Y \) and the network will find the
+  appropriate weights to do so. 
 </p>
 
 <p>

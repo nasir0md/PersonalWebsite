@@ -21,21 +21,16 @@
         <div class="main-content">
             <div v-if='showMainContent'>
                 <p>
-                    Welcome to my blog! By this point I have been learning to be a software developer for some time. Along the way
-                    I have learned countless lessons. However, I learned many of these lessons at the price of painstakingly trying 
-                    for hours on end. Learning software development does not have to be this difficult. I hope that this blog will 
-                    serve as a source of lessons that I wish were there for me. The overarching focus of this blog is implementation
-                    and actually getting code working. I am by no means an expert but hope that others will find the lessons that 
-                    I have learned to be useful and hopefully avoid some of the pitfalls that I fell into. 
+                    Welcome to my blog! I try to post about topics in computer
+                    science that interest me which is primarily data science
+                    related topics. I hope that this blog can serve as a
+                    educational resource for others.
                 </p>
+
                 <p>
-                    I am primarily interested in machine learning and hope to devote most of this blog to the topic. However, much of time 
-                    is also devoted to web and mobile development to actually implement my ideas. Once again the technologies I discuss 
-                    are by no means the absolute correct answer but instead a contribution to the wealth of internet teaching resources. 
-                </p>
-                <p>
-                    Use the below navigational structure or the side bar to navigate the website. Sometimes blog posts are split up into 'series' which 
-                    will have multiple parts to the tutorial. 
+                    Use the below navigational structure or the side bar to 
+                    navigate the website. Sometimes blog posts are split up 
+                    into 'series' which will have multiple parts to the tutorial. 
                 </p>
                 <blog-list-view style='border: 4px solid #3f51b5' prepend-path='blog' :posts-tree='postsTree' :depth='0'></blog-list-view>
             </div>
@@ -43,6 +38,8 @@
                 <single-blog-view :disp-post='dispPost'></single-blog-view>
             </div>
         </div>
+        <footer-view></footer-view>
+      </div>
 </template>
 <style lang='scss'>
     .blog-home-nav {
@@ -68,13 +65,16 @@
       text-align: center;
     }
 </style>
+
 <script>
     import BlogListView from '../components/BlogListView' 
     import SingleBlogView from '../components/SingleBlogView'
+    import FooterView from '../components/FooterView'
     export default {
         components: {
             BlogListView,
-            SingleBlogView
+            SingleBlogView,
+            FooterView
         },
         methods: {
             toggleLeftSidenav: function toggleLeftSidenav() {
@@ -274,6 +274,9 @@
             return {
                 showMainContent: true,
                 postsTree: [],
+                // This is the subscribe blacklist to prevent posts from having
+                // the subscribe button at the bottom of the page where it is not
+                // appropriate.
                 subBlacklist: [
                     'workshop_1'
                 ],
@@ -301,24 +304,37 @@
                         title: 'Workshop 1 | Getting Setup',
                         desc: 'How to setup a machine learning environment.'
                     },
-                    'machine_learning/crash_course/introduction': {
-                        title: 'Workshop 1 | Introduction',
+                    'machine_learning/neural_networks/introduction': {
+                        title: 'Neural Networks | Introduction',
                         desc: 'Introduction to a machine learning crash course.'
                     },
-                    'machine_learning/crash_course/1_neuron_theory': {
-                        title: 'Workshop 1 | Neural Network Theory',
+                    'machine_learning/neural_networks/1_neuron_theory': {
+                        title: 'Neural Networks | Neural Network Theory',
                         desc: 'A high level overview of the theory behind neural networks from a largely mathematical perspective'
+                    },
+                    'machine_learning/neural_networks/2_training_neural_networks': {
+                        title: 'Neural Networks | Neural Network Theory',
+                        desc: 'Diving into some of the math behind training neural networks'
+                    },
+                    'machine_learning/neural_networks/3_backpropagation': {
+                        title: 'Neural Networks | Backpropagation',
+                        desc: 'Going into the math behind backpropagation'
+                    },
+                    'machine_learning/neural_networks/4_sources': {
+                        title: 'Neural Networks | Sources',
+                        desc: 'Sources used to make this neural network tutorial'
                     }
+
                 },
                 postPaths: [
-                    'modern_web/modern_web_introduction', 
                     'machine_learning/configuring_theano_on_ubuntu_with_gpu',
                     'machine_learning/workshop_1/getting_setup',
 
-                    'machine_learning/crash_course/introduction',
-                    'machine_learning/crash_course/1_neuron_theory',
-                    'machine_learning/crash_course/2_training_neural_networks',
-                    'machine_learning/crash_course/3_backpropagation'
+                    'machine_learning/neural_networks/introduction',
+                    'machine_learning/neural_networks/1_neuron_theory',
+                    'machine_learning/neural_networks/2_training_neural_networks',
+                    'machine_learning/neural_networks/3_backpropagation',
+                    'machine_learning/neural_networks/4_sources'
                 ]
             }
         }

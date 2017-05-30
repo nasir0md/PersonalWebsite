@@ -1,6 +1,6 @@
 <template>
     <div class='not-found-view'>
-        <h1>404: Page Not Found</h2>
+        <h1>404: Page Not Found</h1>
         <div class='nav-back-area'>
             <router-link to='blog' class="btn btn-default btn-norm btn-lg">To Blog Home</router-link>
         </div>

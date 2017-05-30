@@ -19,9 +19,6 @@
             <p>Be notified when I post a new blog entry.</p>
             <a class='btn btn-default btn-norm btn-lg' href='http://eepurl.com/czkQGf'>Subscribe</a>
         </div>
-        <footer>
-            © Copyright Andrew Szot 2017
-        </footer>
     </div>
 </template>
 <style lang='scss'>

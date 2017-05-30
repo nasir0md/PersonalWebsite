@@ -1,0 +1,59 @@
+TITLE:Introduction to Neural Networks
+|
+NEXT:1_neuron_theory
+|
+PREV:
+|
+Date:Feb 8, 2017
+|
+META: tmp
+|
+<p>
+  When one writes a computer program they break their problem into multiple
+  steps and define these procedural steps in their code for the computer to
+  execute. The beauty of machine learning is the programmer does not tell the
+  computer how to solve the problem. Instead, the computer learns how to solve
+  the problem on it's own from <b>data</b>. 
+</p>
+
+<p>
+  If you have heard of machine learning before, chances are you have heard of
+  neural networks as well. Neural networks are often called <b>artificial
+  neural networks</b> because their structure is loosely modeled off of the
+  neuron structure of the brain. The human brain contains around 100 billion
+  neurons. Each neuron is a small cell that transmits signals. The neurons are
+  connected through dendrites that allow each to communicate. These small
+  neuron units and their connections between each other gives humans the
+  capability to think. 
+</p>
+
+<p>
+  A similar approach was taken to the learning machines that are called
+  artificial neural networks. In an artificial neural network many units that
+  are also called neurons function together to give the system the capability
+  to learn. Like, the brain these neurons are connected to each other. The
+  exact structure of neural networks and how these connections and neurons work
+  will be discussed in the following pages. 
+</p>
+
+<p>
+  So why are neural networks so popular? Chances are you have heard of a neural
+  network but have no idea what gradient boosting or state vector machines are
+  despite the fact that they are all machine learning algorithms that learn
+  from data. Starting around 2012, neural networks exploded in popularity.
+  Cheaper and more powerful hardware allowed thousands and then millions of
+  neurons. This renessiance in machine learning has allowed countless
+  breakthroughs in neural networks and their applications. The second reason is
+  the versitility of neural networks. Neural networks have found applications
+  in text, speech, images and much more. They are a useful machine learning
+  tool in a variety of situations. 
+</p>
+
+<p>
+  There is a good amount of math associated with neural networks. This post
+  will go into much of the surface level theory that goes into a neural
+  network. From this theory you should have a good understanding of how basic
+  neural networks work and can dive into actual implementation.
+</p>
+
+

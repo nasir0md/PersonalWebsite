@@ -30,7 +30,7 @@ Adaptive Linear Neuron (ADALINE) network.
     \textbf{p}_1 \\
     \textbf{p}_2 
   \end{bmatrix} \). We can begin to construct this classifier by saying that
-  for any output \( a > 0 \) the input is class one and for any output \( a \le
+  for any output \( a > 0 \) the input can be categorized as class one and for any output \( a \le
   0\) the input can be categorized as class two. We can find the decision
   boundary by setting the equation of the network equal to zero. 
   $$ \textbf{wp} + b = 0 $$
@@ -75,14 +75,14 @@ Adaptive Linear Neuron (ADALINE) network.
   same result as before 
   $$ a = \textbf{x}^T \textbf{z} = \textbf{wp} + b $$
   Transposing the \( \textbf{x} \) term is to simply make the product of \(
-  \textbf{x} \) and \( \textbf{z} \) possible and to write both of them as
-  column vectors. Remember the rules of matrix multiplication.
+  \textbf{x} \) and \( \textbf{z} \) possible to compute and while keeping both
+  vectors as column vectors. Remember the rules of matrix multiplication!
 </p>
 
 <p>
   We can say that the error is the value we <i>expected</i> subtracted by the
-  output of the network. Say \( t \) was the value expected and \( a \) was the
-  output of the network. The error would then be \( t - a \). A common measure
+  <i>actual</i> output of the network. Say \( t \) was the value expected and \( a \) was the
+  output of the network. The error would then be \( e = t - a \). A common measure
   for error is the mean square error. This is given by the expected value of
   the squared error. The expected value here is the expected value of a given
   input given consideration of all input/output pairs. Mathematically we can
@@ -130,21 +130,25 @@ Adaptive Linear Neuron (ADALINE) network.
   the gradient of \( F(\textbf{x}) \) numerically. We can do so through the
   Least Mean Squares LMS algorithm. 
 </p>
+
 <p>
-  The gradient of \( F(\textbf{x}) \) can be approximated through 
+  The gradient of \( F(\textbf{x}) \) can be approximated by 
+
   $$ F(\textbf{x}) = (t(k) - a(k))^2 = e^{2} (k) $$
   $$ \nabla F(\textbf{x}) = \nabla e^{2} (k) $$
-  Where \( k \) is the iteration number. So \(e(k)\) is the error at iteration
-  \(k\). This approximation of the gradient is called stochastic gradient. And
+
+  Where \( k \) is the iteration number. Instead of computing the expected
+  value of the squared error we are approximating it at some iteration \( k \) 
+  This approximation of the gradient is called stochastic gradient. And
   we descend the gradient looking for the minimum, giving rise to the important term in machine learning
-  <b>Stochastic Gradient Descent (SGD)</b>. Our derivatives are with respect to
+  called <b>Stochastic Gradient Descent (SGD)</b>. Our derivatives are with respect to
   the network parameters, the bias and the weights. 
 </p>
 
 <p>
   As there are many weights for our neuron, the following expression gives the
   gradient of our term evaluated at the arbitrary weight \( j \). Say there are
-  \( R \) weights in total. 
+  \( R \) inputs (and therefore weights) to this neuron we are considering.
   
   $$ [ \nabla e^2(k) ]_j = \frac{\partial e^2 (k)}{\partial w_j} $$
 
@@ -174,7 +178,7 @@ Adaptive Linear Neuron (ADALINE) network.
   \( w_j \). \( \frac{\partial t(k) }{\partial w_j} = 0 \) and \(
   \frac{\partial b}{\partial w_j} = 0 \). Furthermore, \( \frac{\partial w_i
   p_i}{\partial w_j} = 0\) for any \(i \ne j\). The only nonzero term of this
-  expression comes out to be \( \frac{\partial w_j p_j}{\partial w_j} = p_j \)
+  expression comes out to be \( \frac{\partial (w_j p_j)}{\partial w_j} = p_j \)
   but the negative sign in front of the summation makes \( -p_j \). We now have
 
   $$ \frac{\partial e(k)}{\partial w_j} = -p_j(k) $$
@@ -219,6 +223,7 @@ Adaptive Linear Neuron (ADALINE) network.
 <p>
   $$ \textbf{x}_{k+1} = \textbf{x}_k + 2 \alpha e(k) \textbf{z}(k) $$
 
+  We say that \( \alpha \) is the learning rate. 
   This can then be split up into the weight and bias update terms.
 
   $$ \textbf{w}(k+1) = \textbf{w}(k) + 2\alpha e(k) \textbf{p}(k) $$
@@ -227,8 +232,8 @@ Adaptive Linear Neuron (ADALINE) network.
 
 <p>
   Let's now write that equation for the general case when there could be many
-  neurons in the layer such as with the image below. (NOTE FOR MYSELF PLEASE
-  CHANGE THE FUNCTION F TO LINEAR FUNCTION).
+  neurons in the layer such as with the image below. Note that the activation
+  function \( f \) in this case is the linear activation function.
 </p>
 
 <img class='center-image' src='/static/img/ml/crash_course/neuron_layer.png'></img>
