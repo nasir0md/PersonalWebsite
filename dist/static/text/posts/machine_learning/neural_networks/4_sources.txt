@@ -1,0 +1,18 @@
+TITLE:Building Blocks of a Neural Network. The Neuron
+|
+NEXT:
+|
+PREV:3_backpropagation
+|
+Date:Feb 8, 2017
+|
+META: tmp
+|
+<ul>
+  <li><a href='http://neuralnetworksanddeeplearning.com'>neuralnetworksanddeeplearning.com</a</li>
+  <li>
+    <a href='http://hagan.okstate.edu/NNDesign.pdf'>
+      Neural Network Design by Hagan
+    </a>
+  </li>
+</ul>

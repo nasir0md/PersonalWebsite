@@ -1,0 +1,247 @@
+TITLE:Building Blocks of a Neural Network. The Neuron
+|
+NEXT:2_training_neural_networks
+|
+PREV:introduction
+|
+Date:Feb 8, 2017
+|
+META: tmp
+|
+<p>
+  What is a neural network? Let's begin by dissecting the name itself 
+  A network can be though of as a graph and is nothing more than a set of
+  vertices or <i>nodes</i> that are connected via edges. An example of a
+  network is shown below. 
+</p>
+
+<img class='center-image' src='/static/img/directed_acyclic_graph.png'></img>
+
+<p>
+    Each of the circles with a number in it corresponds to a node. Note that
+    the edges connecting nodes have a one way relation. Say you wanted to get
+    from node 7 to node 10. You would start at node 7, go to 11, then 10.
+    However, going from node 10 to 7 would be impossible. We will see that
+    neural networks are represented in much the same manner as a directed graph
+    where each node represents a neuron with edges connecting neurons together.
+</p>
+
+<p>
+    The other important aspect of our neural network is the neural part. We
+    want our network to be able to understand and learn. While this might seem
+    far fetched we will see that neural networks use these graphs as a powerful
+    structure to define operations to learn desired responses. 
+    Similar to the real historical beginnings of
+    neural networks let's use inspirations of biology to get started. 
+</p>
+
+<p>
+    Examine an individual node in our graph. Inspired by the brain we 
+    will call this a neuron. An illustration of a neuron is shown below. 
+</p>
+
+<img class='center-image' src='/static/img/single-neuron.png'></img>
+
+<p>
+    The input of the incoming edge is notated as the scalar \( p \). This edge has 
+    a weight of the scalar \( w \). The weight is multiplied by the input to form the value 
+    \( wp \). This is then sent into the the summation block which sums the 
+    input \( wp \) and the bias \( b \). Notice that the bias has no 
+    dependence on external input. Summing these two terms together then 
+    gives \( wp + b \) or in the above image \( n \).
+</p>
+
+<p>
+    The output of the summation \( n \) is then passed through the activation 
+    function \( f \). The activation function is just some real valued scalar
+    function. This then gives the final output of the neuron 
+    \( f(n) = a \). The neuron output can then be calculated as 
+    $$ a = f(wp + b) $$
+</p>
+
+<p>
+    Let's consider the types of transfer functions that are commonly used. 
+    One of the simplest is the pure linear activation function. This is just
+    your standard \( y = mx + b \) function. In the case of our neuron the 
+    linear function would look like the below. 
+</p>
+
+<img class='center-image' src='/static/img/pure-linear-transform.png'></img>
+
+<p>
+    However, it turns out non-linear functions are <b>vital</b> to the power of
+    neural networks. An important function is the sigmoid function. The sigmoid
+    function is given by 
+    $$ a(n) = \frac{1}{1 + e^{-n}} $$
+    This will in turn look like the below image.
+</p>
+
+<img class='center-image' src='/static/img/sigmoid.png'></img>
+
+<p>
+    Notice how this activation function squashes the input between 0 and 1. 
+</p>
+
+<p>
+    Now let's go back to our neuron. A neuron can also have multiple inputs.
+    This corresponds to multiple edges coming into the node. And as before each
+    of these edges must have a corresponding weight. 
+</p>
+
+<img class='center-image' src='/static/img/ml/crash_course/multiple_input_neuron.png'></img>
+<p>
+  Each of the inputs to the node can just be represented as a vector to make
+  the representation easier. 
+  $$ \textbf{p} = \begin{bmatrix}
+                    p_1 \\
+                    p_2 \\
+                    p_3 \\
+                    \vdots \\
+                    p_R
+                  \end{bmatrix}$$
+  Know that bold face represents a vector. 
+</p>
+<p>
+  Likewise, we can also formulate the list of weights for each input value as a
+  vector. 
+  $$
+  \textbf{w}_1 =  \begin{bmatrix}
+                    w_{1,1},
+                    w_{1,2},
+                    w_{1,3} ,
+                    \dots 
+                    w_{1, R}
+                  \end{bmatrix}
+  $$
+  Note that the weight vector is a row vector not a column vector this
+  necessary for when we will have to multiply with the input vector. 
+</p>
+
+<p>
+  Just as before we are simply multiplying the input by the weight. So our new
+  vector would be just to multiply each input by the weight on that edge. 
+  $$
+  \begin{bmatrix}
+    w_{1,1} p_1,
+    w_{1,2} p_2,
+    w_{1,3} p_3,
+    \dots
+    w_{1,R} p_R
+  \end{bmatrix}
+  $$
+  This is the same as \( \textbf{w}_1 \textbf{p}\). 
+</p>
+
+<p>
+  The next step is to go through the summation. Summing up the components of this
+  vector gives 
+  $$ w_{1,1} p_1 + w_{1,2} p_2 + w_{1,3} p_3 + \dots + w_{1, R} p_R $$
+  Then we add in the bias \(b\) which as before is just a single scalar.
+  $$ n = w_{1,1} p_1 + w_{1,2} p_2 + w_{1,3} p_3 + \dots + w_{1, R} p_R + b =
+  \textbf{w}_1 \textbf{p} + b$$
+</p>
+
+<p>
+  Note that \(n=\textbf{w}_1 \textbf{p}+b\) is still just a scalar. We then
+  transform the input by the activation function to get the final output of the
+  node. 
+  $$ a = f(\textbf{w}_1 \textbf{p} + b )$$
+</p>
+
+<p>
+  Now you might be curious to know why the weight matrix has the subscript
+  \(1\). We will address why this is so in the following example. So far we have 
+  just dealt with one node. An interesting thing we can do is
+  feed the same set of inputs through multiple nodes that each have different
+  weights to produce a set of different output \(a\) values. An illustration of
+  that is shown below.
+</p>
+
+<img class='center-image' src='/static/img/ml/crash_course/neuron_layer.png'></img>
+
+<p>
+  Now the same principle applies as before. For node \(i\) calculate the output
+  \(a_i\) through the following formula. Note that we are assuming that all of
+  the activation functions are the same which as we will see later is a safe
+  assumption to make for this case.
+  $$ a_i = f(\textbf{w}_i \textbf{p} + b) $$
+  However, we can simplify this and view the weights as a matrix of weights
+  represented as follows saying there are \(S\) nodes that the input is being fed
+  into.
+  $$ \textbf{W} = 
+  \begin{bmatrix}
+    w_{1,1} & w_{1,2} & w_{1,3} & \dots & w_{1,R} \\
+    w_{2,1} & w_{2,2} & w_{2,3} & \dots & w_{2,R} \\
+    w_{3,1} & w_{3,2} & w_{3,3} & \dots & w_{3,R} \\
+    \dots & \dots & \dots & \dots & \dots \\
+    w_{S,1} & w_{S,2} & w_{S,3} & \dots & w_{S,R} \\
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    \textbf{w}_1 \\
+    \textbf{w}_2 \\
+    \textbf{w}_3 \\
+    \vdots \\
+    \textbf{w}_S \\
+  \end{bmatrix}
+  $$
+  We also no longer have a single bias but now a bias for each neuron and there
+  are \(S\) neurons
+  $$
+  \textbf{b} = \begin{bmatrix}
+  b_1,
+  b_2,
+  b_3,
+  \dots
+  b_S
+  \end{bmatrix}
+  $$
+
+  Likewise, we can say there is an output vector \(\textbf{a}\) that can be
+  calculated through the following formula.
+  $$ \textbf{a} = f(\textbf{W} \textbf{p} + \textbf{b})$$
+</p>
+
+<p>
+  The next extension is to add layers of neurons. 
+</p>
+<img class='center-image' src='/static/img/ml/crash_course/multiple_layers.png'></img>
+<p>
+  Now notate the weight matrix for layer \(i\) to be \(\textbf{W}^{i}\). Note
+  that the number of neurons stacked vertically does not have to be the same in
+  each layer. The neurons simply connect to all of the next level so it does
+  not matter how neurons are in the previous layer for the current layer. The
+  example below is a little more concrete of such a network.
+</p>
+<img class='center-image' src='/static/img/ml/crash_course/network_example.png'></img>
+<p>
+  We can simply extend the rules used to compute the output of one layer and
+  extend it to multiple layers. For instance to compute the output of the above
+  network would be the following. 
+  $$
+  \textbf{a}^3 = f^3 ( \textbf{W}^3 f^2 ( \textbf{W}^2 f^1 (\textbf{W}^1
+  \textbf{p} + \textbf{b}^1) + \textbf{b}^2) + \textbf{b}^3 )
+  $$
+  Notice how the input \(p\) is propagated from the left of the network to the
+  right of the network.
+</p>
+
+<p>
+  That is all for the basics of a neural network building blocks. You should be
+  able to see how a neural network produces an output for some input. But what
+  are all these transformations doing? The key is choosing the right values for
+  the weights and the biases to make the network do interesting things. We can
+  do this through having the network <b>learn</b> the weights and biases.
+</p>
+
+<p>
+  We simply tell the neural network to learn, for some datset \(X,
+  Y\), the mapping from \( X \) to \( Y \) and the network will find the
+  appropriate weights to do so. 
+</p>
+
+<p>
+  The neural network is a statistical learner. Given a set of input data \(X\)
+  and a set of output data \( Y \) a neural network can learn the mapping from
+  \( X \) to \( Y \). 
+</p>
