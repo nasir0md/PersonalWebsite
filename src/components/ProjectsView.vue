@@ -1,9 +1,6 @@
 <template>
     <div id='portfolio' class='projects-view'>
-        <section v-for='listInfo in allListData' v-bind:id='listInfo.listId' class="container sub-content-section text-center">
-            <div class='row'>
-                <h2>{{ listInfo.title }}</h2>
-            </div>
+      <section v-for='listInfo in allListData'>
             <div class='row' v-for='project in listInfo.listData'>
                 <div class='col-md-2'></div>
                 <div class='col-md-8 project-list'>
@@ -25,39 +22,11 @@
 </template>
 <style lang='scss'>
     @import '../../static/sass/variables';
-
-    .projects-view {
-        padding-bottom: 100px;
-        margin-top: 100px;
-        padding-top: 40px;
-        background-color: #2b2b2b;
-    }
-    .sub-content-section {
-        padding-top: 20px;
-    }
-
-    .project-list {
-        text-align: left;
-        font-size: 1.2em;
-        h3, h4 {
-            margin-bottom: 5px;
-        }
-        .date-spn {
-            color: #cacaca;
-        }
-
-        hr {
-            margin-top: 5px;
-            margin-bottom: 10px;
-        }
-        ul {
-        }
-    }
 </style>
 <script>
     export default {
         methods: {
-            loadListData: function loadListData(filename, listTitle) {
+            loadListData: function loadListData(filename) {
                 this.$http.get(filename).then((response) => {
                     var textData = response.data;
 
@@ -96,8 +65,6 @@
                     }
 
                     this.allListData.push({
-                        'title': listTitle,
-                        'listId': listTitle.toLowerCase(),
                         'listData': appendList
                     });
                 }, (response) => {
@@ -106,20 +73,15 @@
             }
         },
         created: function created() {
-            for (var i = 0; i < this.loadDataTargets.length; ++i) {
-                var loadDataTarget = this.loadDataTargets[i];
-                this.loadListData('/static/text/' + loadDataTarget.loc, loadDataTarget.title);
-            }
+            this.loadListData('/static/text/' + this.loadDataTargetLoc);
         },
         data() {
             return {
-                loadDataTargets: [
-                    {'title': 'Work', 'loc': 'work.txt'},
-                    {'title': 'Big Projects', 'loc': 'projects.txt'},
-                    {'title': 'Education', 'loc': 'education.txt'},
-                ],
-                allListData: [],
+              allListData: [],
             }
-        }
+        },
+        props: [
+          'loadDataTargetLoc' 
+        ]
     }
 </script>

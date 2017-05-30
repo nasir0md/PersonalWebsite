@@ -23,14 +23,14 @@
                 <p>
                     Welcome to my blog! I try to post about topics in computer
                     science that interest me which is primarily data science
-                    related topics. I hope that this blog can serve as a
+                    related topics. I hope that this blog can serve as an
                     educational resource for others.
                 </p>
 
                 <p>
                     Use the below navigational structure or the side bar to 
                     navigate the website. Sometimes blog posts are split up 
-                    into 'series' which will have multiple parts to the tutorial. 
+                    into 'series' which will have multiple parts to the post. 
                 </p>
                 <blog-list-view style='border: 4px solid #3f51b5' prepend-path='blog' :posts-tree='postsTree' :depth='0'></blog-list-view>
             </div>

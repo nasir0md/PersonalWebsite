@@ -16,8 +16,8 @@
             </div>
         </div>
         <div v-if='dispPost.showSubscribe' class='subscribe-section'>
-            <p>Be notified when I post a new blog entry.</p>
-            <a class='btn btn-default btn-norm btn-lg' href='http://eepurl.com/czkQGf'>Subscribe</a>
+            <p style="margin-bottom: 5px">Be notified when I post a new blog entry.</p>
+            <a class='btn btn-default btn-norm' style="font-size: 1.4em" href='http://eepurl.com/czkQGf'>Subscribe</a>
         </div>
     </div>
 </template>
