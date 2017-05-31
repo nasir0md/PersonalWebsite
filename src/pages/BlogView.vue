@@ -320,7 +320,11 @@
                         title: 'Neural Networks | Backpropagation',
                         desc: 'Going into the math behind backpropagation'
                     },
-                    'machine_learning/neural_networks/4_sources': {
+                    'machine_learning/neural_networks/4_loss_functions': {
+                        title: 'Neural Networks | Loss Functions',
+                        desc: 'Sources used to make this neural network tutorial'
+                    },
+                    'machine_learning/neural_networks/sources': {
                         title: 'Neural Networks | Sources',
                         desc: 'Sources used to make this neural network tutorial'
                     }
@@ -334,7 +338,8 @@
                     'machine_learning/neural_networks/1_neuron_theory',
                     'machine_learning/neural_networks/2_training_neural_networks',
                     'machine_learning/neural_networks/3_backpropagation',
-                    'machine_learning/neural_networks/4_sources'
+                    'machine_learning/neural_networks/4_loss_functions',
+                    'machine_learning/neural_networks/sources'
                 ]
             }
         }

@@ -1,0 +1,148 @@
+TITLE:Loss and Cost Functions
+|
+NEXT:sources
+|
+PREV:3_backpropagation
+|
+Date:Feb 8, 2017
+|
+META: tmp
+|
+
+<p>
+  In the example on the last page we relied on using the mean squared error for
+  our <i>cost function</i>. This cost function is what we minimized through stochiastic
+  gradient descent (SGD) and tells how good the model is doing given the
+  parameters.
+</p>
+
+<p>
+  However, the mean squared error may not always be the best cost function. In
+  fact a more popular loss function is the <i>cross entropy cost function.</i>
+  However, before we get more into the cross-entropy cost function let's look
+  into the <i>softmax classification function</i>.
+</p>
+
+<h3>Softmax Classifier</h3>
+
+<p>
+  Let's say you are building a neural network to classify between two classes.
+  Our neural network will look something like the following image. Notice
+  that there are two outputs \( y_1 \) and \( y_2 \) representing class one and
+  two respectively. 
+</p>
+
+<img class='center-image' src='/static/img/ml/crash_course/decision_network.png'></img>
+
+<p>
+  We are given a set of data points \( \textbf{X} \) and their corresponding
+  labels \( \textbf{Y} \). How might we represent the labels? A given point is
+  either class one or class two. The boundry is distinct. If you remember the
+  linear classification boundry from earlier we said that any output greater
+  than 0 was class one and any output less than 0 was class two. However, that
+  does not really work here. A given data point \( \textbf{x}_i \) is simply
+  class one or class two. We should not have data points be more class one than
+  other data points. 
+</p>
+
+<p>
+  We will use <i>one hot encoding</i> to provide labels for these points. If a
+  data point has the label of class one simply assign it the label vector \(
+  \textbf{y}_i = 
+  \begin{bmatrix}
+    1 \\
+    0
+  \end{bmatrix} \) and for a data point of class two assign it the label vector
+  \( \textbf{y}_i = \begin{bmatrix}
+    0 \\
+    1
+  \end{bmatrix} \)
+</p>
+
+<p>
+  Say our network outputs the value \( \begin{bmatrix}
+    c_1 \\
+    c_2
+  \end{bmatrix} \) where \(c_1, c_2 \) are just constants. We can say the
+  network classified the input as class one if \( c_1 > c_2 \) or classified as
+  class two if \( c_2 > c_1 \). Let's use the softmax function to interpret
+  these results in a more probablistic manner.
+</p>
+
+<p>
+  The softmax function is defined as the following 
+  $$
+    q(\textbf{c}) = \frac{e^{c_i}}{\sum_j e^{c_j}} 
+  $$
+
+  Where \( c_i \) is the scalar output of the \(ith\) element of the output
+  vector. Think of the numerator as converting the output to an unnormalized
+  probablity. Think of the denominator as normalizing the probability. This
+  means that for every output \( i \) the loss function will have an output
+  between 0 and 1. Furthermore, the sum of each output \( i \) will sum to one
+  just as with any probability distribution.
+</p>
+
+<h3>Entropy</h3>
+
+<p>
+  We need to take one more step to use the softmax function as a loss function. This
+  requires some knowledge of what entropy is. Think about this example. Say you
+  were having a meal at EVK, one of the USC dining halls. If your meal is bad
+  this event does not carry much information as the meals are almost garunteed
+  to be bad at EVK. However, if the meal is good this event carries a lot of
+  information as it is out of the ordinary. You would not tell anyone about the bad meal
+  because that is expected, but you would tell everyone about the good meal.
+  Entropy deals with the measure of information. If we know an underlying 
+  distribution \( y \) to some
+  system we can define how much information is encoded in each event. We can
+  write this mathematically as:
+  $$
+    H(y) = \sum_i y_i \log \left( \frac{1}{y_i} \right) = - \sum_i y_i \log (
+    y_i )
+  $$
+</p>
+
+<h3>Cross Entropy</h3>
+
+<p>
+  This definition assumes that we are operating under the correct underlying
+  probability distribution. Let's say a new student at USC has no idea what the
+  dining hall food is like and thinks EVK normally serves great food. This
+  freshman has not been around long enough to know the true probability
+  distribution of EVK food and instead assumes the probability
+  distribution \( y'_i \). Now this freshman incorrectly
+  thinks that bad meals are uncommon. If the freshman were to tell a 
+  sophomore (who knows the real distribution) that his meal at EVK was
+  bad this information would mean little to the sophomore because the
+  sophomore already knows that EVK food is almost always bad. We can say that the cross
+  entropy is the encoding of events in \( y \) using the wrong probability
+  distribution \( y' \). This gives 
+  $$
+  H(y, y') = - \sum_i y_i \log y'_i
+  $$
+</p>
+
+<p>
+  Now let's go back to our neural network classification problem. We know the
+  true probability distribution for any sample should be just the one hot
+  encoded label of the sample. We also know that our generated probability
+  distribution is the softmax function. This gives the final form of our cross
+  entropy loss.
+  $$
+  L_i = -\log \left( \frac{e^{c_i}}{\sum_j e^{c_j}} \right)
+  $$
+  Where \( y_i = 1 \) for the correct label and \( y' \) is the softmax
+  function.
+  This loss function is often called the categorical cross entropy loss
+  function because it works with categorical data (i.e. data that can be
+  classified into distinct classes).
+</p>
+
+<p>
+  And while I will not go over it here know that this function has calculable
+  derivatives as well. This allows it to be used just the same as the mean
+  squared error loss function in the previous example. The choice of the
+  correct loss function is dependent on the problem and is a decision you must
+  make in designing your neural network.
+</p>
