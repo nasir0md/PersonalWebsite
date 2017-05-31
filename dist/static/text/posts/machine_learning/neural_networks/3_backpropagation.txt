@@ -1,6 +1,6 @@
-TITLE:Backpropagation
+TITLE:Backpropagation, SGD
 |
-NEXT:4_sources
+NEXT:4_loss_functions
 |
 PREV:2_training_neural_networks
 |
@@ -273,5 +273,13 @@ Where we have:
 
 <p>
   Hopefully, this example of training a neural network minimizing the mean
-  squared error function provided a solid basis of how neural networks work. 
+  squared error function provided a solid basis of how neural networks work.
 </p>
+
+<p>
+  To clarify, backpropagation is the step of propogating the sensitivities
+  backwards in the network. SGD is the process of actually updating the
+  parameters of the network.
+</p>
+
+
