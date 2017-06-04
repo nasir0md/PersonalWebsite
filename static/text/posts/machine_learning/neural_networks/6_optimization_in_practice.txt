@@ -1,0 +1,179 @@
+TITLE:Optimization in Practice
+|
+NEXT:sources
+|
+PREV:5_regularization
+|
+Date:Feb 8, 2017
+|
+META: tmp
+|
+<h3>Minibatch Algorithm</h3>
+<p>
+  First let's review our SGD algorithm shown below. 
+  $$
+  \mathbf{\theta} (k) = \mathbf{\theta}(k-1) - \alpha \nabla J(\textbf{x}_k,
+  \mathbf{\theta}(k-1))
+  $$
+  As this algorithm is <i>stochastic</i> gradient descent it operates one input
+  example at a time. This is also referred to as online training. However, this
+  is not an accurate representation of the gradient as it is only over a single
+  input parameter and is not necessarily reflective of the gradient over the
+  entire input space. A more accurate representation of the gradient could be
+  given by the following.
+  $$
+  \mathbf{\theta} (k) = \mathbf{\theta}(k-1) - \alpha \nabla J(\textbf{x},
+  \mathbf{\theta}(k-1))
+  $$
+  The gradient at each iteration is now being computed accross the entire input
+  space. This is referred to as batch gradient descent which we will see in a
+  second is a confusing name. 
+</p>
+
+<p>
+  In practice neither of these approaches are desirable. The first does not
+  give good enough of an approximation of the gradient, the second is
+  computationally infeasible as for each iteration the gradient of the cost
+  function for the entire dataset has to be computed. <i>Minibatch</i> methods
+  are the solution to this problem.
+</p>
+
+<p>
+  In minibatch training a set of the samples are used to compute the cost
+  gradient. The average of these gradients for each sample is then used. This
+  approach offers a good trade off between speed and accuracy. The equation
+  for this method is given below. 
+  $$
+  \mathbf{\theta} (k) = \mathbf{\theta}(k-1) - \frac{\alpha}{Q} \sum_{q=1}^{Q}\nabla
+  J(\textbf{x}_q, \mathbf{\theta}(k-1))
+  $$
+  Remember that batch gradient descent is over the whole input space while
+  minibatch is just over a subset at a time. 
+</p>
+
+<p>
+  Of course it would make sense that the samples have to be randomly drawn from
+  the input space as sequential samples likely have some correlation. The
+  typical procedure is to randomly shuffle the input space and the sample
+  sequentially for minibatch.
+</p>
+
+<h3>Initializations</h3>
+
+<p>
+  At this point you may be wondering how a neural network is actually
+  initialized. So far the learning has been described but the actual initial
+  state of the network has not been discussed. 
+</p>
+
+<p>
+  You may think that how a network is initialized does not necessarily matter.
+  After all the network should eventually converge to the correct parameters
+  right? Unfortunately this is not the case with neural networks, the
+  initialization matters greatly. Initializing to small random weights
+  typically works. However, the standard for weight initialization many
+  consider to be the normalized initilization method. 
+</p>
+
+<p>
+  Using this method weights are randomly drawn from the following uniform
+  distribution.
+  $$
+  \textbf{W} \sim U \left( -\frac{6}{\sqrt{m+n}}, \frac{6}{m+n} \right)
+  $$
+  Where \( m \) is the number of inputs into the layer and \( n \) is the 
+  number of outputs from the layer. 
+</p>
+
+<p>
+  As for the biases, typically just assigning them to a value of 0 works. 
+</p>
+
+<h3>Challenges in Optimization</h3>
+
+<p>
+  In classic math optimization functions we optimize some function \( f \). Now
+  the same is true here where we are optimizing the loss function. However,
+  keep in mind this loss function is not the same as the objective function
+  which is how the model is performing on the actual inputs. This means that
+  the gradient of the loss function is just an approximation of the true
+  gradient of the objective function. 
+</p>
+
+<p>
+  Another concern are local minima. Any deep neural network is garunteed to
+  have a very large number of local minima. How can we stop our neural network
+  from converging to local minima? Well local minima would be a concern if the
+  cost function evaluated at the local minima was far greater than the cost
+  function evaluated at the global minima. It turns out that this difference is
+  negliable. Most of the time, simply finding any minima is sufficient in the
+  case of deep neural networks. 
+</p>
+  
+<p>
+  Another issue is saddle points, plateaus or valleys. In practice neural
+  networks can escape valleys or saddle points. However, they can still pose a
+  serious threat to neural networks as they can have cost functions much
+  greater than the global minimum. Even more dangerous are flat regions. Small
+  weights are choosen in part to avoid these flat regions in the performance
+  surface. 
+</p>
+
+<p>
+  In general more flat areas are problematic for the rate of convergence. It
+  takes a lot of iterations for the algorithm to get over more flat regions.
+  The first thought may be to increase the learning rate of the algorithm but
+  too high of a learning rate will result in divergence at steeper areas of the
+  performance surface. When this algorithm with a high learning rate goes
+  across something like a valley it will oscillate out of control and diverge.
+  An example of this is shown below. 
+</p>
+
+<img class='center-image' src='/static/img/ml/crash_course/momentum.png'></img>
+
+<p>
+  At this point it should be clear that several modifications to
+  backpropagation need to be made to allow solve this oscillation problem and
+  to fix the learning rate issue.
+</p>
+
+<h3>Momentum</h3>
+
+<p>
+  For this concept it is useful to think of the progress of the algorithm
+  as a point traveling over the performance surface. Momentum in neural
+  networks is very much like momentum in physics. And since our 'particle'
+  traveling the performance surface has unit mass, momentum is just the
+  velocity. The equation of backprop including momentum is given by the
+  following. 
+
+  $$
+  \textbf{v}(k) = \lambda \textbf{v}(k-1) - \alpha \nabla J(\textbf{x}, \mathbf{\theta}(k-1))
+  $$
+  $$
+  \mathbf{\theta} (k) = \mathbf{\theta}(k-1) + \textbf{v}(k)
+  $$
+  The effect of applying this can be seen in the image below. Momentum dampens
+  the oscillations and tends to make the tragetory continue in the same
+  direction. Values of \lambda closer to 1 give the tragectory more momentum.
+  Keep in mind \( \lambda \) itself is not momentum and is more like a force of
+  friction for the particles tragectory. Typical values for \( \lambda \) are 0.5,
+  0.9, 0.95 and 0.99.
+</p>
+
+<img class='center-image' src='/static/img/ml/crash_course/momentum_working.png'></img>
+
+<p>
+  Nesterov momentum is an improvement on the standard momentum algorithm. With
+  Nesterov momentum the gradient of the cost function is considered after the
+  momentum has been applied to the network parameters at that iteration. So now
+  we have:
+  $$
+  \textbf{v}(k) = \lambda \textbf{v}(k-1) - \alpha \nabla J(\textbf{x},
+  \mathbf{\theta}(k-1) + \lambda \textbf{v}(k-1))
+  $$
+  $$
+  \mathbf{\theta} (k) = \mathbf{\theta}(k-1) + \textbf{v}(k)
+  $$
+  In general, Nesterov momentum outperforms standard momentum. 
+</p>

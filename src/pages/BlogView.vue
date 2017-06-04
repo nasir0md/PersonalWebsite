@@ -222,7 +222,7 @@
                     }
                     
                     return {
-                        'title': 'Invalid',
+                        'title': 'hmm',
                         'desc': 'Invalid'
                     };
                 }
@@ -322,7 +322,15 @@
                     },
                     'machine_learning/neural_networks/4_loss_functions': {
                         title: 'Neural Networks | Loss Functions',
-                        desc: 'Sources used to make this neural network tutorial'
+                        desc: 'Using loss functions in neural networks'
+                    },
+                    'machine_learning/neural_networks/5_regularization': {
+                        title: 'Neural Networks | Regularization',
+                        desc: 'Regularization in neural networks'
+                    },
+                    'machine_learning/neural_networks/6_optimization_in_practice': {
+                        title: 'Neural Networks | Optimization',
+                        desc: 'Optimization in practice in neural networks'
                     },
                     'machine_learning/neural_networks/sources': {
                         title: 'Neural Networks | Sources',
@@ -339,6 +347,8 @@
                     'machine_learning/neural_networks/2_training_neural_networks',
                     'machine_learning/neural_networks/3_backpropagation',
                     'machine_learning/neural_networks/4_loss_functions',
+                    'machine_learning/neural_networks/5_regularization',
+                    'machine_learning/neural_networks/6_optimization_in_practice',
                     'machine_learning/neural_networks/sources'
                 ]
             }

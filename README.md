@@ -19,3 +19,7 @@ Be sure to run `npm run build` to compile source files.
 Then commit files to the GitHub repository. 
 Finally run the deployment script `sh deploy.sh`
 
+
+## watch_static.sh
+This script is needed for hot reload to the static content. To run this script
+inotify needs to be installed. 

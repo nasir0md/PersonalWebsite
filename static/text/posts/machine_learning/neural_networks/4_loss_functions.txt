@@ -1,6 +1,6 @@
 TITLE:Loss and Cost Functions
 |
-NEXT:sources
+NEXT:5_regularization
 |
 PREV:3_backpropagation
 |
@@ -142,7 +142,101 @@ META: tmp
 <p>
   And while I will not go over it here know that this function has calculable
   derivatives as well. This allows it to be used just the same as the mean
-  squared error loss function in the previous example. The choice of the
-  correct loss function is dependent on the problem and is a decision you must
-  make in designing your neural network.
+  squared error loss function in the previous example. However, the cross
+  entropy loss function has many desirable properties that the mean squared
+  error does not have when it comes to classification. 
+</p>
+
+<p>
+  Let's say you are trying to predict the classes cat or dog. Your neural
+  network has a softmax function on the output layer (as it should because this
+  is a classification problem). Let's say for two inputs \(
+  \textbf{x}_1,\textbf{x}_2 \) the network respectively outputs
+  $$ 
+  \textbf{a}_1 = 
+  \begin{bmatrix}
+    0.55 \\
+    0.45
+  \end{bmatrix},
+  \textbf{a}_2 = 
+  \begin{bmatrix}
+    0.44 \\
+    0.56
+  \end{bmatrix}
+  $$
+  where the corresponding labels are
+  $$
+  \textbf{y}_1 = 
+  \begin{bmatrix}
+    1 \\
+    0
+  \end{bmatrix},
+  \textbf{y}_2 = 
+  \begin{bmatrix}
+    0 \\
+    1
+  \end{bmatrix}
+  $$
+
+  As you can see the network only barely classified each result as correct. But
+  by only looking at the classification error the accuracy would have been
+  100%. 
+</p>
+
+<p>
+  Take a similar example where the output of the network is just slightly off.
+  $$ 
+  \textbf{a}_1 = 
+  \begin{bmatrix}
+    0.51 \\
+    0.49
+  \end{bmatrix},
+  \textbf{a}_2 = 
+  \begin{bmatrix}
+    0.41 \\
+    0.59
+  \end{bmatrix},
+  \textbf{y}_1 = 
+  \begin{bmatrix}
+    0 \\
+    1
+  \end{bmatrix},
+  \textbf{y}_2 = 
+  \begin{bmatrix}
+    1 \\
+    0
+  \end{bmatrix}
+  $$
+
+  Now in this case we would have a 0% classification accuracy.
+</p>
+  
+<p>
+  Let's see what our cross entropy function would have given us in each
+  situation when averaged across the two samples.
+
+  In the first situation:
+  $$
+  -(\log(0.55) + \log(0.56)) / 2 = 0.59
+  $$
+
+  In the second situation: 
+  $$
+  -(\log(0.49) + \log(0.59)) / 2 = 0.62
+  $$
+
+  Clearly this result makes a lot more sense for our situation.
+</p>
+
+<p>
+  Overall, the choice of the correct loss function is dependent on the problem and is a
+  decision you must make in designing your neural network. However, always keep
+  in mind the general form for stochastic gradient descent will have the form 
+  $$
+  \mathbf{W} (k) = \textbf{W}(k-1) - \alpha \nabla J(\textbf{x}_k, \textbf{W}(k-1))
+  $$
+  $$
+  \mathbf{b} (k) = \textbf{b}(k-1) - \alpha \nabla J(\textbf{x}_k, \textbf{b}(k-1))
+  $$
+  Where \( J \) is the loss function. 
 </p>

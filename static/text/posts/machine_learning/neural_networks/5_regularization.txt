@@ -1,0 +1,141 @@
+TITLE:Regularization
+|
+NEXT:6_optimization_in_practice
+|
+PREV:4_loss_functions
+|
+Date:Feb 8, 2017
+|
+META: tmp
+|
+
+<p>
+  When we design a machine learning algorithm the goal is to have the algorithm
+  to perform well on unseen inputs. Regularization deals with this, performing
+  well on the test set which the algorithm has never seen before, sometimes at
+  the cost of the training accuracy. Regularization is the process of putting
+  a penalty terms in the cost function to help the model generalize to new
+  inputs. Regularization does this by controlling the complexity of the model
+  and preventing overfitting. 
+</p>
+
+<p>
+  Given a cost function \( J(\theta, \textbf{X}, \textbf{y}) \) we can write
+  the regularized version as follows. (Remember \( \theta \) notates the
+  parameters of the model).
+  $$
+  \hat{J}(\theta, \textbf{X}, \textbf{y}) = J(\theta, \textbf{X}, \textbf{y}) +
+  \alpha \Omega(\theta)
+  $$
+
+  The \( \Omega \) term is the parameter norm penalty and operates on the
+  parameters of the network. The constant \( \alpha \in [0, \infty) \) controls
+  the effect of the regularization on the cost function. This is a
+  hyperparameter that must be tuned. Also another note, when we refer to the
+  parameters of the model in regularization we typically only refer to the
+  weights of the network not the biases.
+</p>
+
+<h3>\(L^2\) Parameter Regularization</h3>
+
+<p>
+  This type of regularization defines the parameter norm penalty as the
+  following. 
+  $$
+  \Omega(\theta) = \frac{1}{2} \lVert \textbf{w} \rVert _2^2
+  $$
+  and the total objective function:
+  $$
+  \hat{J}(\theta, \textbf{X}, \textbf{y}) = J(\theta, \textbf{X}, \textbf{y}) +
+  \frac{\alpha}{2} \textbf{w}^T \textbf{w}
+  $$
+
+  Evidently this regularization will penalize larger weights. In theory this
+  should help prevent the model from overfitting. It is common to employ \( L^2
+  \) regularization when the number of observations is less than the number of
+  features. Similarily to \( L^2 \) regularization is \( L^1 \) which you can
+  probably expect is just \( \Omega(\theta) = \frac{1}{2} \lVert \textbf{w}
+  \rVert _1 \). In almost all cases \( L^2 \) regularization outperforms \( L^1
+  \) regularization.
+</p>
+
+<h3>Early Stopping</h3>
+
+<p>
+  Take a look at the below graph showing validation loss versus training loss.
+  It should be clear that at a certain point the model overfits on the training
+  data and begins to suffer in validation accuracy despite this not being
+  reflected in the training.
+</p>
+
+<img class='center-image' src='/static/img/ml/crash_course/valid_train_loss.png'></img>
+
+<p>
+  The solution to this is to simply stop training once the validation set loss
+  has not improved for some time. Just like \( L^1 \) and \( L^2 \)
+  regularization this is a method of decreasing overfitting on the training
+  dataset. 
+</p>
+
+<h3>Ensemble Methods</h3>
+<p>
+  <i>Bagging</i> (short for bootstrap aggregation, a term in statistics) is the
+  technique of making a model generalize better by combining multiple weaker
+  learners into a stronger learner. Using this technique, several models are
+  trained seperately and their results are averaged for the final result. This
+  ideal of one model being composed of several independent models is called an
+  ensemble method. Ensemble methods are a great way to fine tune your model to
+  make it generalize better on test data. Ensemble methods apply to more than
+  just neural networks and can be used on any machine learning technique.
+  Almost all machine learning competitions are won using ensemble methods.
+  Often times these ensembles can be comprised of dozens and dozens of
+  learners. 
+</p>
+
+<p>
+  The idea is that if each model is trained independently of each other they
+  will have their own errors on the test set. However, when the results of the
+  ensemble learners are averaged the error should approach zero. 
+</p>
+
+<p>
+  Using bagging we can even train a multiple models on the same dataset but be
+  sure that the models were trained independently. With bagging \( k \)
+  different datasets of the same size are constructed from the original dataset
+  for \( k \) learners. Each dataset is constructed by sampling from the
+  original dataset with some probability with replacement. So there will be
+  duplicate and missing values in the constructed dataset. 
+</p>
+
+<p>
+  Furthermore, differences in model initialization and hyperparameter tuning
+  can make ensembles of neural networks particularly favorable. 
+</p>
+
+<h3>Dropout</h3>
+
+<p>
+  Dropout is a very useful form of regularization when used on deep neural
+  networks. At a high level dropout can be thought of randomly removing neurons
+  from some layer of the network with a probability \( p \). Removing certain
+  neurons helps prevent the network from overfitting.
+</p>
+
+<p>
+  In reality dropout is a form of ensemble learning. Dropout trains an ensemble
+  of networks where various neurons have been removed and then averages the
+  results, just as before. Below is an image that may help visualize what
+  dropout does to a network.
+</p>
+
+<img class='center-image' src='/static/img/ml/crash_course/dropout.jpeg'></img>
+
+<p>
+  Dropout can be applied to input units and hidden units. The hyperparameter of
+  dropout at a given layer is the probability with which a neuron is dropped.
+  Furthermore, another major benifit of dropout is that the computational cost
+  of using it is relatively low. Finding the correct probability will require
+  parameter tuning because a probability too low and dropout will have no
+  effect, while too high and the network will be unable to learn anything. 
+</p>
+
