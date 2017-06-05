@@ -53,7 +53,7 @@ META: tmp
   Evidently this regularization will penalize larger weights. In theory this
   should help prevent the model from overfitting. It is common to employ \( L^2
   \) regularization when the number of observations is less than the number of
-  features. Similarily to \( L^2 \) regularization is \( L^1 \) which you can
+  features. Similarly to \( L^2 \) regularization is \( L^1 \) which you can
   probably expect is just \( \Omega(\theta) = \frac{1}{2} \lVert \textbf{w}
   \rVert _1 \). In almost all cases \( L^2 \) regularization outperforms \( L^1
   \) regularization.
@@ -82,7 +82,7 @@ META: tmp
   <i>Bagging</i> (short for bootstrap aggregation, a term in statistics) is the
   technique of making a model generalize better by combining multiple weaker
   learners into a stronger learner. Using this technique, several models are
-  trained seperately and their results are averaged for the final result. This
+  trained separately and their results are averaged for the final result. This
   ideal of one model being composed of several independent models is called an
   ensemble method. Ensemble methods are a great way to fine tune your model to
   make it generalize better on test data. Ensemble methods apply to more than
@@ -133,7 +133,7 @@ META: tmp
 <p>
   Dropout can be applied to input units and hidden units. The hyperparameter of
   dropout at a given layer is the probability with which a neuron is dropped.
-  Furthermore, another major benifit of dropout is that the computational cost
+  Furthermore, another major benefit of dropout is that the computational cost
   of using it is relatively low. Finding the correct probability will require
   parameter tuning because a probability too low and dropout will have no
   effect, while too high and the network will be unable to learn anything. 

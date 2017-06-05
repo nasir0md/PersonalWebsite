@@ -2,7 +2,7 @@ TITLE:Building Blocks of a Neural Network. The Neuron
 |
 NEXT:
 |
-PREV:3_backpropagation
+PREV:7_theory_epilogue
 |
 Date:Feb 8, 2017
 |
@@ -13,6 +13,24 @@ META: tmp
   <li>
     <a href='http://hagan.okstate.edu/NNDesign.pdf'>
       Neural Network Design by Hagan
+    </a>
+  </li>
+  <li>
+    <a href='https://www.amazon.com/Deep-Learning-Adaptive-Computation-Machine/dp/0262035618'>
+      Deep Learning (Adaptive Computation and Machine Learning Series) by
+      Goodfellow, Bengio, Courville
+    </a> 
+  </li>
+  <li>
+    <a href='http://cs231n.github.io/'>CS231n Convolutional Neural Networks for
+    Visual Recognition Class Notes</a>
+  </li>
+  <li>
+    <a
+    href='https://jamesmccaffrey.wordpress.com/2013/11/05/why-you-should-use-cross-entropy-error-instead-of-classification-error-or-mean-squared-error-for-neural-network-classifier-training/'>
+      Why You Should Use Cross-Entropy Error Instead Of Classification Error Or
+      Mean Squared Error For Neural Network Classifier Training by James D.
+      McCaffery
     </a>
   </li>
 </ul>

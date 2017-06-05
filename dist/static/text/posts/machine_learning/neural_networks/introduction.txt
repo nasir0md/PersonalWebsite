@@ -10,20 +10,20 @@ META: tmp
 |
 <p>
   When one writes a computer program they break their problem into multiple
-  steps and define these procedural steps in their code for the computer to
+  steps and define procedural steps in their code for the computer to
   execute. The beauty of machine learning is the programmer does not tell the
   computer how to solve the problem. Instead, the computer learns how to solve
-  the problem on it's own from <b>data</b>. 
+  the problem from <b>data</b>. 
 </p>
 
 <p>
   If you have heard of machine learning before, chances are you have heard of
   neural networks as well. Neural networks are often called <b>artificial
   neural networks</b> because their structure is loosely modeled off of the
-  neuron structure of the brain. The human brain contains around 100 billion
+  neuron structure in the brain. The human brain contains around 100 billion
   neurons. Each neuron is a small cell that transmits signals. The neurons are
-  connected through dendrites that allow each to communicate. These small
-  neuron units and their connections between each other gives humans the
+  connected to each other through dendrites. These small
+  neuron units and their connections give humans the
   capability to think. 
 </p>
 
@@ -40,11 +40,11 @@ META: tmp
   So why are neural networks so popular? Chances are you have heard of a neural
   network but have no idea what gradient boosting or state vector machines are
   despite the fact that they are all machine learning algorithms that learn
-  from data. Starting around 2012, neural networks exploded in popularity.
+  from data. In recent years, neural networks have exploded in popularity.
   Cheaper and more powerful hardware allowed thousands and then millions of
-  neurons. This renessiance in machine learning has allowed countless
+  neurons in artificial neural networks. This renaissance in machine learning has allowed countless
   breakthroughs in neural networks and their applications. The second reason is
-  the versitility of neural networks. Neural networks have found applications
+  the versatility of neural networks. Neural networks have found applications
   in text, speech, images and much more. They are a useful machine learning
   tool in a variety of situations. 
 </p>

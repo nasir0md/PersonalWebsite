@@ -17,7 +17,7 @@ META: tmp
 
 <p>
   With our last network we were able to show that a single neuron network
-  creates a linear decision boundry. This is certainly a powerful tool and
+  creates a linear decision boundary. This is certainly a powerful tool and
   capable of solving many problems, but obviously is incapable of solving
   non-linear functions. For instance, say we wanted to create a neural network
   to learn the XOR function. Let's plot the results of the XOR function (\( x_1
@@ -283,7 +283,7 @@ Where we have:
 </p>
 
 <p>
-  To clarify, backpropagation is the step of propogating the sensitivities
+  To clarify, backpropagation is the step of propagating the sensitivities
   backwards in the network. SGD is the process of actually updating the
   parameters of the network.
 </p>

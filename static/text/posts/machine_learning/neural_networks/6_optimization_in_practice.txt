@@ -154,10 +154,10 @@ META: tmp
   \mathbf{\theta} (k) = \mathbf{\theta}(k-1) + \textbf{v}(k)
   $$
   The effect of applying this can be seen in the image below. Momentum dampens
-  the oscillations and tends to make the tragetory continue in the same
-  direction. Values of \lambda closer to 1 give the tragectory more momentum.
+  the oscillations and tends to make the trajectory continue in the same
+  direction. Values of \lambda closer to 1 give the trajectory more momentum.
   Keep in mind \( \lambda \) itself is not momentum and is more like a force of
-  friction for the particles tragectory. Typical values for \( \lambda \) are 0.5,
+  friction for the particles trajectory. Typical values for \( \lambda \) are 0.5,
   0.9, 0.95 and 0.99.
 </p>
 

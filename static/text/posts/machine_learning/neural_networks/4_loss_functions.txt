@@ -11,7 +11,7 @@ META: tmp
 
 <p>
   In the example on the last page we relied on using the mean squared error for
-  our <i>cost function</i>. This cost function is what we minimized through stochiastic
+  our <i>cost function</i>. This cost function is what we minimized through stochastic
   gradient descent (SGD) and tells how good the model is doing given the
   parameters.
 </p>
@@ -37,8 +37,8 @@ META: tmp
 <p>
   We are given a set of data points \( \textbf{X} \) and their corresponding
   labels \( \textbf{Y} \). How might we represent the labels? A given point is
-  either class one or class two. The boundry is distinct. If you remember the
-  linear classification boundry from earlier we said that any output greater
+  either class one or class two. The boundary is distinct. If you remember the
+  linear classification boundary from earlier we said that any output greater
   than 0 was class one and any output less than 0 was class two. However, that
   does not really work here. A given data point \( \textbf{x}_i \) is simply
   class one or class two. We should not have data points be more class one than
@@ -66,7 +66,7 @@ META: tmp
   \end{bmatrix} \) where \(c_1, c_2 \) are just constants. We can say the
   network classified the input as class one if \( c_1 > c_2 \) or classified as
   class two if \( c_2 > c_1 \). Let's use the softmax function to interpret
-  these results in a more probablistic manner.
+  these results in a more probabilistic manner.
 </p>
 
 <p>
@@ -76,8 +76,8 @@ META: tmp
   $$
 
   Where \( c_i \) is the scalar output of the \(ith\) element of the output
-  vector. Think of the numerator as converting the output to an unnormalized
-  probablity. Think of the denominator as normalizing the probability. This
+  vector. Think of the numerator as converting the output to an un-normalized
+  probability. Think of the denominator as normalizing the probability. This
   means that for every output \( i \) the loss function will have an output
   between 0 and 1. Furthermore, the sum of each output \( i \) will sum to one
   just as with any probability distribution.
@@ -89,7 +89,7 @@ META: tmp
   We need to take one more step to use the softmax function as a loss function. This
   requires some knowledge of what entropy is. Think about this example. Say you
   were having a meal at EVK, one of the USC dining halls. If your meal is bad
-  this event does not carry much information as the meals are almost garunteed
+  this event does not carry much information as the meals are almost guaranteed
   to be bad at EVK. However, if the meal is good this event carries a lot of
   information as it is out of the ordinary. You would not tell anyone about the bad meal
   because that is expected, but you would tell everyone about the good meal.
