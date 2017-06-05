@@ -222,7 +222,7 @@
                     }
                     
                     return {
-                        'title': 'hmm',
+                        'title': 'umm',
                         'desc': 'Invalid'
                     };
                 }
@@ -332,6 +332,10 @@
                         title: 'Neural Networks | Optimization',
                         desc: 'Optimization in practice in neural networks'
                     },
+                    'machine_learning/neural_networks/7_theory_epilogue': {
+                        title: 'Neural Networks | Epilogue',
+                        desc: 'The conclusion to the section on neural network theory'
+                    },
                     'machine_learning/neural_networks/sources': {
                         title: 'Neural Networks | Sources',
                         desc: 'Sources used to make this neural network tutorial'
@@ -349,6 +353,7 @@
                     'machine_learning/neural_networks/4_loss_functions',
                     'machine_learning/neural_networks/5_regularization',
                     'machine_learning/neural_networks/6_optimization_in_practice',
+                    'machine_learning/neural_networks/7_theory_epilogue',
                     'machine_learning/neural_networks/sources'
                 ]
             }

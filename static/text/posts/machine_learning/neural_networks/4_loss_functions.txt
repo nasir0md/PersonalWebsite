@@ -231,12 +231,16 @@ META: tmp
 <p>
   Overall, the choice of the correct loss function is dependent on the problem and is a
   decision you must make in designing your neural network. However, always keep
-  in mind the general form for stochastic gradient descent will have the form 
+  in mind the general form for stochastic gradient descent will have the form:
   $$
   \mathbf{W} (k) = \textbf{W}(k-1) - \alpha \nabla J(\textbf{x}_k, \textbf{W}(k-1))
   $$
   $$
   \mathbf{b} (k) = \textbf{b}(k-1) - \alpha \nabla J(\textbf{x}_k, \textbf{b}(k-1))
   $$
-  Where \( J \) is the loss function. 
+  Where \( J \) is the loss function. Furthermore, the same form of
+  backpropagation equations will still apply with backpropagating the
+  sensitivities through the network. 
 </p>
+
+
