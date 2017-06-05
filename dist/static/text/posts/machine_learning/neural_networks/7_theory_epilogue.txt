@@ -1,0 +1,45 @@
+TITLE:Theory Epilogue
+|
+NEXT:sources
+|
+PREV:6_optimization_in_practice
+|
+Date:Feb 8, 2017
+|
+META: tmp
+|
+<p>
+  These past sections have covered a lot of material. It will take a while to
+  have a true understanding of this content. However, the best way is through
+  practice. Hopefully after all that you learned you will be able to properly
+  use modern neural network libraries such as Tensorflow, Theano or Keras. 
+</p>
+
+<p>
+  While MLP networks themselves are important building blocks they are
+  not often used in practice. Other statistical learning machines are typically
+  used instead. The true power of neural networks comes with the flexibility of
+  neural networks when they form more complex networks. 
+  You now have the theoretical basis to proceed onto more
+  complex and powerful networks such as Convolutional Neural Networks or
+  Recurrent Neural Networks which are at the forefront of machine learning
+  research.
+</p>
+
+<p>
+  I hope you found this lesson to be useful. Feel free to email <a
+  href='mailto:me@andrewszot.com'>me@andrewszot.com</a> with any questions
+  or concerns about the lesson. 
+</p>
+
+<p>
+  If you want a more in depth treatment of neural
+  networks I would highly recommend <a
+  href='http://hagan.okstate.edu/NNDesign.pdf'>Neural Network Design by
+  Hagan</a> (albiet the book is a little bit outdated but I thought the level
+  and speed of math in the book was perfect for me). Or there is also <a
+  href='https://www.amazon.com/Deep-Learning-Adaptive-Computation-Machine/dp/0262035618'>Deep
+  learning by Goodfellow, Bengio, and Courville</a> which is a modern approach
+  to deep learning although I thought the math could get a little bit difficult
+  and too theoretical at times. 
+</p>

@@ -73,7 +73,9 @@ Adaptive Linear Neuron (ADALINE) network.
     1
   \end{bmatrix} \) notice that the dot product of these two vectors gives the
   same result as before 
+
   $$ a = \textbf{x}^T \textbf{z} = \textbf{wp} + b $$
+
   Transposing the \( \textbf{x} \) term is to simply make the product of \(
   \textbf{x} \) and \( \textbf{z} \) possible to compute and while keeping both
   vectors as column vectors. Remember the rules of matrix multiplication!
@@ -87,10 +89,12 @@ Adaptive Linear Neuron (ADALINE) network.
   the squared error. The expected value here is the expected value of a given
   input given consideration of all input/output pairs. Mathematically we can
   write this as
-  $$ F(x) = E[e^2] = E[(t-a)^2] = E[(t-\textbf{x}^T \textbf{z})^2] $$
+
+  $$ J(\textbf{x}) = E[e^2] = E[(t-a)^2] = E[(t-\textbf{x}^T \textbf{z})^2] $$
+
   Expanding this expression then gives the following. Note that we can use the
   linearity of expected value to split the expected value terms apart.
-  $$ F(x) = E[t^2 - 2 t \textbf{x}^T \textbf{z} + \textbf{x}^T \textbf{z} \textbf{z}^T \textbf{x} ] $$
+  $$ J(\textbf{x}) = E[t^2 - 2 t \textbf{x}^T \textbf{z} + \textbf{x}^T \textbf{z} \textbf{z}^T \textbf{x} ] $$
 
   Note that in the last term all of the funky buisness done with the transposes is just to make
   the matrix multiplication work out. \( \textbf{x}^T \textbf{z}
@@ -98,12 +102,12 @@ Adaptive Linear Neuron (ADALINE) network.
   \textbf{z}^T \textbf{x} \) is. Next apply use the linearity of expected
   value.
 
-  $$ F(x) = E[t^2] - 2\textbf{x}^T E[t\textbf{z}] + \textbf{x}^T
+  $$ J(\textbf{x}) = E[t^2] - 2\textbf{x}^T E[t\textbf{z}] + \textbf{x}^T
   E[\textbf{z}\textbf{z}^T]\textbf{x} $$
 
   Let's just simplify the form a little bit by making the following
   substitutions.
-  $$ F(\textbf{x}) = c - 2\textbf{x}^T\textbf{h} + \textbf{x}^T\textbf{Rx} $$
+  $$ J(\textbf{x}) = c - 2\textbf{x}^T\textbf{h} + \textbf{x}^T\textbf{Rx} $$
   where
   $$ c = E[t^2], \textbf{h} = E[t\textbf{z}], \textbf{R} = E[\textbf{z} \textbf{z}^T] $$
 </p>
@@ -114,7 +118,7 @@ Adaptive Linear Neuron (ADALINE) network.
   our goal. We can do this by just finding the gradient. of the function and
   setting it equal to \( 0 \).
 
-  $$ \nabla F(\textbf{x}) = \nabla ( c - 2\textbf{x}^T\textbf{h} +
+  $$ \nabla J(\textbf{x}) = \nabla ( c - 2\textbf{x}^T\textbf{h} +
   \textbf{x}^T\textbf{Rx} ) = -2\textbf{h} + 2\textbf{Rx} = 0$$
 
   $$ \textbf{R} \textbf{x} = \textbf{h} $$
@@ -125,17 +129,19 @@ Adaptive Linear Neuron (ADALINE) network.
 
 <p>
   So \( \textbf{R}^{-1} \textbf{h} \) is the minimum point of our mean square
-  error \( F(\textbf{x} ) \). However, in practice we do not actually compute
+  error \( J(\textbf{x} ) \). However, in practice we do not actually compute
   these values \(\textbf{R}^{-1}\) and \(\textbf{h}\) but instead approximate
-  the gradient of \( F(\textbf{x}) \) numerically. We can do so through the
-  Least Mean Squares LMS algorithm. 
+  the gradient of \( J(\textbf{x}) \) numerically. We can do so through the
+  Least Mean Squares LMS algorithm. We will also shortely see that
+  approximating this numerically will have a number of other benifits when
+  expanding to more complex functions.
 </p>
 
 <p>
-  The gradient of \( F(\textbf{x}) \) can be approximated by 
+  The gradient of \( J(\textbf{x}) \) is given by:
 
-  $$ F(\textbf{x}) = (t(k) - a(k))^2 = e^{2} (k) $$
-  $$ \nabla F(\textbf{x}) = \nabla e^{2} (k) $$
+  $$ J(\textbf{x}) = (t(k) - a(k))^2 = e^{2} (k) $$
+  $$ \nabla J(\textbf{x}) = \nabla e^{2} (k) $$
 
   Where \( k \) is the iteration number. Instead of computing the expected
   value of the squared error we are approximating it at some iteration \( k \) 
@@ -204,7 +210,7 @@ Adaptive Linear Neuron (ADALINE) network.
   We can now rewrite the original equation for the gradient of the squared
   error. 
 
-  $$ \nabla F(\textbf{x}) = \nabla e^2 (k) = -2e(k)\textbf{z}(k) $$
+  $$ \nabla J(\textbf{x}) = \nabla e^2 (k) = -2e(k)\textbf{z}(k) $$
 
   At iteration \( k \) all we have to do is multiply the input \( p_j \) by the
   error.
@@ -212,9 +218,9 @@ Adaptive Linear Neuron (ADALINE) network.
 
 <p>
   Our next step is to "descend" this gradient to find the minimum points. We
-  know that our gradient is in direction \( \nabla F(\textbf{x}) \) therefore,
+  know that our gradient is in direction \( \nabla J(\textbf{x}) \) therefore,
   for a given point \( \textbf{x}_k \) the direction of the minimum point is \(
-  \textbf{x}_k - \alpha \nabla F( \textbf{x}_k) \) where \( \alpha \) is how
+  \textbf{x}_k - \alpha \nabla J( \textbf{x}_k) \) where \( \alpha \) is how
   far we go down the gradient. So we can say that the next iteration should be
   the previous iteration after taking this step in the direction of the
   gradient. We can write this as follows.

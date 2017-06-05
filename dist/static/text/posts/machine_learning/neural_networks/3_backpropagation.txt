@@ -45,10 +45,10 @@ META: tmp
   \) is the layer index. Except this time calculating the derivatives is more
   complex. 
 
-  $$ w_{i,j}^{m}(k+1) = w_{i,j}^{m}(k) - \alpha \frac{ \partial F}{\partial
+  $$ w_{i,j}^{m}(k+1) = w_{i,j}^{m}(k) - \alpha \frac{ \partial J}{\partial
   w_{i,j}^{m}} $$
 
-  $$ b_{i}^{m}(k+1) = b_{i}^{m}(k) - \alpha \frac{ \partial F}{\partial
+  $$ b_{i}^{m}(k+1) = b_{i}^{m}(k) - \alpha \frac{ \partial J}{\partial
   b_{i}^{m}} $$
 </p>
 
@@ -59,10 +59,13 @@ META: tmp
   Let's apply the chain rule knowing that \( n_{i}^{m} \) can be written as \(
   n_{i}^{m} ( w_{i,j} ) \). 
 
-  $$ \frac{ \partial F}{\partial w_{i,j}^{m}} = \frac{\partial F}{\partial
-  n_{i}^{m}} * \frac{\partial n_{i}^{m}}{\partial w_{i,j}^{m}}$$
+  $$ 
+  \frac{ \partial J}{\partial w_{i,j}^{m}} = \frac{\partial J}{\partial
+  n_{i}^{m}} * \frac{\partial n_{i}^{m}}{\partial w_{i,j}^{m}}
+  $$
 
-  $$ \frac{ \partial F}{\partial b_{i}^{m}} = \frac{\partial F}{\partial n_{i}^{m}} *
+  $$ 
+  \frac{ \partial J}{\partial b_{i}^{m}} = \frac{\partial J}{\partial n_{i}^{m}} *
   \frac{\partial n_{i}^{m}}{\partial b_{i}^{m}} $$
 </p>
 
@@ -78,9 +81,10 @@ META: tmp
 </p>
 
 <p>
-  Now let's assign \( \frac{\partial F}{\partial n_{i}^{m}} \) to the arbitrary
-  value \( s_{i}^{m} \) which we still do not know.
-  $$ \frac{\partial F}{\partial n_{i}^{m}} = s_{i}^{m} $$
+  Now let's assign \( \frac{\partial J}{\partial n_{i}^{m}} \) to the arbitrary
+  value \( s_{i}^{m} \) which we still do not know. We will call this term the
+  sensitivity.
+  $$ \frac{\partial J}{\partial n_{i}^{m}} = s_{i}^{m} $$
 </p>
 
 <p>
@@ -96,12 +100,12 @@ META: tmp
   $$ \textbf{b}^{m}(k+1) = \textbf{b}^{m}(k) - \alpha \textbf{s}^{m} $$
 
 Where we have:
-  $$\textbf{s}^{m} = \frac{\partial F}{\partial n^{m}} = 
+  $$\textbf{s}^{m} = \frac{\partial J}{\partial n^{m}} = 
   \begin{bmatrix}
-    \frac{\partial F}{\partial n_{1}^{m}} \\
-    \frac{\partial F}{\partial n_{2}^{m}} \\
+    \frac{\partial J}{\partial n_{1}^{m}} \\
+    \frac{\partial J}{\partial n_{2}^{m}} \\
     \vdots \\
-    \frac{\partial F}{\partial n_{S^{m}}^{m}} \\
+    \frac{\partial J}{\partial n_{S^{m}}^{m}} \\
   \end{bmatrix} $$
 </p>
 
@@ -155,11 +159,13 @@ Where we have:
 
   $$
   \frac{\partial n_{i}^{m+1}}{\partial n_{j}^{m}} = w_{i,j}^{m} \frac{\partial
-    f^{m}(n_{j}^{m})}{\partial n_{j}^{m}} = w_{i,j}^{m} f^{m}(n_{j}^{m})
+    f^{m}(n_{j}^{m})}{\partial n_{j}^{m}} = w_{i,j}^{m} D^m(n_{j}^{m})
   $$
   
   Where we have \( \frac{\partial f^{m}(n_{j}^{m})}{\partial n_{j}^{m}} =
-  f^{m}(n_{j}^{m}) \)
+  D^m(n_{j}^{m}) \) just to make the notation look easier. Note that \(
+  d^m(n_j^m) \) is evaluating the derivative of \( f^m \) for the value \(
+  n_j^m \). Doing this is easy for computers. 
 </p>
 
 <p>
@@ -168,30 +174,30 @@ Where we have:
 
   $$ 
   \frac{\partial \textbf{n}^{m+1}}{\partial \textbf{n}^{m}} = \textbf{W}^{m +
-  1} \textbf{F}^{m} (\textbf{n}^{m})
+  1} \textbf{D}^m (\textbf{n}^{m})
   $$
 </p>
 
 <p>
   Simplify the original sensitivity term.
   $$ 
-  \textbf{s}^{m} = \frac{\partial F}{\partial \textbf{n}^{m}} = 
+  \textbf{s}^{m} = \frac{\partial J}{\partial \textbf{n}^{m}} = 
   \left( \frac{\partial \textbf{n}^{m+1}}{\partial \textbf{n}^{m}} \right)^{T}
-  \frac{\partial F}{\partial \textbf{n}^{m + 1}}
+  \frac{\partial J}{\partial \textbf{n}^{m + 1}}
   $$
   $$
   \textbf{s}^{m} = 
-  \left( \textbf{W}^{m + 1} \textbf{F}^{m} (\textbf{n}^{m}) \right)^{T} 
-  \frac{\partial F}{\partial \textbf{n}^{m + 1}} 
+  \left( \textbf{W}^{m + 1} \textbf{D}^m (\textbf{n}^{m}) \right)^{T} 
+  \frac{\partial J}{\partial \textbf{n}^{m + 1}} 
   $$
   $$
   \textbf{s}^{m} = 
-  \textbf{F}^{m} (\textbf{n}^{m}) \left( \textbf{W}^{m + 1} \right)^{T}
-  \frac{\partial F}{\partial \textbf{n}^{m + 1}} 
+  \textbf{D}^m (\textbf{n}^{m}) \left( \textbf{W}^{m + 1} \right)^{T}
+  \frac{\partial J}{\partial \textbf{n}^{m + 1}} 
   $$
   $$
   \textbf{s}^{m} = 
-  \textbf{F}^{m} (\textbf{n}^{m}) \left( \textbf{W}^{m + 1} \right)^{T}
+  \textbf{D}^m (\textbf{n}^{m}) \left( \textbf{W}^{m + 1} \right)^{T}
   \textbf{s}^{m+1}
   $$
 
@@ -205,18 +211,18 @@ Where we have:
   We can just consider this to be the base case for our recursive relation
   where the backpropogation starts.
   $$
-  s_{i}^{M} = \frac{\partial F}{\partial n_{i}^{M}} = 
+  s_{i}^{M} = \frac{\partial J}{\partial n_{i}^{M}} = 
   \frac{ \partial \left( \sum_{j=1}^{S^M} (t_j - a_j)^2 \right)}{\partial n_{i}^{M}} 
   =
   -2(t_j-a_j)\frac{\partial a_i}{\partial n_{i}^{M}}
   $$
   $$
   s_{i}^{M} = -2(t_j-a_j)\frac{\partial f^{M}(n_i^M)}{\partial n_{i}^{M}} =
-  -2(t_j-a_j)f^{M}(n_i^M)
+  -2(t_j-a_j)d^{M}(n_i^M)
   $$
   Or expressed in matrix form.
   $$
-  \textbf{s}^{M} = -2\textbf{F}^{M}(\textbf{n}^M)
+  \textbf{s}^{M} = -2d^{M}(\textbf{n}^M)
   (\textbf{t}-\textbf{a})  
   $$
 </p>
@@ -245,7 +251,7 @@ Where we have:
   sensitivity.
 
   $$
-  \textbf{s}^{M} = -2\textbf{F}^{M}(\textbf{n}^M)
+  \textbf{s}^{M} = -2d^{M}(\textbf{n}^M)
   (\textbf{t}-\textbf{a})  
   $$
 
@@ -253,7 +259,7 @@ Where we have:
 
   $$
   \textbf{s}^{m} = 
-  \textbf{F}^{m} (\textbf{n}^{m}) \left( \textbf{W}^{m + 1} \right)^{T}
+  \textbf{D}^m (\textbf{n}^{m}) \left( \textbf{W}^{m + 1} \right)^{T}
   \textbf{s}^{m+1}
   $$
   For \( m = M-1 \) to \( m = 0 \). Using the sensitivities we can now update
@@ -281,5 +287,4 @@ Where we have:
   backwards in the network. SGD is the process of actually updating the
   parameters of the network.
 </p>
-
 
