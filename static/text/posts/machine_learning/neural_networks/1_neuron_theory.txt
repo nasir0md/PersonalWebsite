@@ -9,7 +9,7 @@ Date:Feb 8, 2017
 META: tmp
 |
 <p>
-  What is a neural network? Let's begin by dissecting the name itself 
+  What is a neural network? Let's begin by dissecting the name itself.
   A network can be though of as a graph and is nothing more than a set of
   vertices or <i>nodes</i> that are connected via edges. An example of a
   network is shown below. 
@@ -43,6 +43,11 @@ META: tmp
 <img class='center-image' src='/static/img/single-neuron.png'></img>
 
 <p>
+  Before we get into the actual intuition of what a neuron is, let's get
+  through the math behind one. 
+</p>
+
+<p>
     The input of the incoming edge is notated as the scalar \( p \). This edge has 
     a weight of the scalar \( w \). The weight is multiplied by the input to form the value 
     \( wp \). This is then sent into the the summation block which sums the 
@@ -59,33 +64,98 @@ META: tmp
     $$ a = f(wp + b) $$
 </p>
 
+
+
+
+
 <p>
-    Let's consider the types of transfer functions that are commonly used. 
-    One of the simplest is the pure linear activation function. This is just
-    your standard \( y = mx + b \) function. In the case of our neuron the 
-    linear function would look like the below. 
+  So what is the intuition behind a neuron? We can view the output of this
+  neuron as making a sort of <i>decision</i>.  This decision is based on the
+  inputs, weights and bias of the neuron. Let's say you are trying to make the
+  decision of if you want to go to a party tonight. Let's say we will in a
+  world where this decision depends on only two factors: are you tired and is
+  your best friend at the party? Note that these factors are simple yes or no
+  questions. We can <i>encode</i> yes as \( 1 \) and no as \( 0 \). 
+</p>
+
+<p>
+  The importance of these two factors will vary a lot from person to person.
+  This corresponds to different weight values. For this neuron say that our
+  activation function is the simple linear function \( f(x) = x \) where we say
+  that any output \( > 0 \) means we should decide to go to the party and any
+  output \( < 0 \) means that we should decide to not go. A normal person would
+  not want to go to a party while tired. We should then make the weight (\(w_0
+  \)) for the are you tired input (\( x_0 \)) be negative. Hopefully the
+  opposite is true about your best so that weight (\(w_1\)) for that input
+  (\(x_1\)) would be positive. 
+</p>
+
+<p>
+  Say that you absolutely hate going out when you are tired and this is far
+  more important than if your best friend is at the party. We could make \(
+  w_0 = -10 \) and \( w_1 = 1 \) to represent this. If you  are tired you will
+  never go out even if your best friend is there \( -10 + 1 < 0 \). However, if
+  your best friend is there but you are not tired you would still go out \( 0 +
+  1 > 0 \). If you were not tired and your best friend wasn't there you would
+  be on the decision boundary and could just choose randomly.
+</p>
+
+<p>
+  We can now incorperate bias to change our decision boundary. When we had no
+  bias in the previous example the decision boundary was 0. If we set the bias
+  to be \( 1 \) the decision boundary will be \( 1 \). A more positive decision
+  boundary means we are less inclined to go to parties given any inputs. Let's
+  change the problem slightly for \( x_1 \) to be the number of your friends
+  that are going. If you generally enjoy going to parties your decision neuron
+  could have \( b = -2 \) and of course you want your friends to be there and
+  do not like going to a party while tired so \( w_0 = -4, w_1 = 1 \). So even
+  if you are tired it would only take three of your friends to be there for you
+  to want to go to the party. But if \( b = 0 \) it would take five friends if
+  you are tired.
+</p>
+
+<p>
+  While we choose the linear action function there are a variety of other
+  activation functions that are employed in neurons. Our simple linear
+  linear activation function would look like the below for input \( p \) and
+  output \( a \). 
 </p>
 
 <img class='center-image' src='/static/img/pure-linear-transform.png'></img>
 
 <p>
-    However, it turns out non-linear functions are <b>vital</b> to the power of
-    neural networks. An important function is the sigmoid function. The sigmoid
-    function is given by 
-    $$ a(n) = \frac{1}{1 + e^{-n}} $$
-    This will in turn look like the below image.
+  Going back to the decision about the party, say there is another person that
+  is trying to predict if you are going to go to the party. The neuron that
+  represents this should evidently be probabilistic so our same hard rule of if
+  the output is greater than \( 1 \) will not apply. We could just take the
+  pure value and based on how positive or negative it is determines how certain
+  you are predicted to go to the party. However, there is a function called the
+  <i>sigmoid</i> function that does a better job of representing these
+  probabilistic processes. Any probability can be represented between 0 and 1.
+  The sigmoid function does just this. Below is an image of the sigmoid
+  function. 
 </p>
-
 <img class='center-image' src='/static/img/sigmoid.png'></img>
 
+
 <p>
-    Notice how this activation function squashes the input between 0 and 1. 
+  So no matter how negative the output is there is always a small chance that
+  you can be predicted to go to the party. This should be intuitive as this
+  outside predicting party does not know how you make decisions and there is
+  always some uncertainty. 
 </p>
 
 <p>
-    Now let's go back to our neuron. A neuron can also have multiple inputs.
-    This corresponds to multiple edges coming into the node. And as before each
-    of these edges must have a corresponding weight. 
+  Neural networks are probabilistic systems and therefore functions like the
+  sigmoid function are a lot more powerful than just the linear activation
+  function. We will see why the sigmoid function and other non-linear functions
+  are so powerful in later lessons.
+</p>
+
+<p>
+  Before moving on let's clean up some of the math behind what we have
+  developed with the neuron so far. Say we have the multiple input neuron
+  pictured below. 
 </p>
 
 <img class='center-image' src='/static/img/ml/crash_course/multiple_input_neuron.png'></img>
@@ -149,12 +219,12 @@ META: tmp
 </p>
 
 <p>
-  Now you might be curious to know why the weight matrix has the subscript
-  \(1\). We will address why this is so in the following example. So far we have 
-  just dealt with one node. An interesting thing we can do is
-  feed the same set of inputs through multiple nodes that each have different
-  weights to produce a set of different output \(a\) values. An illustration of
-  that is shown below.
+  We know that the weights of a neuron control how a decision is made by the
+  neuron. Different weights will give a neuron different decision properties.
+  What if we wanted to work with multiple neurons each having different weights
+  at the same time? We could do this by stacking the neurons into a
+  <i>layer</i> of neurons where the inputs are feed into each neuron in
+  parallel. 
 </p>
 
 <img class='center-image' src='/static/img/ml/crash_course/neuron_layer.png'></img>
@@ -201,6 +271,7 @@ META: tmp
   calculated through the following formula.
   $$ \textbf{a} = f(\textbf{W} \textbf{p} + \textbf{b})$$
 </p>
+
 
 <p>
   The next extension is to add layers of neurons. 
