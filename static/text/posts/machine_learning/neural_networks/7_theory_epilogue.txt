@@ -16,7 +16,7 @@ META: tmp
 </p>
 
 <p>
-  While MLP networks themselves are important building blocks they are
+  While standard feedforward networks themselves are important building blocks they are
   not often used in practice. Other statistical learning machines are typically
   used instead. The true power of neural networks comes with the flexibility of
   neural networks when they form more complex networks. 

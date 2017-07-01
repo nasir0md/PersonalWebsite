@@ -42,7 +42,8 @@ META: tmp
   In mini-batch training a set of the samples are used to compute the cost
   gradient. The average of these gradients for each sample is then used. This
   approach offers a good trade off between speed and accuracy. The equation
-  for this method is given below. 
+  for this method is given below where \( Q \) is the number of samples in the
+  mini-batch and \( \alpha \) is the learning rate as before.
   $$
   \mathbf{\theta} (k) = \mathbf{\theta}(k-1) - \frac{\alpha}{Q} \sum_{q=1}^{Q}\nabla
   J(\textbf{x}_q, \mathbf{\theta}(k-1))
@@ -102,7 +103,16 @@ META: tmp
 
 <p>
   Another concern are local minima. Any deep neural network is guaranteed to
-  have a very large number of local minima. How can we stop our neural network
+  have a very large number of local minima. Take a look at the below
+  surface. This surface has two minima, a local and a maximum. If you look at
+  the below contour map you can see that the algorithm converges to the local
+  minimum instead of the global maximum. 
+</p>
+
+<img class='center-image' src='/static/img/ml/crash_course/optimization_surface_minima.png'></img>
+  
+<p>
+  How can we stop our neural network
   from converging to local minima? Well local minima would be a concern if the
   cost function evaluated at the local minima was far greater than the cost
   function evaluated at the global minima. It turns out that this difference is
@@ -155,7 +165,7 @@ META: tmp
   $$
   The effect of applying this can be seen in the image below. Momentum dampens
   the oscillations and tends to make the trajectory continue in the same
-  direction. Values of \lambda closer to 1 give the trajectory more momentum.
+  direction. Values of \( \lambda \) closer to 1 give the trajectory more momentum.
   Keep in mind \( \lambda \) itself is not momentum and is more like a force of
   friction for the particles trajectory. Typical values for \( \lambda \) are 0.5,
   0.9, 0.95 and 0.99.
@@ -238,7 +248,7 @@ META: tmp
 
   Where \( \alpha \) is the global learning rate \( \delta \) is an extremely
   small constant ( \( 10^{-7} \) ). Notice that a element wise vector
-  multiplication is being performed. Remember that each element of the gradient
+  multiplication is being performed (by the \( \odot \) operator). Remember that each element of the gradient
   represents the partial derivative of the function with respect to a given
   parameter. The element wise multiplication will then scale the gradient with
   respect to a given parameter appropriately. The global learning rate is not a
@@ -296,7 +306,7 @@ META: tmp
   all about. But know that they exist and are an active area of research. 
 </p>
 
-<h3><i>Deep</i> Neural Networks</h3>
+<h3>The Unstable Gradient Problem</h3>
 
 <p>
   It turns out deeper neural networks can be a lot more powerful than their
@@ -375,9 +385,16 @@ META: tmp
   red. What is the maximum value of that function? It's around 0.25. What
   types of values are we starting with for the weights? Small random values.
   The key here is that the values start small. The
-  vanishing gradient problem should now start becoming clear. We are
-  recursively multiplying by terms less far less than one causing the
-  sensitivities to shrink and shrink going backwards in the network. 
+  vanishing gradient problem should now start becoming clear. Because of the
+  chain rule we are recursively multiplying by terms less far less than one
+  causing the sensitivities to shrink and shrink going backwards in the
+  network. 
+</p>
+
+<p>
+  With this many so multiplication terms it would be something of a magical balancing act
+  to manage all the terms so that the overall expression does not explode or
+  shrink significantly.
 </p>
 
 <p>
@@ -390,5 +407,5 @@ META: tmp
 
 <p>
   As you can see derivative is either 0 or 1 which alleviates the unstable
-  gradient problem. 
+  gradient problem. This function is also much easier to compute. 
 </p>

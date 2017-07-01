@@ -31,22 +31,20 @@ META: tmp
   A similar approach was taken to the learning machines that are called
   artificial neural networks. In an artificial neural network many units that
   are also called neurons function together to give the system the capability
-  to learn. Like, the brain these neurons are connected to each other. The
+  to learn. Like the brain, these neurons are connected to each other. The
   exact structure of neural networks and how these connections and neurons work
   will be discussed in the following pages. 
 </p>
 
 <p>
-  So why are neural networks so popular? Chances are you have heard of a neural
-  network but have no idea what gradient boosting or state vector machines are
-  despite the fact that they are all machine learning algorithms that learn
-  from data. In recent years, neural networks have exploded in popularity.
-  Cheaper and more powerful hardware allowed thousands and then millions of
-  neurons in artificial neural networks. This renaissance in machine learning has allowed countless
-  breakthroughs in neural networks and their applications. The second reason is
-  the versatility of neural networks. Neural networks have found applications
-  in text, speech, images and much more. They are a useful machine learning
-  tool in a variety of situations. 
+  So why are neural networks so popular?  In recent years, neural networks have
+  exploded in popularity.  Cheaper and more powerful hardware allowed thousands
+  and then millions of neurons in artificial neural networks. This renaissance
+  in machine learning has allowed countless breakthroughs in neural networks
+  and their applications. The second reason is the versatility of neural
+  networks. Neural networks have found applications in text, speech, images and
+  much more. They are a useful machine learning tool in a variety of
+  situations. 
 </p>
 
 <p>

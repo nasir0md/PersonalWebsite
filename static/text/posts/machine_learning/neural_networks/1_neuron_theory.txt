@@ -70,9 +70,9 @@ META: tmp
 
 <p>
   So what is the intuition behind a neuron? We can view the output of this
-  neuron as making a sort of <i>decision</i>.  This decision is based on the
+  neuron as making a <i>decision</i>.  This decision is based on the
   inputs, weights and bias of the neuron. Let's say you are trying to make the
-  decision of if you want to go to a party tonight. Let's say we will in a
+  decision of if you want to go to a party tonight. Let's say we live in a
   world where this decision depends on only two factors: are you tired and is
   your best friend at the party? Note that these factors are simple yes or no
   questions. We can <i>encode</i> yes as \( 1 \) and no as \( 0 \). 
@@ -86,7 +86,7 @@ META: tmp
   output \( < 0 \) means that we should decide to not go. A normal person would
   not want to go to a party while tired. We should then make the weight (\(w_0
   \)) for the are you tired input (\( x_0 \)) be negative. Hopefully the
-  opposite is true about your best so that weight (\(w_1\)) for that input
+  opposite is true about your best friend, so the  weight (\(w_1\)) for that input
   (\(x_1\)) would be positive. 
 </p>
 
@@ -115,10 +115,11 @@ META: tmp
 </p>
 
 <p>
-  While we choose the linear action function there are a variety of other
-  activation functions that are employed in neurons. Our simple linear
-  linear activation function would look like the below for input \( p \) and
-  output \( a \). 
+  In our example we choose the linear action function where our equation took
+  the form \( a = w_0 x_0 + w_1 x_1 + b \). While we choose the linear action
+  function there are a variety of other activation functions that are employed
+  in neurons. Our simple linear linear activation function would look like the
+  below for input \( p \) and output \( a \). 
 </p>
 
 <img class='center-image' src='/static/img/pure-linear-transform.png'></img>
@@ -126,12 +127,12 @@ META: tmp
 <p>
   Going back to the decision about the party, say there is another person that
   is trying to predict if you are going to go to the party. The neuron that
-  represents this should evidently be probabilistic so our same hard rule of if
+  represents this should have a probabilistic output so our same hard rule of if
   the output is greater than \( 1 \) will not apply. We could just take the
-  pure value and based on how positive or negative it is determines how certain
-  you are predicted to go to the party. However, there is a function called the
+  pure value and based on how positive or negative it is determine how certain
+  you are to go to the party. However, there is a function called the
   <i>sigmoid</i> function that does a better job of representing these
-  probabilistic processes. Any probability can be represented between 0 and 1.
+  probabilistic outputs. Any probability can be represented between 0 and 1.
   The sigmoid function does just this. Below is an image of the sigmoid
   function. 
 </p>
@@ -139,10 +140,8 @@ META: tmp
 
 
 <p>
-  So no matter how negative the output is there is always a small chance that
-  you can be predicted to go to the party. This should be intuitive as this
-  outside predicting party does not know how you make decisions and there is
-  always some uncertainty. 
+  So very negative outputs will produce values close to 0 and very positive
+  outputs will produce outputs close to 1. 
 </p>
 
 <p>
@@ -274,9 +273,23 @@ META: tmp
 
 
 <p>
-  The next extension is to add layers of neurons. 
+  What happens if we feed the outputs of one layer of neurons into another
+  layer of neurons? 
 </p>
+
 <img class='center-image' src='/static/img/ml/crash_course/multiple_layers.png'></img>
+
+<p>
+  This is where we begin to see the power of neural networks. Each layer of
+  neruon works on the abstraction of the previous layer. This allows deeper
+  layers to make more complex and higher level decisions. Let's take a concrete
+  example. Say you were builidng a neural network that takes as input
+  handwritten images. The first layer could detect edges. The second could
+  identify the contour the edges form. The third could take these contours and
+  identify them with shapes. The fourth and final could take these shapes and
+  associate them with numbers. 
+</p>
+
 <p>
   Now notate the weight matrix for layer \(i\) to be \(\textbf{W}^{i}\). Note
   that the number of neurons stacked vertically does not have to be the same in
@@ -284,7 +297,9 @@ META: tmp
   not matter how neurons are in the previous layer for the current layer. The
   example below is a little more concrete of such a network.
 </p>
+
 <img class='center-image' src='/static/img/ml/crash_course/network_example.png'></img>
+
 <p>
   We can simply extend the rules used to compute the output of one layer and
   extend it to multiple layers. For instance to compute the output of the above
@@ -296,6 +311,14 @@ META: tmp
   Notice how the input \(p\) is propagated from the left of the network to the
   right of the network.
 </p>
+
+<p>
+  Typically you will see neural networks illustrated in the less expressive
+  version shown below to save space. In the illustration each neuron is simply
+  a node.
+</p>
+
+<img class='center-image' src='/static/img/ml/crash_course/nn_illustration.png'></img>
 
 <p>
   That is all for the basics of a neural network building blocks. You should be

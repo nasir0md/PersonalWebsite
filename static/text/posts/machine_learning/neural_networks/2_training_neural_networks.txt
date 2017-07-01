@@ -8,18 +8,10 @@ Date:Feb 8, 2017
 |
 META: tmp
 |
-<p>
-First let's consider this basic network shown below. This is known as an
-Adaptive Linear Neuron (ADALINE) network.
-</p>
-
-<img class='center-image' src='/static/img/ml/crash_course/adaline.png'></img>
 
 <p>
-  We can then say the output of this network is:
-  $$ a = \textbf{wp} + b $$
-  Change our ADALINE network to a more concrete example with a network that
-  only has 2 inputs. 
+  Let's consider the simple neural network below that has two inputs to a
+  single neuron.
 </p>
 
 <img class='center-image' src='/static/img/ml/crash_course/adaline_two_input.png'></img>
@@ -115,7 +107,7 @@ Adaptive Linear Neuron (ADALINE) network.
 <p>
   It turns out this is in the form of a quadratic function. Finding the minimum
   point of this quadratic function will minimize the mean square error which is
-  our goal. We can do this by just finding the gradient. of the function and
+  our goal. We can do this by finding the gradient of the function and
   setting it equal to \( 0 \).
 
   $$ \nabla J(\textbf{x}) = \nabla ( c - 2\textbf{x}^T\textbf{h} +

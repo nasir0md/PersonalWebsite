@@ -62,6 +62,23 @@ META: tmp
 <h3>Early Stopping</h3>
 
 <p>
+  When we are working with a dataset we split that dataset up into testing and
+  training datasets. The training dataset is to adjust the weights of the
+  network. The test dataset is to check the accuracy of the model on data that
+  has never been seen before.
+</p>
+
+<p>
+  However, the training dataset can be divided again into the training data and
+  a small subset of data called the validation set. The validation set is used
+  during training to ensure the model is not overfitting. This data is not ever used
+  to train the model. The validation accuracy refers to the models accuracy
+  over the validation set. The goal is to minimize the validation accuracy
+  through tuning hyperparameters of the network. The network is only evaluated
+  on the test dataset with the fully tuned model. 
+</p>
+
+<p>
   Take a look at the below graph showing validation loss versus training loss.
   It should be clear that at a certain point the model overfits on the training
   data and begins to suffer in validation accuracy despite this not being
@@ -137,5 +154,10 @@ META: tmp
   of using it is relatively low. Finding the correct probability will require
   parameter tuning because a probability too low and dropout will have no
   effect, while too high and the network will be unable to learn anything. 
+</p>
+
+<p>
+  Overall, dropout makes more robust models and is a standard technique
+  employed in deep neural networks. 
 </p>
 

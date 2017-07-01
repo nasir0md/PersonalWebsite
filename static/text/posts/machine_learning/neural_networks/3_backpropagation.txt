@@ -53,9 +53,10 @@ META: tmp
 </p>
 
 <p>
-  Let's go ahead and employ the chain rule of calculus. We know that the result
-  of multiplying the input of the layer by the weights results in the value 
-  \( n_{i}^{m} \) which is a function of the weights of the layer.
+  Let's go ahead and employ the chain rule of calculus. Remember that 
+  ignoring the bias, the product of the input and the weights is given by 
+  \( n_{i}^{m} = w_{i}^{m} * p_{i}^{m} \). 
+  This can be written as a function of the weights of the layer.
   Let's apply the chain rule knowing that \( n_{i}^{m} \) can be written as \(
   n_{i}^{m} ( w_{i,j} ) \). 
 
@@ -110,8 +111,9 @@ Where we have:
 </p>
 
 <p>
-  The key insight of this is that we have to write the term 
-  \(\textbf{s}^m\) in terms of the last layer \( m - 1 \).
+  The goal of backpropagation equations is to come up with an expression for 
+  \( \textbf{s}^{m} \) in terms of \( \textbf{s}^{m-1} \). To get to our result
+  we first have to do some math magic so bear with me. 
 </p>
 
 <p>
