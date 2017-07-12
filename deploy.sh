@@ -1,10 +1,10 @@
 # Checks if comand line argument $1 exists.
 # -z is the if statment option for this.
-if [ -z "$1" ]
-then
-        echo "Missing commit message command line argument"
-        exit 1
-fi
+#if [ -z "$1" ]
+#then
+#        echo "Missing commit message command line argument"
+#        exit 1
+#fi
 
 #npm run build
 

@@ -1,0 +1,42 @@
+TITLE:Introduction to Convolutional Neural Networks
+|
+NEXT:1_motivation
+|
+PREV:
+|
+Date:Feb 8, 2017
+|
+META: tmp
+|
+<p>
+  Before reading this lesson I would highly recommend first checking out the
+  lesson on <a href='/blog/machine_learning/neural_networks/introduction'>regular neural networks</a>. The topics in this lesson will build off
+  of that lesson. 
+</p>
+<p>
+  At this point we have learned how artificial neural networks can take in
+  some numerical features as input, feed this input through a variety of
+  transformations involving weights, biases and activation functions, and
+  output a meaningful final result. We also learned how these neural networks
+  can, given a number of training examples, gradually teach themselves to
+  produce more accurate outputs, allowing them to optimize their performance
+  without having to be manually programmed.
+</p>
+
+<p>
+  In learning all this, we laid down the building blocks for almost all of
+  modern deep learning. Turns out, the flexibility of these artificial neural
+  networks allows us to develop even more sophisticated models specialized for
+  certain tasks, often with much higher levels of performance and scalability.
+  In this lesson, we’ll introduce one such specialized neural network created
+  mainly for the task of image processing: the convolutional neural network.
+</p>
+
+<p>
+  Convolutional neural networks <b>(abbreviated as CNNs or ConvNets)</b> are one of the the driving
+  factors behind the deep learning learning movement today. CNNs have been
+  proven to be <b>vastly</b> superior to traditional approaches in the realm of
+  images and other spatial data. The next several lessons will lay the
+  theoritical framework for the motivation and implementation of CNNs and how
+  they power much of the modern deep learning frenzy. 
+</p>

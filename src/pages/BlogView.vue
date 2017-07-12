@@ -222,7 +222,7 @@
                     }
                     
                     return {
-                        'title': 'umm',
+                        'title': 'hmm',
                         'desc': 'Invalid'
                     };
                 }
@@ -300,6 +300,7 @@
                         title: 'Configuring Theano on Ubuntu with GPU',
                         desc: 'How to correctly configure Theano on Ubuntu using an NIVIDA GPU.' 
                     },
+
                     'machine_learning/workshop_1/getting_setup': { 
                         title: 'Workshop 1 | Getting Setup',
                         desc: 'How to setup a machine learning environment.'
@@ -339,8 +340,12 @@
                     'machine_learning/neural_networks/sources': {
                         title: 'Neural Networks | Sources',
                         desc: 'Sources used to make this neural network tutorial'
-                    }
+                    },
 
+                    'machine_learning/convolutional_neural_networks/introduction': {
+                        title: 'CNN | Introduction',
+                        desc: 'Introduction to convolutional neural networks (CNNs)'
+                    }
                 },
                 postPaths: [
                     'machine_learning/configuring_theano_on_ubuntu_with_gpu',
@@ -354,7 +359,11 @@
                     'machine_learning/neural_networks/5_regularization',
                     'machine_learning/neural_networks/6_optimization_in_practice',
                     'machine_learning/neural_networks/7_theory_epilogue',
-                    'machine_learning/neural_networks/sources'
+                    'machine_learning/neural_networks/sources',
+
+                    'machine_learning/convolutional_neural_networks/introduction',
+                    'machine_learning/convolutional_neural_networks/1_motivation',
+                    'machine_learning/convolutional_neural_networks/2_convolution_layers',
                 ]
             }
         }
