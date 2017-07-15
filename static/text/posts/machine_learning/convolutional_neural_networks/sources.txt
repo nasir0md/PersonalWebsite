@@ -1,0 +1,22 @@
+TITLE:Sources
+|
+NEXT:
+|
+PREV:4_applications
+|
+Date:Feb 8, 2017
+|
+META: tmp
+|
+<ul>
+  <li>
+    <a href='https://www.amazon.com/Deep-Learning-Adaptive-Computation-Machine/dp/0262035618'>
+      Deep Learning (Adaptive Computation and Machine Learning Series) by
+      Goodfellow, Bengio, Courville
+    </a> 
+  </li>
+  <li>
+    <a href='http://cs231n.stanford.edu/'>Stanford CS231n: Convolutional Neural
+    Networks for Visual Recognition, Course Notes</a>
+  </li>
+</ul>

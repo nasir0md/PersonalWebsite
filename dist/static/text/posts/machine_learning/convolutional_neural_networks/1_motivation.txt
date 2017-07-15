@@ -1,0 +1,73 @@
+TITLE:CNN Motivation
+|
+NEXT:2_convolution_layers
+|
+PREV:introduction
+|
+Date:Feb 8, 2017
+|
+META: tmp
+|
+<p>
+  Let's say that we are trying to build a neural network that takes
+  <i>images</i> as input. To do so we would simply feed each pixel of the image
+  into the neural network. This would mean that our input layer would have to
+  have a weight for each pixel of the image. Furthermore, color images will
+  need a weight for each color component of the image (Think RBG spetrum. Any
+  color can be expressed in terms of some combination of red, blue and green). 
+  For a 200x200 RBG image this would be \(200*200*3 = 120,000\) weights. For
+  just the first layer! And 200x200 is not even that big of an image! To get
+  any decent results we would have to add many more layers easily resulting in 
+  millions of weights all of which need to be learned.
+</p>
+
+<p>
+  This approach is obviously not scalable. This is why CNNs were created. CNNs
+  are built to work with spatial data. This could be images, video, sound or
+  even in some cases text.
+</p>
+
+<p>
+  CNNs are very similar to ordinary Neural Networks from the previous chapter:
+  they are made up of layers of neurons, each with a set of learnable
+  parameters that get adjusted over time. Each neuron receives some inputs,
+  multiplies the inputs by its weights, adds on a bias term, and optionally
+  follows it with an activation function (or “non-linearity”). The whole
+  network still learns from a dataset of training examples through
+  backpropagation and gradient descent, using a single differentiable loss
+  function at the end. Furthermore, almost all the tips/tricks we developed for
+  learning regular neural networks still apply.
+</p>
+
+<p>
+  Here is a quote from Yann LeCun the inventor of the CNN and director of AI
+  research at Facebook about a high level description of CNNs. 
+</p>
+
+<p>
+  <i>
+  “A ConvNet is a particular way to connect the units in a neural net inspired
+  by the architecture of the visual cortex in animals and humans. Modern
+  ConvNets may utilize anywhere from seven to 100 layers of units [to process
+  its input]. To a computer, an image is simply an array of numbers. Within
+  this array of numbers, local motifs, such as the edge of an object, are
+  easily detectable in the first layer. The next layer would detect
+  combinations of these simple motifs that form simple shapes, like the wheel
+  of a car or the eyes in a face. The next layer will detect combinations of
+  shapes that form parts of objects, like a face, a leg, or the wing of an
+  airplane. The last layer would detect combinations of parts that form
+  objects: a car, an airplane, a person, a dog, etc. The depth of the network —
+  with its multiple layers -- is what allows it to recognize complex patterns
+  in this hierarchical fashion.”
+  </i>
+  - Yann LeCun
+</p>
+
+<p>
+  So what makes CNNs so equiped to work with spatial data? Data is feed into
+  convolutional neural networks as an array. for instance a 32x32 RBG image
+  would be feed into the network as a 32x32x3 array. Mathematically we refer to
+  this high dimensional construct not as a matrix or vector but a
+  <b>tensor</b>. Working with this volumetric data requires special layers
+  called convolutional layers.
+</p>

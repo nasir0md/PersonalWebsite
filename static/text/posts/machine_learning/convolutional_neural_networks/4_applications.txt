@@ -1,0 +1,229 @@
+TITLE:CNN Applications
+|
+NEXT:sources
+|
+PREV:3_pooling_layers
+|
+Date:Feb 8, 2017
+|
+META: tmp
+|
+<h4>Fully Connected Layers</h4>
+
+<p>
+  Before getting into the actual architecture of CNNs we first have to know
+  that convolutional layers alone cannot make up a neural network that outputs
+  a vector (which we need for classification and regression). A CNN outputs a
+  3D volume which is a tensor not a vector. 
+</p>
+
+<p>
+  The basic architecture of a CNN is to stack successive layers of convolution and max
+  pooling. However, after several convolution, max pooling pairs the image has
+  been sufficiently processed to a meaningful signal and the dimensionality is
+  low enough. At this point the output of the convolution or max pooling layer
+  is <i>flattened</i> and passed through several fully connected layers. These
+  fully connected layers are just the basic neural network connections
+  presented in the previous tutorial on neural network basics. Two or three of
+  these fully connected layers followed by an output layer is common. 
+</p>
+
+<p>
+  Now let's take a look at actual CNN architectures. The development of CNNs
+  have been a driving force behind the development of deep learning. As you
+  will see CNNs gradually got deeper and deeper over history. Deep CNNs are
+  powerful object detectors on high resolution images. This is only a sample of
+  the CNN architectures that are out there. New architectures are coming out
+  every day. 
+</p>
+
+<ul>
+  <li>
+    <b>LeNet-5</b>: This network is the original CNN. It is often used as a
+    basic example for the MNIST dataset which is comprised of 32x32x3 images of
+    handwritten digits. The network architecture is in the following order:
+    <ul>
+      <li>
+        Convolutional layer composed of 6
+        5x5 filters. This reduces the input to 28x28x6.
+      </li>
+      <li>
+        Downsampled by maxpooling that has a kernel size of 4 which gives an
+        volume size of 14x14x6  
+      </li>
+      <li>
+        Convolution layer with 16 filters for 10x10x16. 
+      </li>
+      <li>
+        Max pooling layer reducing output to 5x5x16
+      </li>
+      <li>
+        Flatten output
+      </li>
+      <li>
+        Fully connected layer of 120 neurons
+      </li>
+      <li>
+        Fully connected layer of 84 neurons
+      </li>
+      <li>
+        Fully connected layer of 10 neurons
+      </li>
+      <li>
+        Softmax function to determine class scores. (This was in the context of
+        digit recognition and there are 10 digits)
+      </li>
+    </ul>
+    A diagram of the network can be found below.
+
+    <img class='center-image' src='/static/img/ml/cnn/lenet5.png'></img>
+  </li>
+  <li>
+    <b>AlexNet:</b> The first 5 layers were convolution followed by max pooling
+    then the last 3 layers were fully connected layers.
+  </li>
+  <li>
+    <b>VGGNet:</b>  The network architecture is listed below. Note that C-64
+    means convolution layer with 64 filters, P-2 means pooling layer with
+    filter size of 2 and FC-4096 means full connected layer with 4096 neurons. 
+    Notice that this network follows up a block of two or
+    sometimes three convolution layers with a max pooling layer.
+    <ul>
+      <li>Input: [224x224x3]</li>
+      <li>C-64: [224x224x64]</li>
+      <li>C-64: [224x224x64]</li>
+      <li>P-2: [112x112x64]</li>
+      <li>C-128: [112x112x128]</li>
+      <li>C-128: [112x112x128]</li>
+      <li>P-2: [56x56x128]</li>
+      <li>C-256: [56x56x256]</li>
+      <li>C-256: [56x56x256]</li>
+      <li>C-256: [56x56x256]</li>
+      <li>P-2: [28x28x256]</li>
+      <li>C-512: [28x28x512]</li>
+      <li>C-512: [28x28x512]</li>
+      <li>C-512: [28x28x512]</li>
+      <li>P-2: [14x14x512]</li>
+      <li>C-512: [14x14x512]</li>
+      <li>C-512: [14x14x512]</li>
+      <li>C-512: [14x14x512]</li>
+      <li>P-2: [7x7x512]</li>
+      <li>Flatten</li>
+      <li>FC-4096: [4096]</li>
+      <li>FC-4096: [4096]</li>
+      <li>FC-1000: [1000]</li>
+      <li>Softmax for class probabilities</li>
+    </ul>
+    Below is a visualization of VGGNet
+
+    <img class='center-image' src='/static/img/ml/cnn/vggnet.jpg'></img>
+
+    <p>
+    This network was a step in the direction of very deep neural networks. It
+    showed that depth was an important property for the power of neural
+    networks. 
+    </p>
+
+    <p>
+      However, after this network researchers struggled to come up with deep
+      networks that could maintain the original features of the images. This
+      lead to the innovation of residual neural networks that featured skip
+      connections to allow networks to preserve original image features.
+    </p>
+  </li>
+
+  <li>
+    <b>ResNet</b>: This architecture takes advantage of residual or skip
+    connections and allows to much deeper neural networks. Typically ResNets of
+    56 layers deep are employed. 
+  </li>
+
+  <li>
+    <b>Inception-v3</b>: Google's inception v3 network is a very deep neural
+    network that is currently (or as of writting this) state of the art in CNN
+    architectures. The network has 25 million trainable parameters and does 5
+    billion multiply-adds for a single forward pass through. 
+
+    <img class='center-image' src='/static/img/ml/cnn/inception_v2.png'></img>
+  </li>
+</ul>
+
+<p>
+  Now you might be wondering how people came up with such models. As of
+  writting this the experts in the field are also unsure as to why deep neural
+  networks perform so well. As a result the design process for these new
+  networks is typically adding more layers and trying new things with the
+  network until something works. This process has been referred to as <a
+  href='https://www.reddit.com/r/MachineLearning/comments/6hso7g/d_how_do_people_come_up_with_all_these_crazy_deep/'>Grad
+  Student Descent</a> (a joke on gradient descent that mocks grad students
+  iteratively guessing network architectures without reason to desperately get
+  a paper published).
+</p>
+
+<h4>Applications in Society</h4>
+
+<p>
+  Now that we know what the sophisticated models are, we can get to
+  where the real fun begins. Convolutional neural networks aren’t just a cool
+  toy for CS nerds, or even an academic proof of concept: turns out, they can
+  used to help solve problems beyond just the realm of computer science — and
+  in many instances, they already have. When organizations have lots of
+  spatially-structured data that they want to better understand, machine
+  learning is there to lead the way.
+</p>
+
+<p>
+  Below are some examples of how convolutional neural networks have been, and
+  currently are being, applied in the real world. Our hope is that through
+  continuing to use these cutting-edge technologies in positive ways, people will
+  eventually come to see these technologies not as something to fear, but rather
+  as a potential force for good. After going through this lesson, perhaps you,
+  too, could think of a new way to use this exciting technology to help better
+  the world around us.
+</p>
+
+<p>
+  How are ConvNets being used for social good? (Just to name a few examples)
+  <ul>
+    <li>
+      Medicine: analyzing 3D lung scans to spot lung cancer <a
+      href='https://www.kaggle.com/c/data-science-bowl-2017'>(Data Science Bowl 2017)</a>
+    </li>
+    <li>
+      Environmentalism: detecting deforestation from satellite imagery 
+      <a href='https://www.kaggle.com/c/planet-understanding-the-amazon-from-space'>(Kaggle Competition)</a>
+    </li> 
+    <li>
+      Transportation: creating safer self-driving cars (NVIDIA: 
+      <a href='https://arxiv.org/abs/1604.07316'>Paper</a>, 
+      <a href='https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/'>Blog</a>)
+    </li>
+    <li>
+      Wildlife Protection: training drones to patrol for poachers and animals from the sky 
+      <a href='http://teamcore.usc.edu/projects/uavs/index.html'>(USC
+      Teamcore)</a>
+    </li>
+  </ul>
+</p>
+
+<h4>Further Resources</h4>
+
+<p>
+  For further resources please see the following links to youtube videos:
+</p>
+
+<ul>
+  <li>
+    <a href='https://www.youtube.com/watch?v=FmpDIaiMIeA'>How Convolutional Neural Networks Work</a>
+  </li>
+
+  <li>
+    <a href='https://www.youtube.com/watch?v=py5byOOHZM8&t=768s'>Neural Network
+    that Changes Everything</a>
+  </li>
+
+  <li>
+    <a href='https://www.youtube.com/watch?v=BFdMrDOx_CM&t=307s'>Inside a
+    Neural Network</a>
+  </li>
+</ul>

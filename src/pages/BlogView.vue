@@ -345,7 +345,7 @@
                     'machine_learning/convolutional_neural_networks/introduction': {
                         title: 'CNN | Introduction',
                         desc: 'Introduction to convolutional neural networks (CNNs)'
-                    }
+                    },
                 },
                 postPaths: [
                     'machine_learning/configuring_theano_on_ubuntu_with_gpu',
@@ -364,6 +364,9 @@
                     'machine_learning/convolutional_neural_networks/introduction',
                     'machine_learning/convolutional_neural_networks/1_motivation',
                     'machine_learning/convolutional_neural_networks/2_convolution_layers',
+                    'machine_learning/convolutional_neural_networks/3_pooling_layers',
+                    'machine_learning/convolutional_neural_networks/4_applications',
+                    'machine_learning/convolutional_neural_networks/sources',
                 ]
             }
         }

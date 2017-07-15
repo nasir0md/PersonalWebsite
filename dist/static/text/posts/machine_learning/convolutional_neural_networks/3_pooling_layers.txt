@@ -1,0 +1,44 @@
+TITLE:Pooling layers
+|
+NEXT:4_applications
+|
+PREV:2_convolution_layers
+|
+Date:Feb 8, 2017
+|
+META: tmp
+|
+<p>
+  The roll of pooling layers is to reduce the dimensionality of the input. 
+  Pooling layers are typically put right after convolution layers. Reducing the
+  dimensionality of the input both reduces the number of parameters and
+  therefore the comlexity of the network and in turns reduces overfitting. 
+</p>
+
+<p>
+  The pooling layer operates over every depth slice and does nothing to change
+  the depth of the input. However, the output height and width are reduced
+  through sampling areas of the image. 
+</p>
+
+<p>
+  The most common type of pooling is max pooling. Max pooling takes only the
+  maximum pixel value from a region of pixels. So for instance for a max
+  pooling with filter size 2x2 with a stride of 2 would reduce a 8x8 image to a
+  2x2 image. In the image below each color of the image is a region that the
+  pooling considers independently of the other regions. 
+</p>
+
+<img class='center-image' src='/static/img/ml/cnn/pooling.png'></img>
+
+<p>
+  More generally, pooling can be viewed as a type of downsampling. For max pooling
+  backpropagation just has to know which pixel from each region had the highest
+  value in the forward pass so that the gradient is only routed through that
+  pixel. However, besides that everything else remains the same. 
+</p>
+
+<p>
+  And with that we have all the building blocks to a convolutional neural
+  network!
+</p>
