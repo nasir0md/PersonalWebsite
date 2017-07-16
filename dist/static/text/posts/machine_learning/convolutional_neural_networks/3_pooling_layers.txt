@@ -24,9 +24,10 @@ META: tmp
 <p>
   The most common type of pooling is max pooling. Max pooling takes only the
   maximum pixel value from a region of pixels. So for instance for a max
-  pooling with filter size 2x2 with a stride of 2 would reduce a 8x8 image to a
-  2x2 image. In the image below each color of the image is a region that the
-  pooling considers independently of the other regions. 
+  pooling with filter size of 2x2 with a stride of 2 would reduce a 8x8 image
+  to a 2x2 image. Typically the stride of the filter is just the filter size.
+  In the image below each color of the image is a region that the pooling
+  considers independently of the other regions. 
 </p>
 
 <img class='center-image' src='/static/img/ml/cnn/pooling.png'></img>

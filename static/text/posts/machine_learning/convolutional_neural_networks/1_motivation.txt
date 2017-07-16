@@ -13,7 +13,7 @@ META: tmp
   <i>images</i> as input. To do so we would simply feed each pixel of the image
   into the neural network. This would mean that our input layer would have to
   have a weight for each pixel of the image. Furthermore, color images will
-  need a weight for each color component of the image (Think RBG spetrum. Any
+  need a weight for each color component of the image (Think RBG spectrum. Any
   color can be expressed in terms of some combination of red, blue and green). 
   For a 200x200 RBG image this would be \(200*200*3 = 120,000\) weights. For
   just the first layer! And 200x200 is not even that big of an image! To get
@@ -28,11 +28,11 @@ META: tmp
 </p>
 
 <p>
-  CNNs are very similar to ordinary Neural Networks from the previous chapter:
-  they are made up of layers of neurons, each with a set of learnable
+  CNNs are very similar to ordinary Neural Networks from the previous chapter.
+  They are made up of layers of neurons, each with a set of learnable
   parameters that get adjusted over time. Each neuron receives some inputs,
   multiplies the inputs by its weights, adds on a bias term, and optionally
-  follows it with an activation function (or “non-linearity”). The whole
+  follows it with an activation function. The whole
   network still learns from a dataset of training examples through
   backpropagation and gradient descent, using a single differentiable loss
   function at the end. Furthermore, almost all the tips/tricks we developed for
@@ -64,10 +64,10 @@ META: tmp
 </p>
 
 <p>
-  So what makes CNNs so equiped to work with spatial data? Data is feed into
+  So what makes CNNs so equipped to work with spatial data? Data is feed into
   convolutional neural networks as an array. for instance a 32x32 RBG image
   would be feed into the network as a 32x32x3 array. Mathematically we refer to
   this high dimensional construct not as a matrix or vector but a
   <b>tensor</b>. Working with this volumetric data requires special layers
-  called convolutional layers.
+  called convolution layers.
 </p>

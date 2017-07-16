@@ -14,25 +14,33 @@ META: tmp
   Before getting into the actual architecture of CNNs we first have to know
   that convolutional layers alone cannot make up a neural network that outputs
   a vector (which we need for classification and regression). A CNN outputs a
-  3D volume which is a tensor not a vector. 
+  3D volume which is a tensor, not a vector. 
 </p>
 
 <p>
   The basic architecture of a CNN is to stack successive layers of convolution and max
   pooling. However, after several convolution, max pooling pairs the image has
-  been sufficiently processed to a meaningful signal and the dimensionality is
-  low enough. At this point the output of the convolution or max pooling layer
+  been sufficiently processed to a low dimension, meaningful signal. 
+  At this point the output of the convolution or max pooling layer
   is <i>flattened</i> and passed through several fully connected layers. These
   fully connected layers are just the basic neural network connections
-  presented in the previous tutorial on neural network basics. Two or three of
+  presented in the <a href='/blog/machine_learning/neural_networks/introduction'>previous</a> tutorial on neural network basics. Two or three of
   these fully connected layers followed by an output layer is common. 
 </p>
 
 <p>
+  This fully connected network at the end of the CNN is referred to as the
+  decision network. This is because it takes the signal from the convolution layers and
+  makes a meaningful decision from it. 
+</p>
+
+<h4>Common Architectures</h4>
+
+<p>
   Now let's take a look at actual CNN architectures. The development of CNNs
   have been a driving force behind the development of deep learning. As you
-  will see CNNs gradually got deeper and deeper over history. Deep CNNs are
-  powerful object detectors on high resolution images. This is only a sample of
+  will see CNNs gradually got deeper and deeper over history. Deeper CNNs are
+  more powerful object detectors on high resolution images. This is only a sample of
   the CNN architectures that are out there. New architectures are coming out
   every day. 
 </p>
@@ -40,8 +48,8 @@ META: tmp
 <ul>
   <li>
     <b>LeNet-5</b>: This network is the original CNN. It is often used as a
-    basic example for the MNIST dataset which is comprised of 32x32x3 images of
-    handwritten digits. The network architecture is in the following order:
+    basic example for the MNIST dataset which is comprised of 32x32x1 images of
+    handwritten digits (grey scale digits). The network architecture is in the following order:
     <ul>
       <li>
         Convolutional layer composed of 6
@@ -79,8 +87,9 @@ META: tmp
     <img class='center-image' src='/static/img/ml/cnn/lenet5.png'></img>
   </li>
   <li>
-    <b>AlexNet:</b> The first 5 layers were convolution followed by max pooling
-    then the last 3 layers were fully connected layers.
+    <b>AlexNet:</b> This network has a very similar architecture to LeNet-5 so
+    I will not go into the exact details. The first 5 layers are convolution
+    followed by max pooling then the last 3 layers are fully connected layers.
   </li>
   <li>
     <b>VGGNet:</b>  The network architecture is listed below. Note that C-64
@@ -119,9 +128,9 @@ META: tmp
     <img class='center-image' src='/static/img/ml/cnn/vggnet.jpg'></img>
 
     <p>
-    This network was a step in the direction of very deep neural networks. It
-    showed that depth was an important property for the power of neural
-    networks. 
+      This network was a step in the direction of very deep neural networks. It
+      showed that depth was an important property for the power of neural
+      networks. 
     </p>
 
     <p>
@@ -134,13 +143,13 @@ META: tmp
 
   <li>
     <b>ResNet</b>: This architecture takes advantage of residual or skip
-    connections and allows to much deeper neural networks. Typically ResNets of
+    connections and allows for much deeper neural networks. Typically ResNets of
     56 layers deep are employed. 
   </li>
 
   <li>
-    <b>Inception-v3</b>: Google's inception v3 network is a very deep neural
-    network that is currently (or as of writting this) state of the art in CNN
+    <b>Inception v3</b>: Google's inception v3 network is a very deep neural
+    network that is currently (or as of writing this) state of the art in CNN
     architectures. The network has 25 million trainable parameters and does 5
     billion multiply-adds for a single forward pass through. 
 
@@ -150,7 +159,7 @@ META: tmp
 
 <p>
   Now you might be wondering how people came up with such models. As of
-  writting this the experts in the field are also unsure as to why deep neural
+  writing this the experts in the field are largely also unsure as to why deep neural
   networks perform so well. As a result the design process for these new
   networks is typically adding more layers and trying new things with the
   network until something works. This process has been referred to as <a
@@ -183,7 +192,7 @@ META: tmp
 </p>
 
 <p>
-  How are ConvNets being used for social good? (Just to name a few examples)
+  How are CNNs being used for social good? (Just to name a few examples)
   <ul>
     <li>
       Medicine: analyzing 3D lung scans to spot lung cancer <a

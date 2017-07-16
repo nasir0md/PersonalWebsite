@@ -35,9 +35,9 @@ META: tmp
 <img class='center-image' src='/static/img/ml/cnn/convgaus.gif'></img>
 
 <p>
-  The first argument to the convolution (in the example the function \(x(t)\)
+  The first argument to the convolution (in the example the function \(x(t)\))
   is the input to the function and the second (in the example the function \(
-  w(t) \) is referred to as the kernel. 
+  w(t) \) ) is referred to as the kernel. 
 </p>
 
 <p>
@@ -74,8 +74,8 @@ META: tmp
 <p>
   In traditional neural networks each neuron is connected to every neuron in
   the next level. If a given layer has \( m \) inputs and \( n \) outputs the
-  runtime of the matrix multiplication is \( O( m * n) \). The connections of a
-  fully connected layer are shown below. 
+  runtime of the matrix multiplication needed to compute the layer output is \(
+  O( m * n) \). The connections of a fully connected layer are shown below. 
 </p>
 
 <img class='center-image' src='/static/img/ml/cnn/full_connection.png'></img>
@@ -91,12 +91,15 @@ META: tmp
 <h4>Convolution Layer</h4>
 
 <p>
-  The convolution layer is at the core of a CNN. Rather than take a vector as
-  input a CNN takes an input <i>volume</i>. We will see how this concept makes
+  The convolution layer is at the core of a CNN. Recall that a standard neural
+  network layer takes a vector as input. A CNN takes a 
+  <i>volume</i> as input. We will see how this concept makes
   sense soon. The neurons of a convolution layer are likewise arranged as
   volumes. The weights of a convolution layer can be viewed as a set of filters
   (remember from the convolution operator).
 </p>
+
+<img class='center-image' src='/static/img/ml/cnn/cnn_vols.jpeg'></img>
 
 <p>
   There are two primary concepts that make the convolution layer possible. The
@@ -105,22 +108,27 @@ META: tmp
   means that only patches of the input layer are connected to a given filter.
   The spatial extent of the weights connections to the input is called the
   receptive field or the filter size. The connectivity is always full along the
-  depth axis. So in summary connections are local in width and height full in
+  depth axis. So in summary, connections are local in width and height, while full in
   the depth dimension. 
 </p>
 
 <p>
-  For instance, an input volume is 32x32x3 meaning it is a 32x32 RGB
-  image. We say that this image has 3 depth slices each of 32x32 area (where
-  each depth slice corresponds to one of the color channels). If we choose a
-  filter size of 5x5 in this situation then each neuron in the convolution
-  layer would be connected to \( 5*5*3 = 75 \) weights (not including bias).
-  Note that this 5x5 filter size had to be applied to each depth layer. 
+  Say an input volume is 32x32x3, meaning it is a 32x32 RGB image. We say that
+  this image has 3 depth slices each of which have an area of 32x32 (where each
+  depth slice corresponds to one of the color channels). If we choose a filter
+  size of 5x5 in this situation then each neuron in the convolution layer would
+  be connected to \( 5*5*3 = 75 \) weights (not including bias).  Note that
+  this 5x5 filter size had to be connected to the full extent of the depth. 
 </p>
 
 <p>
-  So how many neurons in the convolution layer determined and to what local
-  patches are these neurons connected to? The parameters of depth, stride and
+  As we will see shortly it makes sense to call the incoming weights of the
+  neuron a filter. 
+</p>
+
+<p>
+  So how many neurons in the convolution layer are needed and what local
+  patches are these neurons connected to? The hyper parameters of depth, stride and
   zero padding address all of this.
 </p>
 
@@ -129,7 +137,7 @@ META: tmp
   This will control the depth of the output volume. As each neuron can be
   viewed as a filter this controls the number of filters in the layer.
   Furthermore, each of these filters will be trained to detect something else
-  entirely on the same input region. 
+  on the same input region. 
 </p>
 
 <p>
@@ -150,7 +158,7 @@ META: tmp
 <p>
   So the output volume size is dependent on the input volume size \( W \), the
   filter size \( F \) of the neurons and the stride \( S \) and the amount of
-  zero padding \( P \). The output volume is given by the following formula. 
+  zero padding \( P \). The output volume height and width is given by the following formula. 
   $$
   \frac{W - F + 2P}{S} + 1
   $$
@@ -189,8 +197,8 @@ META: tmp
 
 <p>
   Now if all the neurons in a single depth slice are using the same weights
-  the forward pass of a convolution layer is actually the same as just
-  computing the convolution of the neuron's weights and the input volume. This
+  then computing the forward pass of a convolution layer is the same as
+  doing the convolution of the neuron's weights and the input volume. This
   is why we refer to the sets of weights for each neuron to be a filter or a
   kernel. 
 </p>
@@ -206,18 +214,18 @@ META: tmp
 <img class='center-image' src='/static/img/ml/cnn/filters.png'></img>
 
 <p>
-  This assumption assumes that if a filter learns that detecting a horizontal
-  edge at some location in the image is important it will be important at all
-  locations of the image. This is a fair assumption as typically images are
-  invariant to translation. (i.e. if a picture of a cat has a cat in the top
-  left hand corner, it is still a picture of a cat if the cat is moved to the
-  opposite corner). 
+  Remember by the assumption of parameter sharing, we are assuming that if a
+  filter learns that detecting a horizontal edge at some location in the image
+  is important it will be important at all locations of the image. This is a
+  fair assumption as typically images are invariant to translation. (i.e. if a
+  picture of a cat has a cat in the top left hand corner, it is still a picture
+  of a cat if the cat is moved to the opposite corner). 
 </p>
 
 <p>
   In my opinion the most valuable resource for really getting a solid grasp on
   how the whole process work is the convolution demo made for the Stanford 231n
-  course. A quick note before checking out the demo, this is for when there are
+  course. A quick note before checking out the demo, this demo is for when there are
   two filters of size 3, a stride of 2, and a zero-padding of 1. Note that the
   filter weight matrices are both composed of 3 3x3 matrices because the input
   volume has a depth of 3. I would recommend spending a lot of time studying
@@ -229,5 +237,5 @@ META: tmp
 <p>
   While the convolution layer is certianly the driving innovation behind CNNs
   there is one more layer that is typically used in CNN architectures. Read the
-  next section to find out!
+  next section to find out more!
 </p>

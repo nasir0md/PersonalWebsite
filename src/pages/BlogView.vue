@@ -346,6 +346,26 @@
                         title: 'CNN | Introduction',
                         desc: 'Introduction to convolutional neural networks (CNNs)'
                     },
+                    'machine_learning/convolutional_neural_networks/1_motivation': {
+                        title: 'CNN | Motivation',
+                        desc: 'Motivation behind convolutional neural networks (CNNs)'
+                    },
+                    'machine_learning/convolutional_neural_networks/2_convolution_layers': {
+                        title: 'CNN | Convolution Layers',
+                        desc: 'The details behind what the convolution layer does in a convolutional neural network (CNN)'
+                    },
+                    'machine_learning/convolutional_neural_networks/3_pooling_layers': {
+                        title: 'CNN | Pooling Layers',
+                        desc: 'The details behind what the pooling layer does in a convolutional neural network'
+                    },
+                    'machine_learning/convolutional_neural_networks/4_applications': {
+                        title: 'CNN | Applications',
+                        desc: 'The applications of convolutional neural networks'
+                    },
+                    'machine_learning/convolutional_neural_networks/sources': {
+                        title: 'CNN | Sources',
+                        desc: 'The sources used for the convolutional neural network tutorial'
+                    },
                 },
                 postPaths: [
                     'machine_learning/configuring_theano_on_ubuntu_with_gpu',
