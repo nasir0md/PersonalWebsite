@@ -21,11 +21,17 @@ META: tmp
   The basic architecture of a CNN is to stack successive layers of convolution and max
   pooling. However, after several convolution, max pooling pairs the image has
   been sufficiently processed to a low dimension, meaningful signal. 
-  At this point the output of the convolution or max pooling layer
-  is <i>flattened</i> and passed through several fully connected layers. These
-  fully connected layers are just the basic neural network connections
-  presented in the <a href='/blog/machine_learning/neural_networks/introduction'>previous</a> tutorial on neural network basics. Two or three of
-  these fully connected layers followed by an output layer is common. 
+</p>
+
+<p>
+  At this point it makes sense to make some sort of decision based on the
+  signal produced by all of the convolution layers.  At this point the output
+  of the convolution or max pooling layer is <i>flattened</i> and passed
+  through several fully connected layers. These fully connected layers are just
+  the basic neural network connections presented in the <a
+  href='/blog/machine_learning/neural_networks/introduction'>previous</a>
+  tutorial on neural network basics. Two or three of these fully connected
+  layers followed by an output layer is common. 
 </p>
 
 <p>

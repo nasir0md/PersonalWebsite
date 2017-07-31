@@ -9,10 +9,10 @@ Date:Feb 8, 2017
 META: tmp
 |
 <p>
-  The roll of pooling layers is to reduce the dimensionality of the input. 
+  The role of pooling layers is to reduce the dimensionality of the input. 
   Pooling layers are typically put right after convolution layers. Reducing the
   dimensionality of the input both reduces the number of parameters and
-  therefore the comlexity of the network and in turns reduces overfitting. 
+  therefore the complexity of the network and in turns reduces overfitting. 
 </p>
 
 <p>
@@ -33,7 +33,14 @@ META: tmp
 <img class='center-image' src='/static/img/ml/cnn/pooling.png'></img>
 
 <p>
-  More generally, pooling can be viewed as a type of downsampling. For max pooling
+  Max pooling actually makes the network a more powerful feature detector as
+  only the areas with maximum response to the convolution operator are kept.
+  This preserves the most important features while throwing out the less
+  important features.
+</p>
+
+<p>
+  Pooling can be viewed as a type of down sampling. For max pooling
   backpropagation just has to know which pixel from each region had the highest
   value in the forward pass so that the gradient is only routed through that
   pixel. However, besides that everything else remains the same. 

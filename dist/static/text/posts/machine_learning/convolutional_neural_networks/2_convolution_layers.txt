@@ -9,8 +9,89 @@ Date:Feb 8, 2017
 META: tmp
 |
 <h4>Convolution Operator</h4>
+
 <p>
-  First of all what does convolution even mean? Convolution is a mathematical
+  First of all what does convolution even mean? The convolution is a
+  mathematical operation used to extract features from an image. The
+  convolution is defined by an image kernel. The image kernel is nothing more
+  than a small matrix. For instance, a 3x3 kernel matrix is very common.
+  Remember that we can think of an image as a array of numbers. For simplicity
+  let's just look at greyscale images at first. 
+</p>
+
+<p>
+  For instance, say this is our image. (Where we have 1 being black and 0 being
+  white).
+</p>
+
+<img class='center-image' src='/static/img/ml/cnn/image.png'></img>
+
+<p>
+  And this is our 3x3 kernel. 
+</p>
+
+<img class='center-image' src='/static/img/ml/cnn/kernel.png'></img>
+
+<p>
+  The kernel is applied to the image by sliding it over the image and for each
+  position computing the element wise multiplication of the two matrices and
+  then summing up the result.
+</p>
+
+<img class='center-image' src='/static/img/ml/cnn/kernresult.gif'></img>
+
+<p>
+  A different kernel will obviously produce a different output. The kernel can
+  be specially selected to perform certain operations on the output image such
+  as edge detection, sharpening or blurring. Below is an example of an edge
+  detection kernel of \( 
+  \begin{bmatrix}
+    -1 & -1 & -1 \\
+    -1 & 8 & -1 \\
+    -1 & -1 & -1
+  \end{bmatrix}
+  \) applied to an image.
+</p>
+
+<img class='center-image' src='/static/img/ml/cnn/edgedetectresult.jpg'></img>
+
+<p>
+  Now we can use multiple kernels to extract different features from an image.
+  A demonstration of this is shown below. First the red kernel is slid over the
+  input image to extract a feature map (just the result of the convolution) and
+  next a different kernel colored in green does the same to produce a different
+  feature map. 
+</p>
+
+<img class='center-image' src='/static/img/ml/cnn/featuremap.gif'></img>
+
+<p>
+  A large part of the reason why the convolution operator is such a powerful
+  feature detector is that it is space invariant. Since the kernel slides over
+  the entire image it does not matter where in the image a given "feature" may
+  be, the kernel will find it regardless. Furthermore, the kernel is applied
+  uniformly (the values of the kernel do not change as it is slid over the
+  image) so it will detect a feature the same in one part of an image as
+  another. 
+</p>
+
+<p>
+  Still confused about the convolution operator? Check out <a
+  href='http://setosa.io/ev/image-kernels/'>this incredible demo</a> for an
+  interactive way to explore convolution.
+</p>
+
+<p>
+  The core idea of the CNN is to learn the values of these filters through
+  backpropagation and to stack multiple layers of feature detectors (kernels)
+  on top of each other for abstracted levels of feature detection. 
+</p>
+
+<h4>A Formal Definition of Convolution</h4>
+
+<p>
+  To gain a more in depth understanding of what convolution is let's take a
+  look at it through a more rigorous definition. Convolution is a mathematical
   operation that has roots in signal processing. Say we are measuring the
   noisy signal \( x(t) \). Since this signal is noisy we can get a more
   accurate measurement by averaging the signal with the last several signals.
