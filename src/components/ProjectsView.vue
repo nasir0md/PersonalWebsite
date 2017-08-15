@@ -10,9 +10,7 @@
                     <br />
                     <i class='date-spn'>{{ project.datetxt }}</i>
                     <ul>
-                        <li v-for='point in project.points'>
-                            {{ point }}
-                        </li>
+                        <li v-for='point in project.points' v-html="point"></li>
                     </ul>
                 </div>
                 <div class='col-md-2'></div>

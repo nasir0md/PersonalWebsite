@@ -1,18 +1,12 @@
-BlueSub: Founder and Full Stack Developer
-Keras, Theano, Selenium, Python, Laravel, PHP, VueJS, Sass, AWS EC2, AWS S3, AWS RDS, AWS SQS
-Spring 2016-Present
--Community driven, user friendly machine learning platform. Collaborating with team on deploying platform
--Working on convolutional neural networks for image analysis with Python using Keras on top of Theano and NumPy and Pandas for data processing
--Developing backend using PHP and Laravel interfacing with MySQL database and S3 storage
--Assisting in creation of the frontend using Vue.js, JavaScript and Sass
--Integrating training data from social media websites through data mining with Python and Selenium
--Built EEG data collection tool with Node.js and Electron
 |Mathologica: Founder
 C#, ASP.NET, Java, Android, Windows Phone, Azure
 Summer 2014 - Summer 2015
 -Created symbolic math solving service from scratch to help students with math ranging from pre-algebra toadvanced multivariable calculus
 -Built web service using C# and ASP.NET running on Azure, Android application using Java, and a Windows store application using C#
 -Member of the Microsoft BizSpark program
+-While I have not been developing this platform for some time you can find it at <a href='mathologica.com'>mathologica.com</a>. (Yes, I know the HTTPS has expired).
+-The service gained some traction internationally, you can find reviews on it <a href="http://www.ticeman.fr/lepropulseur/?p=1414">here</a> and <a href='http://onewindows.es/2015/01/mathologica-una-nueva-aplicacion-matematica-gratuita-para-windows-phone/'>here</a> (and even more if you do a quick google search).
+
 |imgStory: Creator
 Objective-C, iOS Development, Parse Framework, MongoDB, AWS EC2
 Winter 2015

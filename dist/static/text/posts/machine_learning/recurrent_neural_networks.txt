@@ -1,0 +1,27 @@
+TITLE:Recurrent Neural Networks
+|
+NEXT:
+|
+PREV:
+|
+Date:Feb 3, 2017
+|
+META: How to correctly configure Theano on Ubuntu using an NIVIDA GPU.
+|
+<p>
+  I was going to write a tutorial for recurrent neural networks as part of the
+  neural networks tutorials that I was doing. However, instead I ended up
+  working on the curriculum post that can be found on the website of CAIS++ for
+  recurrent neural networks (RNNs). I think the blog post on the CAIS++ website
+  does a great job of explaining it so no point in copying myself here.
+</p>
+
+<p>
+  Note that on the website of CAIS++ you will find similar material on neural
+  networks that you will find here because I used a lot of the content that was
+  originally here on my blog for the curriculum there.
+</p>
+
+<p style='text-align: center'>
+  <a class='btn btn-default btn-norm' style="text-align: center; font-size: 1.4em" href='http://caisplusplus.usc.edu/blog/curriculum/lesson7'>Check Out CAIS++'s Lesson on RNNs!</a>
+</p>

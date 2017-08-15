@@ -460,7 +460,7 @@ possible. I will update this page as frequent problems arise.
 </p>
 
 <div id='tsconda'>
-    <h3>Trouble Shooting `command not found: conda` OSX</h3>
+    <h3>Trouble Shooting "command not found: conda" OSX</h3>
     <p>
         The <code>conda</code> command is not properly linked. Link it by
         running the following. 

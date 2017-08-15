@@ -1,19 +1,26 @@
 MCL Research Lab
 Theano, TensorFlow, Python, Keras
 Fall 2016 - Present
--Researching directly under the advisement of Dr. Kuo 
--Exploring advanced initialization techniques for Convolutional Neural Networks
--Initialization methods use unsupervised learning techniques with clustering
--Run experiments with Python and Theano
+-I am assisting in the research of Dr. Kuo, Professor of Electrical Engineering and Computer Science, in the Media Communications Lab (MCL). Research is dealing with the underlying mathematical models of convolutional neural networks to work towards unsupervised / weakly supervised learning in this domain. To do so we are using clustering algorithms to pre-initialize the weights of the network. I create and run the experiments to test and further progress devised theories. I perform the tests using Python, NumPy, Scikit-learn, Keras and TensorFlow. Furthermore, for fast implementations of custom clustering algorithms I use Cython. 
+
+-We have been working on a paper but are still pursuing better results. Early 2017, Dr. Kuo published an article in the IEEE Signal Processing Magazine about this research topic, which I provided the experiments and visuals for.
+
+|eBay: Software Engineering Intern
+Scala, Spark, Hadoop, Druid, Scalatra, MongoDB, Java, Distributed Systems 
+May 2017 - August 2017
+-I worked as a part of a team in eBay's Data Science Services group to deliver a data analytics platform to be used internally throughout eBay marketing and shipping analytics teams. My role in the team was primarily working on the data pipeline and backend systems. I designed and built the data pipeline from scratch using Spark, Hadoop and Druid to process petabytes of eBay metrics while still providing near real time analytics. My team used the Agile development method and had regular spring meetings.
+
+-As part of my work on the backend system I created an engine that parsed high level user actions into optimized query code to run in Spark to extract the relevant user groups the analyst wanted to explore. I coded the actions that transformed and moved this data to Druid for fast analytics. I also built the system that translated chart definitions into Druid queries to populate the charts with data. Furthermore, to allow up to date analytics, I created a fault tolerant way to regularly update the data store in Druid pulling the data from Hive tables in Spark. I also implemented the content metadata system using Scala and the Scalatra web framework to build a RESTful API interfacing with a MongoDB data store. Additionally, I implemented an algorithm using k-means clustering in Spark's MLlib to automatically segment groups of users into useful sub-categories of customers with similar behavior. As part of good development practices I employed Docker and Jenkins jobs in all the apps I wrote. Overall, I worked closely with Scala, Spark, Hadoop, Scalatra and Java web frameworks and MongoDB throughout this internship.
+
+
 |IDAX: Full Stack Developer
 PHP, JavaScript, MySQL, HTML5, CSS, AWS EC2, AWS RDS
 Spring 2015-Spring 2016
--Deployed a GIS driven workflow and inventory web platform for workers collecting data in the field
--Worked with a team of other backend developers
--Created using PHP and Laravel, MySQL database, JavaScript, HTML5, and CSS all running on AWS
+-Deployed a GIS driven workflow and inventory platform to facilitate workers collecting data in the field. Worked in creating the backend in PHP with a MySQL database and a front end interface using JavaScript, HTML5, and CSS.  Worked heavily with the Google Maps JavaScript API for location services. I was also in charge of managing AWS resources for the application. When working on the front end, I collaborated with developers working on the backend to deliver the application. 
+
+-The application was utilized in traffic studies around the world and aided in IDAX securing new business.
+
 |MightCall: Data Analyst
-Summer 2015
-Java, PHP, JavaScript
--Programmed data mining application in Java
--Created web portal to view the collected data using PHP,
-HTML5, and JavaScript
+PHP, HTML, JavaScript
+June 2015 - July 2015
+-Completed a special research project for the boss of the company. I created a data mining application using Java to collect various company data ranging from stock market valuations to a company's online marketing statistics. The goal of the application was to investigate the relationship of a company's digital marketing strategy and the success of the company. I also created a web portal to visual the data using PHP.

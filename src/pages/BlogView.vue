@@ -366,6 +366,10 @@
                         title: 'CNN | Sources',
                         desc: 'The sources used for the convolutional neural network tutorial'
                     },
+                    'machine_learning/recurrent_neural_networks': {
+                      title: 'RNN',
+                      desc: 'A tutorial on recurrent neural networks from the ground up'
+                    }
                 },
                 postPaths: [
                     'machine_learning/configuring_theano_on_ubuntu_with_gpu',
@@ -387,6 +391,8 @@
                     'machine_learning/convolutional_neural_networks/3_pooling_layers',
                     'machine_learning/convolutional_neural_networks/4_applications',
                     'machine_learning/convolutional_neural_networks/sources',
+
+                    'machine_learning/recurrent_neural_networks'
                 ]
             }
         }
