@@ -1,5 +1,5 @@
 <template>
-  <div v-if="error == ''">
+  <div style='color: white' v-if="error == ''">
     <h3>Server Info</h3>
     <p v-for='endpoint in dashData.machine.endpoints'>{{ endpoint.name }}: {{endpoint.url}}</p>
   </div>
@@ -22,8 +22,11 @@
     methods: {
       fetchData() {
         var _this = this;
+        this.error = 'Loading data';
+
         this.$http.get(auth.api_endpoint + '/api/protected/dash', {headers: auth.getAuthHeader()}).then(response => {
           var res = response.body;
+          console.log(res);
           _this.error = '';
           _this.dashData.machine.endpoints = res.endpoints;
         }, response => {
