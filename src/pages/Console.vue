@@ -26,13 +26,13 @@
 
         this.$http.get(auth.api_endpoint + '/api/protected/dash', {headers: auth.getAuthHeader()}).then(response => {
           var res = response.body;
-          console.log(res);
           _this.error = '';
           _this.dashData.machine.endpoints = res.endpoints;
         }, response => {
           console.log(response);
           _this.error = 'Could not fetch dashboard data';
         }).catch(e => {
+          console.log(e);
           _this.error = 'Could not fetch dashboard data';
         });
       }
