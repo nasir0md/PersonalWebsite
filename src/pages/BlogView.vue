@@ -369,6 +369,10 @@
                     'machine_learning/recurrent_neural_networks': {
                       title: 'RNN',
                       desc: 'A tutorial on recurrent neural networks from the ground up'
+                    },
+                    'web/setting_up_vue': {
+                      title: 'Setting up Vue.js',
+                      desc: 'A basic tutorial for getting a project up and running in Vue.js a long with some common gotchas.'
                     }
                 },
                 postPaths: [
@@ -392,7 +396,10 @@
                     'machine_learning/convolutional_neural_networks/4_applications',
                     'machine_learning/convolutional_neural_networks/sources',
 
-                    'machine_learning/recurrent_neural_networks'
+                    'machine_learning/recurrent_neural_networks',
+
+
+                    'web/setting_up_vue'
                 ]
             }
         }

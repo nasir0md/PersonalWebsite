@@ -1,0 +1,189 @@
+TITLE:Setting up Vue
+|
+NEXT:
+|
+PREV:
+|
+Date:Aug 26, 2017
+|
+META: 
+|
+<p>
+  <a href='https://vuejs.org/'>Vue.js</a> is my go to JavaScript framework.
+  It's easy to get started with and scales well to big projects. I won't cover
+  how to use Vue.js here but more how to set up a development environment in
+  Vue. Learning how to use Vue is pretty easy and you can find tutorials on
+  their <a href='https://vuejs.org/v2/guide/'>website</a>. This post will be
+  more of a reminder for me on how to get a standard Vue application going. 
+</p>
+
+<h3>Setting Up</h3>
+
+<p>
+  Start off by making sure the Vue command line interface (CLI) is installed.
+  This will allow you to easily set up project scaffolding. 
+</p>
+
+<pre>
+  <code class="language-bash">
+    npm install --global vue-cli
+  </code>
+</pre>
+
+<p>
+  We will use the Vue CLI to create a project template.
+</p>
+
+<pre>
+  <code class='language-bash'>
+    vue init webpack 'name of your app'
+    cd 'name of your app'
+    npm install 
+    npm run dev
+  </code>
+</pre>
+
+<p>
+  Your website should now be running.
+</p>
+
+<p>
+  Next let's install Vuetify to provide some basic functionality to make the
+  website look nice. To learn more about the components Vuetify has to offer
+  visit it's website <a href='https://vuetifyjs.com/'>here</a>.
+</p>
+
+<pre>
+  <code class='language-bash'>
+    npm install vuetify
+  </code>
+</pre>
+
+<p>
+  Whenever we install another Vue component we have to tell Browserify that we
+  are using it. Put the following code in your main.js to load Vuetify. 
+</p>
+
+<pre>
+  <code class='language-bash'>
+    // index.js or main.js
+    import('path/to/node_modules/vuetify/dist/vuetify.min.css') // Ensure you are
+    using css-loader
+     
+    import Vue from 'vue'
+    import Vuetify from 'vuetify'
+    
+    Vue.use(Vuetify)
+  </code>
+</pre>
+
+<p>
+  Also don't forget that with Vuetify everything must be nested in the
+  <code>&lt;v-app&gt;</code> tag
+</p>
+
+<p>
+  You will probably also want vue-resource for HTTP requests. I know that this
+  library is not officially recommended by Vue anymore but it is what I am used
+  to. 
+</p>
+
+<pre>
+  <code class='language-bash'>
+    npm install vue-resource
+  </code>
+</pre>
+
+<p>
+  And of course import it as before.
+</p>
+
+<pre>
+  <code class='language-javascript'>
+    import VueResource from 'vue-resource';
+    Vue.use(VueResource);
+  </code>
+</pre>
+
+<p>
+  You are now free to make requests like the following in your components.
+</p>
+
+<pre>
+  <code class='language-javascript'>
+    this.$http.post(endpoint, {
+        'data key': 'data value',
+        ...
+      }).then(response => {
+        // on success
+        var res = response.body;
+      }, response => {
+        // on error
+      });
+  </code>
+</pre>
+
+
+
+<h3>Common Tasks</h3>
+
+<p>
+  To run code after all the components load use the following life cycle hook.
+  So don't try to put code that manipulates DOM elements in <code>created</code>
+</p>
+
+<pre>
+  <code class='language-javascript'>
+    export default {
+      mounted: function () {
+        // Put code here that sets DOM elements.
+      }
+    }
+  </code>
+</pre>
+
+<p>
+  To use components in other components use the following code to import and
+  register the components from other files.
+</p>
+
+<pre>
+  <code class='language-javascript'>
+    import DrawView from './DrawView'
+    export default {
+      components: {
+        DrawView,
+        DispResultView
+      },
+      ...
+    }
+  </code>
+</pre>
+
+<p>
+  Something I always forget how to do is import global constants or functions.
+  The syntax is pretty simple and just uses Browserify. 
+</p>
+
+<p>
+  Off in some file <code>config.js</code> we will have the following.
+</p>
+
+<pre>
+  <code class='language-javascript'>
+    export default {
+      processEndpoint: 'http://localhost:5000'
+    }
+  </code>
+</pre>
+
+<p>
+  And then we can import what was exported in this file in another file through
+  just the simple code <code>import config from 'path to config.js file'</code>.
+</p>
+
+<p>
+  Also another thing I always forget is that you can scope the applied styles
+  for only a certain component. Except for a parent component, I would recommend
+  frequently using this functionality.
+</p>

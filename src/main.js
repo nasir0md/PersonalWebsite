@@ -10,6 +10,8 @@ import App from './App'
 import LandingView from './pages/LandingView.vue'
 import BlogView from './pages/BlogView.vue'
 import NotFoundView from './pages/404.vue'
+import ConsoleLogin from './pages/ConsoleLogin.vue'
+import Console from './pages/Console.vue'
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -32,6 +34,8 @@ var router = new VueRouter({
         { path: '/blog', component: BlogView },
         { path: '/blog/*', component: BlogView },
         { path: '/404', component: NotFoundView },
+        { path: '/console/login', component: ConsoleLogin },
+        { path: '/console', component: Console },
         { path: '*', redirect: '/' }
     ]
 })
