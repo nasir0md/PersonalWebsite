@@ -75,7 +75,7 @@ $$
 <p>
   How do we restricting the latent variable like this? We can add one more loss
   term called the <i>latent loss</i>. The latent loss will measure the
-  difference betweeen the current distribution of the latent variable and the
+  difference between the current distribution of the latent variable and the
   normal distribution. A common way to measure the differences in distributions
   is the KL Divergence measure. 
 </p>
@@ -101,8 +101,9 @@ $$
 <p>
   Now for the layer after the combined mean and standard deviation layers we
   can simply create this vector by sampling from the distribution the mean and
-  standard deviation vectors form. This also allows us to easily create new
-  latent vectors that do not exist in the training data. 
+  standard deviation vectors come from. This also allows us to easily create new
+  latent vectors that do not exist in the training data by just sampling from
+  this distribution.
 </p>
 
 <p>
