@@ -370,6 +370,10 @@
                       title: 'RNN',
                       desc: 'A tutorial on recurrent neural networks from the ground up'
                     },
+                    'machine_learning/style_transfer': {
+                      title: 'Style Transfer',
+                      desc: 'A tutorial on what style transfer is and how it can be used.'
+                    },
                     'web/setting_up_vue': {
                       title: 'Setting up Vue.js',
                       desc: 'A basic tutorial for getting a project up and running in Vue.js a long with some common gotchas.'
@@ -397,6 +401,7 @@
                     'machine_learning/convolutional_neural_networks/sources',
 
                     'machine_learning/recurrent_neural_networks',
+                    'machine_learning/style_transfer',
 
 
                     'web/setting_up_vue'

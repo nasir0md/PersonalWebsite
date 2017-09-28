@@ -1,0 +1,175 @@
+TITLE:Style Transfer
+|
+NEXT:
+|
+PREV:
+|
+Date:Sep 22, 2017
+|
+META: What style transfer is.
+|
+<p>
+  Turns out deep learning can be used for creativity and art as well. Using
+  deep learning we can recompose a base image in the <i>style</i> of another
+  image. The best way to understand what this process does is just to see an
+  example. The top left is the "base image" and the three other images are the
+  styled images with the corresponding "style image" in the bottom left hand
+  corner. 
+</p>
+
+<img class='center-image' src='/static/img/style_transfer/image06.png'></img>
+
+<p>
+  Here's another example of various effects applied to the Mona Lisa. 
+</p>
+
+<img class='center-image' src='/static/img/style_transfer/mona.jpg'></img>
+
+<p>
+  We can even do videos!
+</p>
+
+<video autoplay loop>
+  <source src='/static/img/style_transfer/picasso-periods.mp4' type='video/mp4'>
+</video>
+
+<br />
+<p></p>
+
+<p>
+  So how do we achieve this cool artistic effect? The answer, as you probably
+  thought, is with CNNs. 
+</p>
+
+<p>
+  We want to keep as much of the content as possible in image \( \textbf{A} \) and as much of
+  the style as possible in image \( \textbf{B} \) in this combined image. We can write this
+  mathematically as the following:
+</p>
+
+$$
+\textbf{c} = \underset{\mathbf{x}}{\operatorname{argmin}}(\alpha
+J_{\text{content}}(\textbf{a},\textbf{x}) + \beta J_{\text{style}}(\textbf{b},\textbf{x}))
+$$
+
+<p>
+  So we have two loss functions. One for the style loss and one for the content
+  loss. We are trying to minimize both where \( \alpha \) and \( \beta \) are
+  the learning rates. So how do we come up with a function to measure the
+  difference in style and content? 
+</p>
+
+<h4>Content Loss Function</h4>
+
+<p>
+  First let's start with the content loss function as that will be more
+  straight forward. A first approach would be just to flatten each of the
+  images to a vector and then to find the distance between the vectors.
+  However, that doesn't necessarily find the difference in the <i>structure</i> of the
+  images. This way pays too much attention to pixel level similarity. We need
+  something that can find the differences between structures and shapes in
+  images. If only we had something that can detect structures in images in a
+  translation invariant way...
+</p>
+
+<p>
+  If you haven't realized it already think about how a CNN works. The first
+  layer could detect basic things like lines or corners, the second layer could
+  detect shapes and so on. The point is each layer of the CNN works with an
+  increasingly higher representation of the image that is closer to encoding the
+  identity or <i>content</i> of the object. So the output of one of our hidden
+  layers would give a good representation of the encoded structure of the
+  object. We will choose an arbitrary hidden layer of our deep CNN (a layer
+  that is deep enough so that it captures image content identity but still
+  retains the structure of the original image, you might have to mess around
+  with this for the desired effect). The content loss is then just the distance
+  between the output of the content image \( \textbf{A} \) and the current
+  combined image \( \textbf{X} \) after being transformed to our hidden layer.
+  Say that the feature representation at hidden layer \( l \) is \( F^{l} \)
+  for the generated image \( \textbf{X} \) and \( P^{l} \) for the content image \(
+  \textbf{A} \). We can write this as:
+</p>
+
+$$
+  J_{\text{content}} = \frac{1}{2} \sum_{i,j} \left( F^{l}_{i,j} -
+  P^{l}_{i,j} \right)^2
+$$
+
+<p>
+  So what should you train your network on to obtain a good representation for \( F^{l} \) and \(
+  P^{l} \)? Turns out the VGG Network trained on the image-net dataset has the
+  desired properties. We do not need to find application specific data, the CNN
+  will do good enough of a job extracting features regardless. There are
+  pre-trained weights for the VGG Network online that you should just use
+  (there is a pre-trained VGG Network in Keras).
+</p>
+
+<h4>Style Loss Function</h4>
+
+<p>
+  The style loss is a little more complicated than the content loss. To do this
+  we need to find the <i>Gram matrix</i> of our transformed generated
+  image \( \textbf{F}^{l} \). The Gram matrix is a way of measuring what features
+  activate together. The Gram matrix captures this information in a spatially
+  independent way by computing all possible dot products between the two
+  images so spatial arrangement does not matter. This concept is what captures
+  the "style" of an image. We compute the Gram matrix of feature map \( F^{l}
+  \) through the following equation:
+</p>
+
+$$
+G^{l}_{i,j}=\sum_{k} \left( F^{l}_{i,k} F^{l}_{j,k} \right)
+$$
+
+<p>
+  The loss is then just the difference between the Gram matrices of the
+  transformed style image and combined image. We do this by finding the mean
+  squared distance between the two images. 
+</p>
+
+$$
+E_l = \frac{1}{4N_l^2 M_l^2} \sum_{i,j} \left( P^{l}_{i,j} - F^{l}_{i,j} \right)
+$$
+
+<p>
+  We can then find then define the loss as the weighted some of these
+  normalized Gram matrix distances over every single layer of our network.
+</p>
+
+$$
+  J_{\text{style}} = \sum^{L}_{l=0}w_l E_l
+$$
+
+<p>
+  This weight \( w_l \) is a user defined weight to for the contribution of
+  each layer to the style loss. A typical way to set \( w_l \) is to be \(
+  \frac{w_s}{L} \) for some constant \( w_s \) that is the same for every
+  layer. Values between 1.0 and 10.0 should achieve fine results. Also note
+  that the learning rate for the style loss function should be several orders of magnitude
+  greater than the learning rate for the content loss function.
+</p>
+
+<p>
+  Remember that we combine the two loss functions to give our final loss
+  function:
+</p>
+
+$$
+J(\textbf{x}; \textbf{a}, \textbf{b}) = \alpha J_{\text{content}}(\textbf{a},\textbf{x}) + \beta J_{\text{style}}(\textbf{b},\textbf{x})) 
+$$
+
+<h4>Final Thoughts</h4>
+<p>
+  It turns out that the CNN is more powerful than people initially thought.
+  Style transfer can work just as well with a CNN with randomly initialized
+  weights. This is because it is the power of the CNN architecture, not the
+  weight values that makes style transfer possible. This recent breakthrough
+  challenges a lot of what we know about CNNs and provides a possible
+  training-independent way of comparing network architecture. 
+</p>
+
+<h3>Sources</h3>
+<ul>
+  <li><a href='https://arxiv.org/pdf/1508.06576.pdf'>A Neural Algorithm of Artistic Style</a></li>
+  <li><a href='https://arxiv.org/pdf/1606.04801v2.pdf'>A Powerful Generative Model Using Random Weights for the Deep Image Representation</a></li>
+</ul>
