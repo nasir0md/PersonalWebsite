@@ -4,7 +4,7 @@
             <h1>{{ dispPost.title }}</h1>
             <span class='date-span'>{{ dispPost.postDate }}, Andrew Szot</span>
         </div>
-        <div class='post-content' v-html='dispPost.content'>
+        <div id='post-content-id' class='post-content' v-html='dispPost.content'>
         </div>
         <hr />
         <div class='link-holder-nav'>

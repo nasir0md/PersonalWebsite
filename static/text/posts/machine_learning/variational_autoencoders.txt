@@ -1,0 +1,123 @@
+TITLE:Style Transfer
+|
+NEXT:
+|
+PREV:
+|
+Date:Sep 22, 2017
+|
+META: All about VAEs
+|
+<h4>Autoencoders</h4>
+<p>
+  First, let's start off with what a regular autoencoder is. The architecture
+  for an autoencoder is shown below. 
+</p>
+
+<img class='center-image' src='/static/img/vae/deep_autoencoder.png'></img>
+
+<p>
+  We pass some input through a series of layers that have decreasing
+  dimensions. Once we reach a certain layer (we will call this layer the
+  <i>latent</i> vector) we flip the dimensions of the layers to be increasing
+  to result in the same dimension output as input. The unique thing about
+  autoencoders is that the training target is the same as the input. The
+  network is just learning to reconstruct the input. 
+</p>
+
+<img class='center-image' src='/static/img/vae/autoencode.jpg'></img>
+
+<p>
+  Now why would we want to do this? So we can learn the latent vector \( z \).
+  The latent vector will have significantly smaller dimensions than the input
+  data. This is a compressed form of the input data that encodes all of the
+  qualities of the input data. We can then reconstruct the entire input data
+  from just our latent vector. We can do this by only using the decoder part of
+  the network. Likewise if we want to compress our input data we can only use
+  the encoder part of the network to get the latent vector representation. 
+</p>
+
+<p>
+  The loss function we would use for this network would be the
+  reconstruction loss. We can define the reconstruction loss as the cross
+  entropy loss function between our input \( x \) and our output \( \hat x \).
+  The standard cross entropy loss function is shown below.
+</p>
+
+$$
+J_{\text{recon}} = -\sum \left( x \log(\hat x) + (1 - x)\log(1 - \hat x) \right)
+$$
+
+<p>
+  Now this is a cool concept for encoding images but it would be nice if we
+  could also use this network as a generative network. 
+</p>
+
+<h4>Variational Autoencoders</h4>
+<p>
+  Let's say we want to generate a new data point. We could do this by choosing
+  a new value for \( z \) and then passing it through our decoder network to
+  produce an output. The problem is we will not know what value of \(z \) to
+  choose to get good outputs. We can't simply modify existing latent values a
+  little bit to get new outputs, the dimensionality of the latent vector is
+  still too high. 
+</p>
+
+<p>
+  But what if we knew the range of values our latent variable should be within?
+  We can constrain this latent variable to follow a certain probability
+  distribution. If we know the probability distribution of the latent variable
+  then we can easily come up with new latent variables that fit that
+  distribution. It is typical to constrain the latent variable to a Gaussian
+  distribution. 
+</p>
+
+<p>
+  How do we restricting the latent variable like this? We can add one more loss
+  term called the <i>latent loss</i>. The latent loss will measure the
+  difference betweeen the current distribution of the latent variable and the
+  normal distribution. A common way to measure the differences in distributions
+  is the KL Divergence measure. 
+</p>
+
+<p>
+  To be able to have this distribution modeled in our network we need to
+  parameterize the network to have the standard deviation and mean embedded in
+  the network. A diagram of this is shown below. 
+</p>
+
+<img class='center-image' src='/static/img/vae/vae.jpg'></img>
+
+<p>
+  We now have a vector in our network that represents \( \sigma \) and \( \mu
+  \). We can calculate the KL Divergence from the normal distribution \( N(0,
+  1) \) as follows:
+</p>
+
+$$
+  J_{\text{latent}} = \frac{1}{2} \sum \left( \mu^2 + \sigma^2 - \log(\sigma^2) \right)
+$$
+
+<p>
+  Now for the layer after the combined mean and standard deviation layers we
+  can simply create this vector by sampling from the distribution the mean and
+  standard deviation vectors form. This also allows us to easily create new
+  latent vectors that do not exist in the training data. 
+</p>
+
+<p>
+  In summary the total loss for this network is the sum of the latent loss and
+  the reconstruction loss.
+</p>
+
+$$
+J = J_{\text{latent}} + J_{\text{recon}}
+$$
+
+<p>
+  To solidify this concept let's actually go ahead and implement a Variational
+  Autoencoder using TensorFlow. You can find the Python notebook for this <a
+  href='https://github.com/ASzot/Variational-Autoencoder-Implementation/blob/master/vae.ipynb'>here</a>.
+</p>
+
+<a class='btn btn-default btn-norm' style='font-size: 1.5em; text-align: center' href='https://github.com/ASzot/Variational-Autoencoder-Implementation/blob/master/vae.ipynb'>Python Notebook</a>

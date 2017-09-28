@@ -125,6 +125,7 @@
                     parentPath: parentPath
                 }
                 setTimeout(function () {
+                    // Render MathJax
                     Prism.highlightAll();
                     MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
                 }, 2000);
@@ -374,6 +375,10 @@
                       title: 'Style Transfer',
                       desc: 'A tutorial on what style transfer is and how it can be used.'
                     },
+                    'machine_learning/variational_autoencoders': {
+                      title: 'Variational Autoencoders',
+                      desc: 'A tutorial on how Variational Autoencoders (VAEs) work along wtih a practical code sample on how to implement and use them.'
+                    },
                     'web/setting_up_vue': {
                       title: 'Setting up Vue.js',
                       desc: 'A basic tutorial for getting a project up and running in Vue.js a long with some common gotchas.'
@@ -402,6 +407,7 @@
 
                     'machine_learning/recurrent_neural_networks',
                     'machine_learning/style_transfer',
+                    'machine_learning/variational_autoencoders',
 
 
                     'web/setting_up_vue'
