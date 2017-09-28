@@ -19,11 +19,14 @@ META: What style transfer is.
 
 <img class='center-image' src='/static/img/style_transfer/image06.png'></img>
 
+<p></p>
 <p>
   Here's another example of various effects applied to the Mona Lisa. 
 </p>
 
 <img class='center-image' src='/static/img/style_transfer/mona.jpg'></img>
+
+<p></p>
 
 <p>
   We can even do videos!
@@ -109,7 +112,7 @@ $$
 <p>
   The style loss is a little more complicated than the content loss. To do this
   we need to find the <i>Gram matrix</i> of our transformed generated
-  image \( \textbf{F}^{l} \). The Gram matrix is a way of measuring what features
+  image \( F^{l} \). The Gram matrix is a way of measuring what features
   activate together. The Gram matrix captures this information in a spatially
   independent way by computing all possible dot products between the two
   images so spatial arrangement does not matter. This concept is what captures
@@ -124,11 +127,14 @@ $$
 <p>
   The loss is then just the difference between the Gram matrices of the
   transformed style image and combined image. We do this by finding the mean
-  squared distance between the two images. 
+  squared distance between these two. Say the Gram matrix for the transformed
+  generated image is \( G^l \) and the Gram matrix for the transformed style
+  image is \( S^l \).
 </p>
 
 $$
-E_l = \frac{1}{4N_l^2 M_l^2} \sum_{i,j} \left( P^{l}_{i,j} - F^{l}_{i,j} \right)
+E_l = \frac{1}{4N_l^2 M_l^2} \sum_{i,j} \left( S^{l}_{i,j} - G^{l}_{i,j}
+\right)^2
 $$
 
 <p>
@@ -144,7 +150,7 @@ $$
   This weight \( w_l \) is a user defined weight to for the contribution of
   each layer to the style loss. A typical way to set \( w_l \) is to be \(
   \frac{w_s}{L} \) for some constant \( w_s \) that is the same for every
-  layer. Values between 1.0 and 10.0 should achieve fine results. Also note
+  layer. Values between 1.0 and 10.0 should achieve good results. Also note
   that the learning rate for the style loss function should be several orders of magnitude
   greater than the learning rate for the content loss function.
 </p>
