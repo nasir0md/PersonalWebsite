@@ -1,4 +1,4 @@
-const API_URL = 'http://www.andrewszot.com:3001'
+const API_URL = 'https://www.andrewszot.com:3001'
 const LOGIN_URL = API_URL + '/sessions/create'
 
 export default {
