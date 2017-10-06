@@ -1,0 +1,95 @@
+TITLE:Principle Component Analysis (PCA)
+|
+NEXT:
+|
+PREV:
+|
+Date:Oct 5, 2017
+|
+META: What PCA is
+|
+
+<p>
+  With high dimensional data it is hard to observe the correlations
+  between variables. Principle Component Analysis (PCA) is a tool to solve this
+  problem. PCA is a data dimensionality reduction technique and can take your
+  data to a lower feature space making it easier to analyze.
+</p>
+
+<p>
+  The first step in PCA is to standardize all of the features. Each of our
+  features could be in entirely different scales. For instance we could have
+  one feature be "height (meters)" and another be "diameter (centimeters)". We
+  want all of our data to be on the same scale. To do this we standardize the
+  data. Standardization means converting each feature to have mean 0 and
+  standard deviation 1. Along each feature use the following equation. 
+</p>
+
+$$
+z = \frac{x - \mu}{\sigma}
+$$
+
+<p>
+  Where \( \mu \) is the mean along that feature's axis and \( \sigma \) is the
+  standard deviation. \( z \) is referred to as the \( z \) score and is our
+  standardized data. 
+</p>
+
+<p>
+  Next we are going to want to calculate how all of the variables relate to one
+  another. We do this through the covariance matrix. We can calculate the
+  covariance matrix by multiplying our data matrix \( \textbf{X} \) by its
+  transpose. (And multiplying by a constant). This assumes the data has already
+  been standardized as it requires a mean of 0. 
+</p>
+
+<p>
+  We want to find the dimensions with the most variance as they will be the
+  most important to the distribution of the data. To do that we find the
+  eigenvalue decomposition of the covariance matrix. The covariance matrix of
+  matrix \( \textbf{X} \) is defined as the following. Keep in mind that the
+  columns represent features while the rows are observations and that \( \mu \)
+  is the per feature mean.
+</p>
+
+$$
+(\textbf{X} - \mu)^T (\textbf{X} - \mu)
+$$
+
+<p>
+  If we have \( n \) features this will give us an \( n \) by \( n \) matrix
+  where each entry \( i, j \) is the covariance between feature \( i \) and
+  feature \( j \). If \( i = j \) that is just the variance of feature \( i \). 
+</p>
+
+<p>
+  The next step is to decompose this matrix by finding all of the eigenvectors
+  and eigenvalues of the covariance matrix.  We want to choose the
+  most significant eigenvectors, those are the eigenvectors with the
+  highest-magnitude or eigenvalue. These eigenvectors that have the highest
+  eignevalue contribute the most to the variance in a particular direction and
+  therefore have the biggest affect on the distribution of the data.
+</p>
+
+<p>
+  So say you are trying to project our original data matrix to dimension \( N
+  \) we would then select the top \( N \) eigenvectors. We then use these
+  eigenvectors to construct the projection matrix (we just simply concatenate
+  the eigenvectors into a matrix). We then use this matrix to project our data
+  into the desired dimension \( N \). 
+</p>
+
+<p>
+  We can then multiply our data matrix by the PCA projection matrix to get the
+  projection into the lower dimension. 
+</p>
+
+<p>
+  The most important thing for this post is the code itself. I put together a
+  Python notebook with an implementation of PCA in numpy. 
+</p>
+
+<a class='btn btn-default btn-norm' style='font-size: 1.5em; text-align:
+center' href='https://github.com/ASzot/machine-learning-alg-examples/blob/master/pca.ipynb'>Python Notebook</a>
+
+

@@ -121,4 +121,4 @@ $$
   href='https://github.com/ASzot/Variational-Autoencoder-Implementation/blob/master/vae.ipynb'>here</a>.
 </p>
 
-<a class='btn btn-default btn-norm' style='font-size: 1.5em; text-align: center' href='https://github.com/ASzot/Variational-Autoencoder-Implementation/blob/master/vae.ipynb'>Python Notebook</a>
+<a class='btn btn-default btn-norm' style='font-size: 1.5em; text-align: center' href='https://github.com/ASzot/machine-learning-alg-examples/blob/master/vae.ipynb'>Python Notebook</a>

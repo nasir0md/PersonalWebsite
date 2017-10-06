@@ -124,6 +124,7 @@
                     metaDesc: meta,
                     parentPath: parentPath
                 }
+                var _this = this;
                 setTimeout(function () {
                     // Render MathJax
                     Prism.highlightAll();
@@ -379,6 +380,10 @@
                       title: 'Variational Autoencoders',
                       desc: 'A tutorial on how Variational Autoencoders (VAEs) work along wtih a practical code sample on how to implement and use them.'
                     },
+                    'machine_learning/principle_component_analysis': {
+                      title: 'Principle Component Analysis',
+                      desc: 'An explanation of the theory behind PCA along with an implementation of PCA using NumPy'
+                    },
                     'web/setting_up_vue': {
                       title: 'Setting up Vue.js',
                       desc: 'A basic tutorial for getting a project up and running in Vue.js a long with some common gotchas.'
@@ -408,8 +413,9 @@
                     'machine_learning/recurrent_neural_networks',
                     'machine_learning/style_transfer',
                     'machine_learning/variational_autoencoders',
+                    'machine_learning/principle_component_analysis',
 
-
+                    
                     'web/setting_up_vue'
                 ]
             }
