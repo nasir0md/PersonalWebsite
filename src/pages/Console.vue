@@ -15,9 +15,9 @@
     mounted: function () {
       this.fetchData();
 
-      setInterval(function () {
-        this.fetchData();
-      }.bind(this), 5000);
+      //setInterval(function () {
+      //  this.fetchData();
+      //}.bind(this), 30000);
     },
     methods: {
       fetchData() {
