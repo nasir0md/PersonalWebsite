@@ -2,7 +2,7 @@
     <div class='full-div single-blog-view'>
         <div class='header-section'>
             <h1>{{ dispPost.title }}</h1>
-            <span class='date-span'>{{ dispPost.postDate }}, Andrew Szot</span>
+            <span class='date-span'>{{ dispPost.postDate }}<span v-if="useAuthor">, Andrew Szot</span></span>
         </div>
         <div id='post-content-id' class='post-content' v-html='dispPost.content'>
         </div>
@@ -74,9 +74,18 @@
 </style>
 <script>
     export default {
-        created: function created() {
+        mounted: function created() {
         },
-
+        watch: {
+          dispPost: function (val) {
+            this.useAuthor = !(this.dispPost.metaDesc == "IGNORE AUTHOR");
+          }
+        },
+        data() {
+            return {
+              useAuthor: true,
+            }
+        },
         updated() {
             Prism.highlightAll();
             MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
