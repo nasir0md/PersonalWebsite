@@ -544,7 +544,7 @@ $$\mathbf{\hat{x}}_n = f_{\theta}(\mathbf{z}_n, \mathbf{y}_n)$$
 
 <p>
   We got decent results with this approach. Some examples are included below
-  where: 
+  where the voices of Speaker A and Speaker B are swapped in the generated audios: 
 </p>
 
 <hr />
