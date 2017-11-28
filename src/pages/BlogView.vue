@@ -61,8 +61,13 @@
       margin-top: 40px;
     }
     h3,
-    h4 {
+    h4,
+    h5 {
       text-align: center;
+    }
+
+    .pic-cap {
+      font-style: italic;
     }
 </style>
 
@@ -384,6 +389,10 @@
                       title: 'Principle Component Analysis',
                       desc: 'An explanation of the theory behind PCA along with an implementation of PCA using NumPy'
                     },
+                    'machine_learning/voice_conversion': {
+                      title: 'Voice Conversion',
+                      desc: 'Voice style transfer / conversion'
+                    },
                     'web/setting_up_vue': {
                       title: 'Setting up Vue.js',
                       desc: 'A basic tutorial for getting a project up and running in Vue.js a long with some common gotchas.'
@@ -414,6 +423,7 @@
                     'machine_learning/style_transfer',
                     'machine_learning/variational_autoencoders',
                     'machine_learning/principle_component_analysis',
+                    'machine_learning/voice_conversion',
 
                     
                     'web/setting_up_vue'
