@@ -15,11 +15,11 @@ META:IGNORE AUTHOR
 <h3>Introduction</h3>
 
 <p>
-  Recently, there have been many results in the image domain with the
+  Recently, there have been many results in computer vision with the
   introduction of deeper convolutional models that encode higher dimensional and
   interpretable features (neural style) [<a
   href='https://arxiv.org/pdf/1705.04058.pdf'>1</a>].
-  In contrast, the audio domain is less studied with a lack of deep learning
+  In contrast, deep and thorough understanding of speech  has suffered from the lack of deep learning
   models catering to audio signals. For a while, traditional audio processing
   techniques remained dominant over deep learning approaches in terms of audio
   classification and detection. Specifically, generative models in audio were
@@ -456,12 +456,12 @@ y \rVert _1)) $$
 <p class='pic-cap'>Generated (female)</p>
 
 <audio controls>
-  <source src="/static/img/ml/voice_conversion/18k_myaudio_2_A.wav" type="audio/wav">
+  <source src="/static/img/ml/voice_conversion/18k_myaudio_2_B.wav" type="audio/wav">
 </audio>
 <p class='pic-cap'>Content from me (male)</p>
 
 <audio controls>
-  <source src="/static/img/ml/voice_conversion/18k_myaudio_2_B.wav" type="audio/wav">
+  <source src="/static/img/ml/voice_conversion/18k_myaudio_2_A.wav" type="audio/wav">
 </audio>
 <p class='pic-cap'>Generated (female)</p>
 
