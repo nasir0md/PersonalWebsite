@@ -797,7 +797,7 @@ $$\mathbf{\hat{x}}_n = f_{\theta}(\mathbf{z}_n, \mathbf{y}_n)$$
     bit with our CycleGAN implementation between female and male audio.
   </li>
   <li>
-    Nasir - Trained speaker-informed VAE model after implemented the modified
+    Nasir - Trained speaker-informed VAE model after implementing the modified
     loss function. Also explored and implemented speaker-informed VAE models
     based on Wavenet-generated input.
   </li>
